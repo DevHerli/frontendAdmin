@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { BlankComponent } from './pages/blank/blank.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+
+import { HomeComponent } from './pages/home/home.component';
 
 
 
 
 const routes: Routes = [
-  { path: 'home', component: DashboardComponent },
+  { path: 'home', component: HomeComponent},
   {
     path: 'core',
     loadChildren: () => import('./core/core.module').then(m => m.CoreModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
+  },
+  {
+    path: 'super',
+    loadChildren: () => import('./pages/super-admin/super-admin.module').then(m => m.SuperAdminModule)
   },
   {
     path: '',

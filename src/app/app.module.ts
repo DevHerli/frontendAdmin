@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
+import { PagesModule } from './pages/pages.module';
+import { AdminModule } from './pages/admin/admin.module';
+import { SuperAdminModule } from './pages/super-admin/super-admin.module';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     CoreModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    PagesModule,
+    AdminModule,
+    SuperAdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
