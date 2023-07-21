@@ -7,21 +7,16 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 const routes: Routes = [
-  // {
-  //   path: 'pages',
-  //   loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
-  // },
-  // {
-  //   path: '**',
-  //   redirectTo: 'pages'
-  // }
-    {path: 'dashboard', component: DashboardComponent},
-    {path: 'blank', component: BlankComponent},
-
-
-
-    {path: '**', redirectTo: 'dashboard'}
-
+  { path: 'home', component: DashboardComponent },
+  {
+    path: 'core',
+    loadChildren: () => import('./core/core.module').then(m => m.CoreModule)
+  },
+  {
+    path: '',
+    redirectTo: '**',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
