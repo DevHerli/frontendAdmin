@@ -1,21 +1,29 @@
-@use "/src/styles.scss";
-
 $background-color-options: #202124;
 
 .logo002 {
   height: 50%;
-  width: 80%;
+  width: 90px;
 }
 
 .main-menu-inner {
   background-color: #363636 !important;
   .topbar-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: inherit !important;
+    padding: 0 !important;
   }
 }
 
 .main-icon-menu {
   background-color: $background-color-options;
+  .logo-sm {
+    transition: 0.3s;
+    &:hover {
+      transform: rotateZ(-15deg);
+    }
+  }
   .main-icon-menu-body {
     .nav.nav-tabs {
       .nav-link {
@@ -23,7 +31,6 @@ $background-color-options: #202124;
         &.active:before {
           content: "";
           border-right: 10px solid #ebc131;
-
         }
         .ti {
           color: #ebc131;
