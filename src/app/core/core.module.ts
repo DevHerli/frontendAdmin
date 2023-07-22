@@ -10,6 +10,9 @@ import { MenuInterfacesComponent } from './sidebar/menu-interfaces/menu-interfac
 import { MenuSuperAdminComponent } from './sidebar/menu-super-admin/menu-super-admin.component';
 import { MenuKardexComponent } from './sidebar/menu-kardex/menu-kardex.component';
 import { MenuTicketsComponent } from './sidebar/menu-tickets/menu-tickets.component';
+import { PagesModule } from '../pages/pages.module';
+import { RouterModule } from '@angular/router';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -22,7 +25,8 @@ import { MenuTicketsComponent } from './sidebar/menu-tickets/menu-tickets.compon
     MenuInterfacesComponent,
     MenuSuperAdminComponent,
     MenuKardexComponent,
-    MenuTicketsComponent
+    MenuTicketsComponent,
+    FooterComponent
   ],
   exports:[
     HeaderComponent,
@@ -32,11 +36,13 @@ import { MenuTicketsComponent } from './sidebar/menu-tickets/menu-tickets.compon
     MenuInterfacesComponent,
     MenuSuperAdminComponent,
     MenuKardexComponent,
-    MenuTicketsComponent
+    MenuTicketsComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
-    CoreRoutingModule
+    CoreRoutingModule,
+    PagesModule
   ]
 })
 export class CoreModule { }
