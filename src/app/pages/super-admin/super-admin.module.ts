@@ -1,23 +1,33 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SuperAdminRoutingModule } from './super-admin-routing.module';
-import { CategoriasComponent } from './categorias/categorias.component';
 import { SuperDashboardComponent } from './super-dashboard/super-dashboard.component';
+import { SharedComponentsModule } from 'src/app/components/shared/sharedComponents.module';
+import { SuperAdminComponentsModule } from 'src/app/components/super-admin/superAdminComponents.module';
+import { CategoriesComponent } from './categories/categories.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ApisComponent } from './apis/apis.component';
+
 
 
 
 @NgModule({
   declarations: [
-    CategoriasComponent,
-    SuperDashboardComponent
+    SuperDashboardComponent,
+    CategoriesComponent,
+    ApisComponent,
+
   ],
   exports: [
-    CategoriasComponent,
+    CategoriesComponent,
     SuperDashboardComponent
   ],
   imports: [
     CommonModule,
-    SuperAdminRoutingModule
+    SuperAdminRoutingModule,
+    SharedComponentsModule,
+    SuperAdminComponentsModule,
+    TranslateModule
   ]
 })
 export class SuperAdminModule { }

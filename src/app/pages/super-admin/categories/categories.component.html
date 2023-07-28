@@ -1,0 +1,117 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <div class="float-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">{{ 'menuSuper.categories' | translate }}</a></li>
+                        <li class="breadcrumb-item active">{{ 'menu.home' | translate }}</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">{{ 'menuSuper.categories' | translate }}</h4>
+                <p class="text-muted mb-0">{{ 'categories.title' | translate }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills nav-justified" role="tablist">
+                        <li class="nav-item waves-effect waves-light">
+                            <a class="nav-link active" data-bs-toggle="tab" type="button" href="#categorias-1" role="tab" aria-selected="true">{{ 'menuSuper.categories' | translate }}</a>
+                        </li>
+                        <li class="nav-item waves-effect waves-light">
+                            <a class="nav-link" data-bs-toggle="tab" type="button" href="#subcategorias-1" role="tab" aria-selected="false">{{ 'menuSuper.subcategories' | translate }}</a>
+                        </li>
+                        <li class="nav-item waves-effect waves-light">
+                            <a class="nav-link" data-bs-toggle="tab" type="button" href="#especialidades-1" role="tab" aria-selected="false">{{ 'menuSuper.specialties' | translate }}</a>
+                        </li>
+                    </ul>
+    
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane p-3 active" id="categorias-1" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">{{ 'categories.title1' | translate }}</h4>
+                                            <!-- <p class="text-muted mb-0">{{ 'categories.text1' | translate }}</p> -->
+                                        </div>
+                                        <div class="card-body">    
+                                            <app-categoria></app-categoria>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">{{ 'categories.title2' | translate }}</h4>
+                                            <!-- <p class="text-muted mb-0">{{ 'categories.text2' | translate }}</p> -->
+                                        </div><!--end card-header-->
+                                        <div class="card-body">    
+                                            <app-add-categoria></app-add-categoria>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane p-3" id="subcategorias-1" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">{{ 'menuSuper.subcategories' | translate }}</h4>
+                                            <p class="text-muted mb-0">{{ 'categories.textSubcategories' | translate }}</p>
+                                        </div>
+                                        <div class="card-body">    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">{{ 'categories.title2' | translate }}</h4>
+                                            <p class="text-muted mb-0">{{ 'categories.textSubcategoriesAdd' | translate }}</p>
+                                        </div>
+                                        <div class="card-body">    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane p-3" id="especialidades-1" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">{{ 'menuSuper.specialties' | translate }}</h4>
+                                            <p class="text-muted mb-0">{{ 'categories.textSpecialties' | translate }}</p>
+                                        </div><!--end card-header-->
+                                        <div class="card-body">    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">{{ 'categories.title2' | translate }}</h4>
+                                            <p class="text-muted mb-0">{{ 'categories.textSpecialtiesAdd' | translate }}</p>
+                                        </div><!--end card-header-->
+                                        <div class="card-body">    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                </div><!--end card-body-->
+            </div>
+        </div>
+    </div>
+    
+</div>

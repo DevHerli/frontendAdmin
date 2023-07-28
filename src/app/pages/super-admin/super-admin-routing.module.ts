@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlankComponent } from 'src/app/pages/admin/blank/blank.component';
-import { DashboardComponent } from '../dashboard/dashboard.component';
-import { CategoriasComponent } from './categorias/categorias.component';
+import { DashboardComponent } from '../shared/dashboard/dashboard.component';
 import { SuperDashboardComponent } from './super-dashboard/super-dashboard.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { ApisComponent } from './apis/apis.component';
 
 
 
@@ -11,7 +12,8 @@ import { SuperDashboardComponent } from './super-dashboard/super-dashboard.compo
 const routes: Routes = [
 { path: 'super-dash', component: DashboardComponent},
 { path: 'superDashboard', component: SuperDashboardComponent},
-{ path: 'categorias', component: CategoriasComponent},
+{ path: 'categorias', component: CategoriesComponent},
+{ path: 'apis', component: ApisComponent},
 
 { path: '', redirectTo: '/superDashboard', pathMatch: 'full' },
 ];

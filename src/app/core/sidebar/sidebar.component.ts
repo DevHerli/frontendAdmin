@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { globalImagesConst } from '../data/consts/globalImages.const';
+import { globalImagesConst } from '../../data/consts/globalImages.const';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
