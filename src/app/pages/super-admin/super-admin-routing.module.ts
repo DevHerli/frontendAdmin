@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BlankComponent } from 'src/app/pages/admin/blank/blank.component';
 import { DashboardComponent } from '../shared/dashboard/dashboard.component';
 import { SuperDashboardComponent } from './super-dashboard/super-dashboard.component';
 import { CategoriesComponent } from './categories/categories.component';
