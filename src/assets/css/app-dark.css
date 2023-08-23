@@ -1713,10 +1713,10 @@ mark {
 
 /*!
  * Waves v0.7.6
- * http://fian.my.id/Waves 
- * 
- * Copyright 2014-2018 Alfiana E. Sibuea and other contributors 
- * Released under the MIT license 
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014-2018 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
  * https://github.com/fians/Waves/blob/master/LICENSE */
 .waves-effect {
   position: relative;
@@ -2457,7 +2457,7 @@ li.L9 {
   color: #ffffff !important;
 }
 
-.btn-de-danger {
+/* .btn-de-danger {
   background-color: transparent !important;
   color: #ef4d56 !important;
   border: 1px solid #333a48;
@@ -2466,7 +2466,7 @@ li.L9 {
   background-color: #ef4d56 !important;
   color: #ffffff !important;
   border: 1px solid #ef4d56;
-}
+} */
 
 .btn-de-dashed-danger {
   background-color: transparent !important;

@@ -1,25 +1,24 @@
-import { HttpClient } from '@angular/common/http';
-import { parseTemplate } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
-  AbstractControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { AddCategoryModel } from 'src/app/data/models/add-category.model';
+import { AddSubcategoryModel } from 'src/app/data/models/add-subcategory.model';
 import { CategoryFormsService } from 'src/app/data/services/category-forms.service';
 
 @Component({
-  selector: 'app-add-categoria',
-  templateUrl: './add-categoria.component.html',
-  styleUrls: ['./add-categoria.component.scss'],
+  selector: 'app-add-subcategory-form',
+  templateUrl: './app-add-subcategory-form.component.html',
+  styleUrls: ['./app-add-subcategory-form.component.scss'],
 })
-export class AddCategoriaComponent implements OnInit {
+export class AppAddSubcategoryFormComponent {
   //#region rectiveForm and abstract Controls
   public formGroup!: FormGroup;
   public typeCategoryControl!: AbstractControl;
+  public typeSubcategoryControl!: AbstractControl;
   public nameCategoryControl!: AbstractControl;
   //#endregion
 
@@ -38,7 +37,11 @@ export class AddCategoriaComponent implements OnInit {
 
   private setReactiveForm(): void {
     this.formGroup = this._formbuilder.group({
-      typeCategoryId: new FormControl<number>(
+      typeCategoryId: new FormControl(
+        1,
+        Validators.compose([Validators.required, Validators.min(1)])
+      ),
+      typeSubcategoryId: new FormControl(
         1,
         Validators.compose([Validators.required, Validators.min(1)])
       ),
@@ -49,6 +52,7 @@ export class AddCategoriaComponent implements OnInit {
     });
 
     this.typeCategoryControl = this.formGroup.controls['typeCategoryId'];
+    this.typeSubcategoryControl = this.formGroup.controls['typeSubcategoryId'];
     this.nameCategoryControl = this.formGroup.controls['nameCategoryId'];
 
     this.formGroup.valueChanges.subscribe(() => {
@@ -62,13 +66,12 @@ export class AddCategoriaComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    let parameter: AddCategoryModel = {
+    let parameter: AddSubcategoryModel = {
       tipo_Categoria: this.typeCategoryControl.value,
+      tipo_Subcategoria: this.typeSubcategoryControl.value,
       descripcion: this.nameCategoryControl.value,
     };
 
-    // console.log(parameter);
-
-    this._categoryFormsServices.insert_addCategory(parameter);
+    this._categoryFormsServices.insert_addSubcategory(parameter);
   }
 }

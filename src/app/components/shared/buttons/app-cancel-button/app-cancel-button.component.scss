@@ -1,0 +1,11 @@
+.btnDanger {
+  background-color: transparent !important;
+  color: #ef4d56 !important;
+  border: 1px solid #ef4d56;
+
+  &:hover {
+    background-color: #ef4d56 !important;
+    color: #ffffff !important;
+    border: 1px solid #ef4d56;
+  }
+}
