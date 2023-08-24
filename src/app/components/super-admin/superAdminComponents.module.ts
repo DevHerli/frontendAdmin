@@ -5,23 +5,28 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { CategoriaComponent } from './categorias/categoria/categoria.component';
 import { AddCategoriaComponent } from './categorias/add-categoria/add-categoria.component';
+import { SharedComponentsModule } from '../shared/sharedComponents.module';
+import { AppAddSubcategoryFormComponent } from './categorias/app-add-subcategory-form/app-add-subcategory-form.component';
+import { AppAddSpecialityFormComponent } from './categorias/app-add-speciality-form/app-add-speciality-form.component';
+import { CategoryFormsService } from 'src/app/data/services/category-forms.service';
 
-
-
+const components = [
+  CategoriaComponent,
+  AddCategoriaComponent,
+  AppAddSubcategoryFormComponent,
+  AppAddSpecialityFormComponent,
+];
 
 @NgModule({
-  declarations: [
-    CategoriaComponent,
-    AddCategoriaComponent
-  ],
-  exports: [
-    CategoriaComponent,
-    AddCategoriaComponent
-  ],
+  declarations: [components],
+  exports: [components],
   imports: [
     CommonModule,
     TranslateModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    SharedComponentsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [CategoryFormsService],
 })
-export class SuperAdminComponentsModule { }
+export class SuperAdminComponentsModule {}

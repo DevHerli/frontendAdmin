@@ -31,7 +31,7 @@
                             <a class="nav-link" data-bs-toggle="tab" type="button" href="#especialidades-1" role="tab" aria-selected="false">{{ 'menuSuper.specialties' | translate }}</a>
                         </li>
                     </ul>
-    
+
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane p-3 active" id="categorias-1" role="tabpanel">
@@ -42,7 +42,7 @@
                                             <h4 class="card-title">{{ 'categories.title1' | translate }}</h4>
                                             <!-- <p class="text-muted mb-0">{{ 'categories.text1' | translate }}</p> -->
                                         </div>
-                                        <div class="card-body">    
+                                        <div class="card-body">
                                             <app-categoria></app-categoria>
                                         </div>
                                     </div>
@@ -53,7 +53,7 @@
                                             <h4 class="card-title">{{ 'categories.title2' | translate }}</h4>
                                             <!-- <p class="text-muted mb-0">{{ 'categories.text2' | translate }}</p> -->
                                         </div><!--end card-header-->
-                                        <div class="card-body">    
+                                        <div class="card-body">
                                             <app-add-categoria></app-add-categoria>
                                         </div>
                                     </div>
@@ -68,7 +68,7 @@
                                             <h4 class="card-title">{{ 'menuSuper.subcategories' | translate }}</h4>
                                             <p class="text-muted mb-0">{{ 'categories.textSubcategories' | translate }}</p>
                                         </div>
-                                        <div class="card-body">    
+                                        <div class="card-body">
                                         </div>
                                     </div>
                                 </div>
@@ -78,7 +78,8 @@
                                             <h4 class="card-title">{{ 'categories.title2' | translate }}</h4>
                                             <p class="text-muted mb-0">{{ 'categories.textSubcategoriesAdd' | translate }}</p>
                                         </div>
-                                        <div class="card-body">    
+                                        <div class="card-body">
+                                          <app-add-subcategory-form></app-add-subcategory-form>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +93,7 @@
                                             <h4 class="card-title">{{ 'menuSuper.specialties' | translate }}</h4>
                                             <p class="text-muted mb-0">{{ 'categories.textSpecialties' | translate }}</p>
                                         </div><!--end card-header-->
-                                        <div class="card-body">    
+                                        <div class="card-body">
                                         </div>
                                     </div>
                                 </div>
@@ -102,16 +103,17 @@
                                             <h4 class="card-title">{{ 'categories.title2' | translate }}</h4>
                                             <p class="text-muted mb-0">{{ 'categories.textSpecialtiesAdd' | translate }}</p>
                                         </div><!--end card-header-->
-                                        <div class="card-body">    
+                                        <div class="card-body">
+                                          <app-add-speciality-form></app-add-speciality-form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>    
+                    </div>
                 </div><!--end card-body-->
             </div>
         </div>
     </div>
-    
+
 </div>

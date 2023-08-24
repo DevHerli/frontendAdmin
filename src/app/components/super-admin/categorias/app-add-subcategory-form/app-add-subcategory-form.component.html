@@ -7,6 +7,13 @@
       formControlName="typeCategoryId">
   </div>
   <div class="mb-3">
+    <label>Tipo de Subcategoría </label>
+    <input type="number"
+      class="form-control form-input"
+      id="typeSubCategoryInput"
+      formControlName="typeSubcategoryId">
+  </div>
+  <div class="mb-3">
     <label>Nombre</label>
     <input type="text"
       class="form-control form-input"
@@ -16,7 +23,7 @@
   <div class="row">
     <div class="col-sm-12 ms-auto">
       <app-save-button style="margin-left: 5px;"
-        [isDisabled]="isDisabledSaveButton" (onSubmit)="onSubmit()"></app-save-button>
+        [isDisabled]="isDisabledSaveButton"></app-save-button>
       <app-cancel-button style="margin-left: 5px;"
         (onCancel)="resetForm()"></app-cancel-button>
     </div>
