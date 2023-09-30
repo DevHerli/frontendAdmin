@@ -3,11 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { CategoriaComponent } from './categorias/categoria/categoria.component';
-import { AddCategoriaComponent } from './categorias/add-categoria/add-categoria.component';
+
 import { SharedComponentsModule } from '../shared/sharedComponents.module';
-import { AppAddSubcategoryFormComponent } from './categorias/app-add-subcategory-form/app-add-subcategory-form.component';
-import { AppAddSpecialityFormComponent } from './categorias/app-add-speciality-form/app-add-speciality-form.component';
+
 import { CategoryFormsService } from 'src/app/data/services/category-forms.service';
 import { AppCategoryFormComponent } from './categories/category/app-category-form/app-category-form.component';
 import { AppCategoryListComponent } from './categories/category/app-category-list/app-category-list.component';
@@ -18,10 +16,6 @@ import { AppSpecialityListComponent } from './categories/speciality/app-speciali
 import { AppCategoryContainerComponent } from './categories/category/app-category-container/app-category-container.component';
 
 const components = [
-  CategoriaComponent,
-  AddCategoriaComponent,
-  AppAddSubcategoryFormComponent,
-  AppAddSpecialityFormComponent,
   AppCategoryFormComponent, 
   AppCategoryListComponent, 
   AppSubcategoryListComponent, 
