@@ -9,6 +9,8 @@ import { AddSpecialityModel } from '../models/add-speciality.model';
   providedIn: 'root',
 })
 export class CategoryFormsService {
+  myAppUrl = ""
+  
   constructor(private _httpClient: HttpClient) {}
 
   public insert_addCategory(data: AddCategoryModel): void {

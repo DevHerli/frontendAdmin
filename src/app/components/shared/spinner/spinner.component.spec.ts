@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CategoriaComponent } from './categoria.component';
+import { SpinnerComponent } from './spinner.component';
 
-describe('CategoriaComponent', () => {
-  let component: CategoriaComponent;
-  let fixture: ComponentFixture<CategoriaComponent>;
+describe('SpinnerComponent', () => {
+  let component: SpinnerComponent;
+  let fixture: ComponentFixture<SpinnerComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CategoriaComponent]
+      declarations: [SpinnerComponent]
     });
-    fixture = TestBed.createComponent(CategoriaComponent);
+    fixture = TestBed.createComponent(SpinnerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

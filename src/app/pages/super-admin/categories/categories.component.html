@@ -34,31 +34,8 @@
 
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div class="tab-pane p-3 active" id="categorias-1" role="tabpanel">
-                            <div class="row">
-                                <div class="col-md-12 col-lg-6">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h4 class="card-title">{{ 'categories.title1' | translate }}</h4>
-                                            <!-- <p class="text-muted mb-0">{{ 'categories.text1' | translate }}</p> -->
-                                        </div>
-                                        <div class="card-body">
-                                            <app-categoria></app-categoria>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-lg-6">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h4 class="card-title">{{ 'categories.title2' | translate }}</h4>
-                                            <!-- <p class="text-muted mb-0">{{ 'categories.text2' | translate }}</p> -->
-                                        </div><!--end card-header-->
-                                        <div class="card-body">
-                                            <app-add-categoria></app-add-categoria>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="tab-pane p-3 active" id="categorias-1" role="tabpanel">      
+                                <app-category-container></app-category-container>
                         </div>
                         <div class="tab-pane p-3" id="subcategorias-1" role="tabpanel">
                             <div class="row">
@@ -69,6 +46,7 @@
                                             <p class="text-muted mb-0">{{ 'categories.textSubcategories' | translate }}</p>
                                         </div>
                                         <div class="card-body">
+                                            <app-subcategory-list></app-subcategory-list>
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +57,7 @@
                                             <p class="text-muted mb-0">{{ 'categories.textSubcategoriesAdd' | translate }}</p>
                                         </div>
                                         <div class="card-body">
-                                          <app-add-subcategory-form></app-add-subcategory-form>
+                                          <app-subcategory-form></app-subcategory-form>
                                         </div>
                                     </div>
                                 </div>
@@ -94,6 +72,7 @@
                                             <p class="text-muted mb-0">{{ 'categories.textSpecialties' | translate }}</p>
                                         </div><!--end card-header-->
                                         <div class="card-body">
+                                            <app-speciality-list></app-speciality-list>
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +83,7 @@
                                             <p class="text-muted mb-0">{{ 'categories.textSpecialtiesAdd' | translate }}</p>
                                         </div><!--end card-header-->
                                         <div class="card-body">
-                                          <app-add-speciality-form></app-add-speciality-form>
+                                          <app-speciality-form></app-speciality-form>
                                         </div>
                                     </div>
                                 </div>

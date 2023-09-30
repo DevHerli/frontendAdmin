@@ -6,12 +6,16 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppSaveButtonComponent } from './buttons/app-save-button/app-save-button.component';
 import { AppCancelButtonComponent } from './buttons/app-cancel-button/app-cancel-button.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 const components = [
   LangsComponent,
   NotificationsComponent,
   AppSaveButtonComponent,
   AppCancelButtonComponent,
+  SpinnerComponent,
+  PaginatorComponent
 ];
 
 @NgModule({

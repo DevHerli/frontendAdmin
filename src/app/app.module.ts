@@ -9,10 +9,12 @@ import { CoreModule } from './core/core.module';
 import { PagesModule } from './pages/pages.module';
 import { AdminModule } from './pages/admin/admin.module';
 import { SuperAdminModule } from './pages/super-admin/super-admin.module';
-
 import { AppComponent } from './app.component';
 import { SharedComponentsModule } from './components/shared/sharedComponents.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -34,6 +36,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     SharedComponentsModule,
     ReactiveFormsModule,
+    SweetAlert2Module,
+    BrowserAnimationsModule,
+  
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
