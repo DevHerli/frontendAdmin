@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">{{ 'categories.title1' | translate }}</h4>
-            
+
             <!-- <p class="text-muted mb-0">{{ 'categories.text1' | translate }}</p> -->
         </div>
         <div class="card-body">
@@ -24,16 +24,14 @@
                     <tr *ngFor="let categories of listCategories">
                         <td scope="row">{{categories.businessCategoryId}}</td>
                         <td>{{categories.description}}</td>
-                        <td class="text-end">                                                       
+                        <td class="text-end">
                             <i (click)="edit(categories)" class="las la-pen text-secondary font-16"></i>
                             <i (click)="delete(categories.businessCategoryId)" class="las la-trash-alt text-secondary font-16"></i>
                         </td>
                     </tr>
                     </tbody>
                 </table>
-                <app-paginator >
-
-                </app-paginator>
+                <app-paginator></app-paginator>
             </div>
         </div>
     </div>

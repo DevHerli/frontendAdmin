@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  $color-main-yellow:  #ebc131;
+  $color-main-yellow: #ebc131;
 }
 
 .form-select {
@@ -8,7 +8,8 @@
   border-radius: 5px;
 }
 
-.nav-pills .nav-item.show .nav-link, .nav-pills .nav-link.active {
+.nav-pills .nav-item.show .nav-link,
+.nav-pills .nav-link.active {
   background: #202124;
   color: #fff;
   border-radius: 0;
@@ -17,31 +18,33 @@
 .nav-link {
   color: #202124;
   text-decoration: none;
-
 }
 
-.nav-link:hover{
+.nav-link:hover {
   color: #ebc131;
 }
 
 .activo {
-  color: #ebc131 !important;;
+  color: #ebc131 !important;
 }
 
-
-.form-input:hover{
+.form-input:hover {
   border-color: #ebc131;
 }
 
-.form-input:focus{
+.form-input:focus {
   border-color: #ebc131;
 }
 
-.margen{
+.margen {
   margin-left: 10px;
 }
 
-
-.btnCancel{
+.btnCancel {
   border-color: #c04327 !important;
+}
+
+app-paginator {
+  display: flex;
+  justify-content: flex-end;
 }

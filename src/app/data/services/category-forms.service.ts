@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AddCategoryModel } from '../models/add-category.model';
-import { catchError, throwError } from 'rxjs';
+import { AddCategoryModel } from '../models/add-category.model'
 import { AddSubcategoryModel } from '../models/add-subcategory.model';
 import { AddSpecialityModel } from '../models/add-speciality.model';
 
@@ -10,7 +9,7 @@ import { AddSpecialityModel } from '../models/add-speciality.model';
 })
 export class CategoryFormsService {
   myAppUrl = ""
-  
+
   constructor(private _httpClient: HttpClient) {}
 
   public insert_addCategory(data: AddCategoryModel): void {
