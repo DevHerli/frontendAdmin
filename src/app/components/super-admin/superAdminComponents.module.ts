@@ -14,6 +14,7 @@ import { AppSubcategoryFormComponent } from './categories/subcategory/app-subcat
 import { AppSpecialityFormComponent } from './categories/speciality/app-speciality-form/app-speciality-form.component';
 import { AppSpecialityListComponent } from './categories/speciality/app-speciality-list/app-speciality-list.component';
 import { AppCategoryContainerComponent } from './categories/category/app-category-container/app-category-container.component';
+import { AppSubcategoryContainerComponent } from './categories/subcategory/app-subcategory-container/app-subcategory-container.component';
 
 const components = [
   AppCategoryFormComponent, 
@@ -22,7 +23,8 @@ const components = [
   AppSubcategoryFormComponent, 
   AppSpecialityFormComponent, 
   AppSpecialityListComponent,
-  AppCategoryContainerComponent
+  AppCategoryContainerComponent,
+  AppSubcategoryContainerComponent
 ];
 
 @NgModule({
