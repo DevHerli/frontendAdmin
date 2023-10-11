@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { GetCategoryModel } from 'src/app/data/models/get-category.model';
 import { CategoryService } from 'src/app/data/services/categories/category.service';
 
@@ -8,6 +8,7 @@ import { CategoryService } from 'src/app/data/services/categories/category.servi
   styleUrls: ['./paginator.component.scss'],
 })
 export class PaginatorComponent implements OnInit {
+  @Input() isVisible: boolean = false;
   public numberOfRegistersToShow: number = 0;
   public paginatorButtons: number = 0;
   public categoryList!: GetCategoryModel[];

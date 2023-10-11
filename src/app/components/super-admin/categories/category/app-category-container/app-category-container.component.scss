@@ -1,0 +1,18 @@
+.las.la-pen {
+  color: rgb(36, 138, 221) !important;
+  cursor: pointer;
+  transition: 0.2s;
+  &:hover {
+    background-color: rgb(201, 201, 201);
+  }
+}
+
+
+.las.la-trash-alt {
+  color: red !important;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background-color: rgb(201, 201, 201);
+  }
+}

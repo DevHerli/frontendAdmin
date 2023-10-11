@@ -1,4 +1,4 @@
-<ul class="pagination pagination-sm">
+<ul class="pagination pagination-sm" *ngIf="isVisible">
   <!-- <li class="page-item active"
     aria-current="page">
     <span class="page-link">
@@ -10,8 +10,8 @@
   <li (click)="onClick($event)"
     class="page-item"
     *ngFor="let item of getPaginatorButtons(); let i = index">
-    <a class="page-link"
-      (click)="onClick($any)">{{i + 1}}</a>
+    <a class="page-link pointer"
+      (click)="onClick($event)">{{i + 1}}</a>
   </li>
 
   <!-- <li class="page-item"><a class="page-link"
