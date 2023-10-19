@@ -49,49 +49,6 @@ export class AppCategoryContainerComponent {
     );
   }
 
-
-  saveRegister() {
-    const category: any = {
-      description: this.reactiveForm.get('description')?.value,
-    };
-
-
-
-    if (this.id == undefined) {
-      //Add new category
-      this._categoryService.saveCategory(category).subscribe(
-        (data) => {
-          swal.fire('Gracias...', this.alertaAdd, 'success');
-          this.loadCategories();
-          this.reactiveForm.reset();
-        },
-        (error) => {
-          swal.fire('Opss... ocurrio un error', 'Error', 'error');
-          console.log(error);
-        }
-      );
-    } else {
-      //Edit category
-      this._categoryService.updateCategory(this.id, category).subscribe(
-        (data) => {
-          this.reactiveForm.reset();
-          this.accion = 'Agregar';
-          this.id = undefined;
-          swal.fire(
-            'La categoría se actualizo exitosamente',
-            'Registro Actualizado',
-            'info'
-          );
-          this.loadCategories();
-        },
-        (error) => {
-          swal.fire('Opss... ocurrio un error', 'Error', 'error');
-          console.log(error);
-        }
-      );
-    }
-  }
-
   public resetForm(): void {
     this.reactiveForm.reset();
     this.reactiveForm.updateValueAndValidity();
