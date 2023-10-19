@@ -62,10 +62,7 @@
         <!-- <p class="text-muted mb-0">{{ 'categories.text2' | translate }}</p> -->
       </div><!--end card-header-->
       <div class="card-body">
-
-
-        <form [formGroup]="reactiveForm"
-          (ngSubmit)="saveRegister()">
+        <form [formGroup]="reactiveForm">
           <div class="mb-3">
             <label>Nombre</label>
             <!-- [class.valid]="this.form.get('description')?.valid"
@@ -79,7 +76,7 @@
             <app-general-buttons [isVisible_clean]="true"
               [isVisible_save]="true"
               [isDisabled_save]="!this.reactiveForm.valid"
-              (onClean)="this.reactiveForm.reset()"
+              (onClean)="resetForm()"
               (onSave)="onSubmit()"></app-general-buttons>
           </div>
         </form>
