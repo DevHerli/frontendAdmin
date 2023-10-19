@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class AppSaveButtonComponent {
   @Input() isHidden: boolean = false;
   @Input() isDisabled: boolean = false;
-  @Output() onSubmit = new EventEmitter<boolean>();
+  @Output() onSave = new EventEmitter<any>();
 
   constructor() {}
 }

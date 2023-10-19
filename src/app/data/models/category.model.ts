@@ -1,4 +1,4 @@
-export class GetCategoryModel {
+export class CategoryModel {
   public businessCategoryId!: number;
   public description!: string;
 

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GetCategoryModel } from 'src/app/data/models/get-category.model';
+import { CategoryModel } from 'src/app/data/models/category.model';
 import { CategoryService } from 'src/app/data/services/categories/category.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class PaginatorComponent implements OnInit {
   @Input() isVisible: boolean = false;
   public numberOfRegistersToShow: number = 0;
   public paginatorButtons: number = 0;
-  public categoryList!: GetCategoryModel[];
+  public categoryList!: CategoryModel[];
 
   constructor(private _categoryService: CategoryService) {}
 

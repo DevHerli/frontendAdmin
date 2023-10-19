@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("./assets/css-custom/components.scss");
+@import url("./assets/css-custom/css-custom.scss");
+
+body {
+  background-color: gray;
+}
 :root {
   $color-main-yellow: #ebc131;
 }
@@ -42,9 +48,4 @@
 
 .btnCancel {
   border-color: #c04327 !important;
-}
-
-app-paginator {
-  display: flex;
-  justify-content: flex-end;
 }

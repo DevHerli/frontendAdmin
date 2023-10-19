@@ -1,7 +1,8 @@
-<button (click)="onCancel.emit(true)"
+<button type="button"
+  class="btn btn-danger"
+  (click)="this.onCancel.emit()"
   [hidden]="isHidden"
-  [disabled]="isDisabled"
-  class="btn btnDanger">
+  [disabled]="isDisabled">
+  <i class="fas fa-times"></i>
   Cancelar
-  <i class="fas fa-times"
-    style="margin-left: 5px;"></i></button>
+</button>

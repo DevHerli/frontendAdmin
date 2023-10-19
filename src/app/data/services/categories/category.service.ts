@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CategoryModel } from '../../models/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +12,19 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getListCategory() : Observable<any> {
-    return this.http.get(this.myAppUrl + this.myApiUrl);
+  getListCategory(): Observable<CategoryModel[]> {
+    return this.http.get<CategoryModel[]>(this.myAppUrl + this.myApiUrl);
   }
 
-  deleteCategory(businessCategoryId : number): Observable<any>{
-    return this.http.delete(this.myAppUrl + this.myApiUrl +  businessCategoryId)
+  deleteCategory(businessCategoryId: number): Observable<any> {
+    return this.http.delete(this.myAppUrl + this.myApiUrl + businessCategoryId)
   }
 
-  saveCategory(category : any) : Observable<any>{
+    saveCategory(category: CategoryModel): Observable<any> {
     return this.http.post(this.myAppUrl + this.myApiUrl, category);
   }
 
-  updateCategory(businessCategoryId : number, category : any): Observable<any>{
+  updateCategory(businessCategoryId: number, category: any): Observable<any> {
     return this.http.put(this.myAppUrl + this.myApiUrl + businessCategoryId, category);
   }
 }

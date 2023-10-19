@@ -7,8 +7,8 @@
         <!-- <p class="text-muted mb-0">{{ 'categories.text1' | translate }}</p> -->
       </div>
       <div class="card-body">
-        <div class="table-responsive"
-          style="position: relative;">
+
+        <div class="table-responsive">
           <div class="input-group mb-3">
             <button class="btn btn-dark"
               type="button"
@@ -19,8 +19,9 @@
               aria-label="Example text with button addon"
               aria-describedby="button-addon1">
           </div>
-          <app-loading-spinner [isLoadingVisible]="isLoadingVisible"></app-loading-spinner>
-          <table class="table mb-0">
+
+          <table class="table mb-0"
+            style="min-height: 200px;">
             <thead class="thead-light">
               <tr>
                 <th># Tipo Categoría</th>
@@ -29,13 +30,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let categories of listCategories">
-                <td scope="row">{{categories.businessCategoryId}}</td>
-                <td>{{categories.description}}</td>
+              <tr *ngFor="let item of categoryList">
+                <td scope="row">{{item.businessCategoryId}}</td>
+                <td>{{item.description}}</td>
                 <td class="text-end">
-                  <i (click)="edit(categories)"
+                  <i (click)="edit(item)"
                     class="las la-pen text-secondary font-16"></i>
-                  <i (click)="delete(categories.businessCategoryId)"
+                  <i (click)="delete(item.businessCategoryId)"
                     class="las la-trash-alt text-secondary font-16"></i>
                 </td>
               </tr>
@@ -43,7 +44,15 @@
           </table>
           <app-paginator [isVisible]="!isLoadingVisible"></app-paginator>
         </div>
+        <app-loading-spinner [isLoadingVisible]="isLoadingVisible"></app-loading-spinner>
       </div>
+
+
+
+
+
+
+
     </div>
   </div>
   <div class="col-md-12 col-lg-6">
@@ -53,26 +62,30 @@
         <!-- <p class="text-muted mb-0">{{ 'categories.text2' | translate }}</p> -->
       </div><!--end card-header-->
       <div class="card-body">
-        <form [formGroup]="form"
+
+
+        <form [formGroup]="reactiveForm"
           (ngSubmit)="saveRegister()">
           <div class="mb-3">
             <label>Nombre</label>
+            <!-- [class.valid]="this.form.get('description')?.valid"
+            [class.fail]="this.form.get('description')?.invalid && this.form.get('description')?.touched" -->
             <input type="text"
-              [class.valid]="this.form.get('description')?.valid"
-              [class.fail]="this.form.get('description')?.invalid && this.form.get('description')?.touched"
               class="form-control form-input"
-              id="name"
               formControlName="description">
           </div>
+
           <div class="row">
-            <div class="col-sm-12 ms-auto">
-              <app-save-button style="margin-left: 5px;"
-                [isDisabled]="this.form.invalid"></app-save-button>
-              <app-cancel-button style="margin-left: 5px;"
-                (onCancel)="resetForm()"></app-cancel-button>
-            </div>
+            <app-general-buttons [isVisible_clean]="true"
+              [isVisible_save]="true"
+              [isDisabled_save]="!this.reactiveForm.valid"
+              (onClean)="this.reactiveForm.reset()"
+              (onSave)="onSubmit()"></app-general-buttons>
           </div>
         </form>
+
+
+
       </div>
     </div>
   </div>

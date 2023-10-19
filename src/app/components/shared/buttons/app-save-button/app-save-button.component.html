@@ -1,8 +1,8 @@
-<button 
+<button type="button"
+  (click)="this.onSave.emit()"
+  class="btn btn-success"
   [hidden]="isHidden"
-  [disabled]="isDisabled"
-  class="btn btnSave"
-  type="submit">
+  [disabled]="isDisabled">
+  <i class="far fa-save"></i>
   Guardar
-  <i class="far fa-save"
-    style="margin-left: 5px;"></i></button>
+</button>
