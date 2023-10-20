@@ -1,95 +1,111 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CategoryModel } from 'src/app/data/models/category.model';
 import { CategoryService } from 'src/app/data/services/categories/category.service';
-import swal from'sweetalert2';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category-container',
   templateUrl: './app-category-container.component.html',
-  styleUrls: ['./app-category-container.component.scss']
+  styleUrls: ['./app-category-container.component.scss'],
 })
 export class AppCategoryContainerComponent {
+  public reactiveForm!: FormGroup;
 
- 
-  form : FormGroup;
-  alertaAdd:string='Su registro se realizo con éxito';
-  alertaEliminada:string='Categoría elminada';
+  alertaEliminada: string = 'Categoría elminada';
   accion = 'Agregar';
   id: number | undefined;
 
-  public listCategories: any[] = [ ];
+  public isLoadingVisible: boolean = false;
+  public currentPagePaginator: number = 1;
+  public isPaginatorVisible: boolean = false;
+  public isAddFormVisible: boolean = false;
+  public categoryList: any[] = [];
 
-  constructor(private fb : FormBuilder,private _categoryService: CategoryService) { 
-    this.form = this.fb.group({
-      description : ['', [Validators.required, Validators.maxLength(50), Validators.minLength(3)]]
+  constructor(private _formbuilder: FormBuilder, private _categoryService: CategoryService) { }
+
+
+  private setReactiveForm(): void {
+    this.reactiveForm = this._formbuilder.group({
+      description: new FormControl('', [Validators.required, Validators.maxLength(50), Validators.minLength(3),])
     })
   }
 
-  ngOnInit(): void {
-    this.obtenerCategorias();
+  public ngOnInit(): void {
+    this.setReactiveForm();
+    this.loadCategories();
   }
 
-  saveRegister() {
-    const category: any = {
-      description : this.form.get('description')?.value
-    }
 
-    if(this.id == undefined){
-        //Add new category
-        this._categoryService.saveCategory(category).subscribe(data =>{
-          swal.fire('Gracias...',this.alertaAdd, 'success');  
-          this.obtenerCategorias();
-          this.form.reset();
-        }, error => {
-          swal.fire('Opss... ocurrio un error','Error', 'error');
-          console.log(error);
-        })
-    }else {
-      //Edit category
-      this._categoryService.updateCategory(this.id, category).subscribe(data => {
-        this.form.reset();
-        this.accion = 'Agregar';
-        this.id = undefined;
-        swal.fire('La categoría se actualizo exitosamente','Registro Actualizado', 'info');
-        this.obtenerCategorias();
-      }, error => {
-        swal.fire('Opss... ocurrio un error','Error', 'error');
-        console.log(error);
-      })
-    }
+  public onAddCategorySubmit(): void {
+    this._categoryService.saveCategory(this.reactiveForm.value).subscribe({
+      next: () => {
+        swal.fire('Gracias...', '¡Categoría agregada con éxito!', 'success');
+        this.loadCategories();
+        this.reactiveForm.reset();
+        this.isAddFormVisible = false;
+      },
+      error: () => {
+        swal.fire('Opss... ocurrio un error', 'Error', 'error');
+      }
+    });
+
 
   }
 
   public resetForm(): void {
-    this.form.reset();
-    this.form.updateValueAndValidity();
+    this.reactiveForm.reset();
+    this.reactiveForm.updateValueAndValidity();
   }
 
-  obtenerCategorias(){
-    this._categoryService.getListCategory().subscribe(data => {
-      console.log(data);
-      this.listCategories = data;
-    }, error => {
-      console.log(error);
-    })
+  public loadCategories(): void {
+    this.isLoadingVisible = true;
+    this.isPaginatorVisible = false;
+
+    this._categoryService.getListCategory().subscribe((data) => {
+
+      setTimeout(() => {
+        this.categoryList = data;
+        this.isLoadingVisible = false;
+        this.isPaginatorVisible = true;
+      }, (3 * 1000));
+
+    });
   }
 
-  delete(businessCategoryId:number){
-    this._categoryService.deleteCategory(businessCategoryId).subscribe(data => {
-      swal.fire('El registro ha sido eliminado exitosamente',this.alertaEliminada, 'error');
-      this.obtenerCategorias();
-    },error => {
-      console.log(error);
-    })
+  public onCancelAddCategory(): void {
+    this.isAddFormVisible = false;
+    this.reactiveForm.reset();
   }
 
-  edit(category : any){
+  public deleteCategory(businessCategoryId: number): void {
+    this._categoryService.deleteCategory(businessCategoryId).subscribe({
+      next: () => {
+        swal.fire(
+          'El registro ha sido eliminado exitosamente',
+          'Categoría eliminada',
+          'error'
+        );
+        this.loadCategories();
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
+
+
+  editCategory(category: CategoryModel) {
+
     this.accion = 'Editar';
     this.id = category.businessCategoryId;
 
-    this.form.patchValue({
-      description: category.description
-    })
-  }
+    this.reactiveForm.patchValue({
+      description: category.description,
+    });
 
+    const response = this._categoryService.updateCategory(category.businessCategoryId, category.description)
+    console.log('respuesta:' + response)
+  }
 }

@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class AppCancelButtonComponent {
   @Input() isHidden: boolean = false;
   @Input() isDisabled: boolean = false;
-  @Output() onCancel = new EventEmitter<boolean>();
+  @Output() onCancel = new EventEmitter<any>();
 
 
 

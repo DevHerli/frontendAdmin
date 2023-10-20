@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AddCategoryModel } from '../models/add-category.model';
-import { catchError, throwError } from 'rxjs';
+import { CategoryModel } from '../models/category.model'
 import { AddSubcategoryModel } from '../models/add-subcategory.model';
 import { AddSpecialityModel } from '../models/add-speciality.model';
 
@@ -10,13 +9,13 @@ import { AddSpecialityModel } from '../models/add-speciality.model';
 })
 export class CategoryFormsService {
   myAppUrl = ""
-  
-  constructor(private _httpClient: HttpClient) {}
 
-  public insert_addCategory(data: AddCategoryModel): void {
+  constructor(private _httpClient: HttpClient) { }
+
+  public insert_addCategory(data: CategoryModel): void {
     const url = 'http://www.apicomerciolocal.somee.com/api/categorias';
 
-    this._httpClient.post<AddCategoryModel>(url, data).subscribe((response) => {
+    this._httpClient.post<CategoryModel>(url, data).subscribe((response) => {
       console.log('Respuesta de la petición:', response);
     });
   }

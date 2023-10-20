@@ -1,0 +1,15 @@
+<label>Categoría</label>
+<select #categoryDropdown
+  [(ngModel)]="selectedOption"
+  class="form-select"
+  id="categoryDropdown_id">
+
+  <option value=""
+    [selected]="true">{{ placeholder }}</option>
+
+  <option *ngFor="let item of categoryList; let i = index"
+    value="{{item.businessCategoryId}}">
+    {{item.description}}
+  </option>
+
+</select>

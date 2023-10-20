@@ -1,88 +1,90 @@
 <div class="row">
-    <div class="col-md-12 col-lg-6">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">{{ 'categories.title1' | translate }}</h4>
-                
-                <!-- <p class="text-muted mb-0">{{ 'categories.text1' | translate }}</p> -->
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <div class="input-group mb-3">
-                        <button class="btn btn-secondary" type="button" id="button-addon1"><i class="fas fa-search"></i></button>
-                        <input type="text" class="form-control" placeholder="Buscar categoría..." aria-label="Example text with button addon" aria-describedby="button-addon1">
-                    </div>
-                    <table class="table mb-0">
-                        <thead class="thead-light">
-                        <tr>
-                            <th># Tipo Categoría</th>
-                            <th>Nombre</th>
-                            <th class="text-end">Acción</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr *ngFor="let categories of listCategories">
-                            <td scope="row">{{categories.businessCategoryId}}</td>
-                            <td>{{categories.description}}</td>
-                            <!-- <td class="text-end">                                                       
+  <div class="col-md-12 col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">{{ 'categories.title1' | translate }}</h4>
+
+        <!-- <p class="text-muted mb-0">{{ 'categories.text1' | translate }}</p> -->
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <div class="input-group mb-3">
+            <button class="btn btn-dark"
+              type="button"
+              id="button-addon1"><i class="fas fa-search"></i></button>
+            <input type="text"
+              class="form-control"
+              placeholder="Buscar categoría..."
+              aria-label="Example text with button addon"
+              aria-describedby="button-addon1">
+          </div>
+          <table class="table mb-0">
+            <thead class="thead-light">
+              <tr>
+                <th># Tipo Categoría</th>
+                <th>Nombre</th>
+                <th class="text-end">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let categories of categoryList">
+                <td scope="row">{{categories.businessCategoryId}}</td>
+                <td>{{categories.description}}</td>
+                <!-- <td class="text-end">
                                 <i (click)="edit(categories)" class="las la-pen text-secondary font-16"></i>
                                 <i (click)="delete(categories.businessCategoryId)" class="las la-trash-alt text-secondary font-16"></i>
                             </td> -->
-                        </tr>
-                        </tbody>
-                    </table>
-                    <app-paginator >
-    
-                    </app-paginator>
-                </div>
-            </div>
+              </tr>
+            </tbody>
+          </table>
+          <app-paginator>
+
+          </app-paginator>
         </div>
+      </div>
     </div>
-    <div class="col-md-12 col-lg-6">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">{{ accion }} Subcategoría</h4>
-                <!-- <p class="text-muted mb-0">{{ 'categories.text2' | translate }}</p> -->
-            </div><!--end card-header-->
-            <div class="card-body">
-                <form [formGroup]="form">
-                    <div class="mb-3">
-                        <label for="exampleFormControlSelect1">Selecciona una categoría</label>
-                        <select class="form-select" id="exampleFormControlSelect1">
-                        <option>Restaurantes</option>
-                        <option>Vida Nocturna</option>
-                        <option>Comida</option>
-                        <option>Medicina y Salud</option>
-                        <option>Compras</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                      <label>Nombre</label>
-                      <input type="text"
-                        [class.valid]="this.form.get('description')?.valid"
-                        [class.fail]="this.form.get('description')?.invalid && this.form.get('description')?.touched"
-                        class="form-control form-input"
-                        id="name"
-                        formControlName="description">
-                    </div>
-                    <div class="row">
-                      <!-- <div class="col-sm-12 ms-auto">
-                        <app-save-button style="margin-left: 5px;"
-                                        [isDisabled]="this.form.invalid"
-                                        ></app-save-button>
-                        <app-cancel-button style="margin-left: 5px;"
-                          (onCancel)="resetForm()"></app-cancel-button>
-                      </div> -->
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    </div>
+  </div>
+  <div class="col-md-12 col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">{{ accion }} Subcategoría</h4>
+        <!-- <p class="text-muted mb-0">{{ 'categories.text2' | translate }}</p> -->
+      </div><!--end card-header-->
 
 
 
-    <!-- <div class="row">
+      <div class="card-body">
+        <form [formGroup]="reactiveForm">
+          <div class="mb-3">
+            <app-category-dropdown formControlName="businessCategoryId"></app-category-dropdown>
+          </div>
+          <div class="mb-3">
+            <label>Nombre</label>
+            <input type="text"
+              class="form-control form-input"
+              [class.valid]="this.reactiveForm.get('description')?.valid"
+              [class.fail]="this.reactiveForm.get('description')?.invalid"
+              formControlName="description">
+          </div>
+
+
+          <app-general-buttons [isVisible_save]="true"
+            [isDisabled_save]="!this.reactiveForm.valid"
+            [isVisible_clean]="true"
+            (onClean)="this.reactiveForm.reset();"
+            (onSave)="onSubmit()"></app-general-buttons>
+        </form>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div class="row">
         <div class="col-md-12 col-lg-6">
             <div class="card">
                 <div class="card-header">
