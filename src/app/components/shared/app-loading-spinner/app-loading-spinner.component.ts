@@ -6,5 +6,4 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app-loading-spinner.component.scss'],
 })
 export class AppLoadingSpinnerComponent {
-  @Input() isLoadingVisible: boolean = false;
 }

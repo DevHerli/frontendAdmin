@@ -12,20 +12,20 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getListCategory(): Observable<CategoryModel[]> {
+  public getListCategory(): Observable<CategoryModel[]> {
     return this.http.get<CategoryModel[]>(this.myAppUrl + this.myApiUrl);
   }
 
-  deleteCategory(businessCategoryId: number): Observable<any> {
+  public deleteCategory(businessCategoryId: number): Observable<any> {
     return this.http.delete(this.myAppUrl + this.myApiUrl + businessCategoryId)
   }
 
-    saveCategory(category: CategoryModel): Observable<any> {
+  public saveCategory(category: CategoryModel): Observable<any> {
     return this.http.post(this.myAppUrl + this.myApiUrl, category);
   }
 
-  updateCategory(businessCategoryId: number, category: any): Observable<any> {
-    return this.http.put(this.myAppUrl + this.myApiUrl + businessCategoryId, category);
+  public updateCategory(businessCategoryId: number, description: string): Observable<any> {
+    return this.http.put(this.myAppUrl + this.myApiUrl + businessCategoryId, description);
   }
 }
 

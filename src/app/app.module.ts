@@ -1,3 +1,4 @@
+import { NgxPaginationModule } from 'ngx-pagination';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -39,6 +40,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SweetAlert2Module,
     BrowserAnimationsModule,
     FormsModule,
+    NgxPaginationModule,
+
 
     TranslateModule.forRoot({
       loader: {

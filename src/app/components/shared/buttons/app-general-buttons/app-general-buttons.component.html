@@ -1,4 +1,8 @@
 <div class="general-buttons">
+  <app-clean-button [isHidden]="!isVisible_clean"
+    [isDisabled]="isDisabled_clean"
+    (onClean)="this.onClean.emit()"></app-clean-button>
+
   <app-save-button [isHidden]="!isVisible_save"
     [isDisabled]="isDisabled_save"
     (onSave)="this.onSave.emit()"></app-save-button>
@@ -7,7 +11,5 @@
     [isDisabled]="isDisabled_cancel"
     (onCancel)="this.onCancel.emit()"></app-cancel-button>
 
-  <app-clean-button [isHidden]="!isVisible_clean"
-    [isDisabled]="isDisabled_clean"
-    (onClean)="this.onClean.emit()"></app-clean-button>
+
 </div>

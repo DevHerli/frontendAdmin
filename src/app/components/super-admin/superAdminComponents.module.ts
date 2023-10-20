@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { SharedComponentsModule } from '../shared/sharedComponents.module';
 
@@ -17,11 +17,11 @@ import { AppCategoryContainerComponent } from './categories/category/app-categor
 import { AppSubcategoryContainerComponent } from './categories/subcategory/app-subcategory-container/app-subcategory-container.component';
 
 const components = [
-  AppCategoryFormComponent, 
-  AppCategoryListComponent, 
-  AppSubcategoryListComponent, 
-  AppSubcategoryFormComponent, 
-  AppSpecialityFormComponent, 
+  AppCategoryFormComponent,
+  AppCategoryListComponent,
+  AppSubcategoryListComponent,
+  AppSubcategoryFormComponent,
+  AppSpecialityFormComponent,
   AppSpecialityListComponent,
   AppCategoryContainerComponent,
   AppSubcategoryContainerComponent
@@ -36,6 +36,7 @@ const components = [
     ReactiveFormsModule,
     SharedComponentsModule,
     ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [CategoryFormsService],
 })

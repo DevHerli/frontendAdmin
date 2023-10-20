@@ -1,8 +1,3 @@
-app-paginator {
-  display: flex;
-  justify-content: flex-end;
-}
-
 app-loading-spinner {
   z-index: 100;
   position: absolute;
@@ -17,4 +12,9 @@ app-cancel-button,
 app-clean-button {
   margin: 0 5px;
   color: black;
+}
+
+pagination-controls {
+  display: flex;
+  justify-content: flex-end;
 }
