@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-12 col-lg-6">
+  <div class="col-md-12 col-lg-6 offset-lg-1">
     <div class="card">
       <div class="card-header">
         <h4 class="card-title">{{ 'categories.title1' | translate }}</h4>
@@ -29,6 +29,9 @@
               <tr>
                 <th># Tipo Categoría</th>
                 <th>Nombre</th>
+                <th>Fecha registro</th>
+                <th>Creado por:</th>
+                <th>Estado</th>
                 <th class="text-end">Acción</th>
               </tr>
             </thead>
@@ -36,6 +39,14 @@
               <tr *ngFor="let item of categoryList | paginate: { itemsPerPage: 10, currentPage: currentPagePaginator }">
                 <td scope="row">{{item.businessCategoryId}}</td>
                 <td>{{item.description}}</td>
+                <td>{{item.dateRegister}}</td>
+                <td>{{item.user | uppercase}}</td>
+                <td>
+                  <span [ngClass]="{'bg-success': item.active, 'bg-danger': !item.active}"
+                    class="badge rounded-pill">
+                    {{item.active ? 'Activo' : 'Inactivo'}}
+                  </span>
+                </td>
                 <td class="text-end">
                   <i (click)="editCategory(item)"
                     class="las la-pen text-secondary font-16"></i>
@@ -51,15 +62,13 @@
         </div>
       </div>
 
-
-
-
-
-
-
     </div>
   </div>
-  <div class="col-md-12 col-lg-6"
+
+
+
+  <!-- formulario -->
+  <!-- <div class="col-md-12 col-lg-6"
     *ngIf="isAddFormVisible">
     <div class="card">
       <div class="card-header">
@@ -90,7 +99,7 @@
         </form>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 

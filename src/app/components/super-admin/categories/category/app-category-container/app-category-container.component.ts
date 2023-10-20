@@ -68,7 +68,7 @@ export class AppCategoryContainerComponent {
         this.categoryList = data;
         this.isLoadingVisible = false;
         this.isPaginatorVisible = true;
-      }, (3 * 1000));
+      }, (1 * 1000));
 
     });
   }
