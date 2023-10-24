@@ -1,11 +1,11 @@
-<div class="row">
-  <div class="col-md-12 col-lg-6 offset-lg-1">
+<div class="row main-container">
+  <div class="table-container col-lg-12 col-xl-6 col-xxl-6">
     <div class="card">
       <div class="card-header">
         <h4 class="card-title">{{ 'categories.title1' | translate }}</h4>
       </div>
-
       <div class="card-body">
+
         <div class="table-responsive">
           <div class="input-group mb-3">
             <button class="btn btn-dark"
@@ -23,52 +23,74 @@
               "></i> Nueva categoría</button>
           </div>
 
-          <table class="table mb-0"
-            style="min-height: 90px;">
-            <thead class="thead-light">
-              <tr>
-                <th># Tipo Categoría</th>
-                <th>Nombre</th>
-                <th>Fecha registro</th>
-                <th>Creado por:</th>
-                <th>Estado</th>
-                <th class="text-end">Acción</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of categoryList | paginate: { itemsPerPage: 10, currentPage: currentPagePaginator }">
-                <td scope="row">{{item.businessCategoryId}}</td>
-                <td>{{item.description}}</td>
-                <td>{{item.dateRegister}}</td>
-                <td>{{item.user | uppercase}}</td>
-                <td>
-                  <span [ngClass]="{'bg-success': item.active, 'bg-danger': !item.active}"
-                    class="badge rounded-pill">
-                    {{item.active ? 'Activo' : 'Inactivo'}}
-                  </span>
-                </td>
-                <td class="text-end">
-                  <i (click)="editCategory(item)"
-                    class="las la-pen text-secondary font-16"></i>
-                  <i (click)="deleteCategory(item.businessCategoryId)"
-                    class="las la-trash-alt text-secondary font-16"></i>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <pagination-controls *ngIf="isPaginatorVisible"
-            (pageChange)="currentPagePaginator = $event"></pagination-controls>
-          <app-loading-spinner *ngIf="isLoadingVisible"></app-loading-spinner>
+          <div class="table-paginators-margin">
+            <pagination-controls id="category_table"
+              *ngIf="isPaginatorVisible"
+              (pageChange)="currentPagePaginator = $event"
+              previousLabel="Atrás"
+              nextLabel="Sig."></pagination-controls>
+
+            <table class="
+              table
+              mb-0"
+              style="min-height: 90px;">
+              <thead class="thead-light">
+                <tr>
+                  <th style="max-width: 80px;"># Tipo Categoría</th>
+                  <th>Nombre</th>
+                  <th>Fecha registro</th>
+                  <th>Creado por:</th>
+                  <th>Estado</th>
+                  <th class="text-end">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let item of categoryList | paginate: { id: 'category_table', itemsPerPage: 10, currentPage: currentPagePaginator }">
+                  <td scope="row">{{item.businessCategoryId}}</td>
+                  <td>{{item.description}}</td>
+                  <td>{{ dateformat(item.dateRegister)}}</td>
+                  <td>{{item.user | uppercase}}</td>
+                  <td>
+                    <span [ngClass]="{'bg-success': item.active, 'bg-danger': !item.active}"
+                      class="badge rounded-pill">
+                      {{item.active ? 'Activo' : 'Inactivo'}}
+                    </span>
+                  </td>
+                  <td class="text-end">
+                    <i (click)="editCategory(item)"
+                      class="las la-pen text-secondary font-16"></i>
+                    <i (click)="deleteCategory(item.businessCategoryId)"
+                      class="las la-trash-alt text-secondary font-16"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls id="category_table"
+              *ngIf="isPaginatorVisible"
+              (pageChange)="currentPagePaginator = $event"
+              previousLabel="Atrás"
+              nextLabel="Sig."></pagination-controls>
+            <app-loading-spinner *ngIf="isLoadingVisible"></app-loading-spinner>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 
+  <div class="counters-container col-lg-12 col-xl-4 col-xxl-4">
+    <div class="counter-card"></div>
+    <div class="counter-card"></div>
+    <div class="counter-card"></div>
+  </div>
+
+</div>
 
 
-  <!-- formulario -->
-  <!-- <div class="col-md-12 col-lg-6"
+
+
+<!-- formulario -->
+<!-- <div class="col-md-12 col-lg-6"
     *ngIf="isAddFormVisible">
     <div class="card">
       <div class="card-header">
@@ -100,7 +122,3 @@
       </div>
     </div>
   </div> -->
-
-
-
-</div>

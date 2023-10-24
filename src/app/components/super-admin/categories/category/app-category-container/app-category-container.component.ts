@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
 import { CategoryModel } from 'src/app/data/models/category.model';
+
 import { CategoryService } from 'src/app/data/services/categories/category.service';
+import DateTimeUtils from 'src/app/data/utils/DateTimeFormat';
 import swal from 'sweetalert2';
 
 @Component({
@@ -107,5 +110,14 @@ export class AppCategoryContainerComponent {
 
     const response = this._categoryService.updateCategory(category.businessCategoryId, category.description)
     console.log('respuesta:' + response)
+
   }
+
+
+  dateformat(value: Date | string): string {
+    return DateTimeUtils.convertTo_day_month_year(value);
+  }
+
 }
+
+

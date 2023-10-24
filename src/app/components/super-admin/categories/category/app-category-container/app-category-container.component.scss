@@ -1,3 +1,28 @@
+.main-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap-reverse;
+}
+
+.counters-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-auto-rows: min-content;
+  background-color: lightgreen;
+  gap: 10px;
+
+  .counter-card {
+    width: 100%;
+    height: 200px;
+    border: 1px solid red;
+  }
+
+  @media (max-width: 1200px) {
+    margin: 10px 0;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .las.la-pen {
   color: rgb(36, 138, 221) !important;
   cursor: pointer;
@@ -7,7 +32,6 @@
   }
 }
 
-
 .las.la-trash-alt {
   color: red !important;
   cursor: pointer;
@@ -15,4 +39,8 @@
   &:hover {
     background-color: rgb(201, 201, 201);
   }
+}
+
+.table-paginators-margin{
+  margin: 20px 0;
 }
