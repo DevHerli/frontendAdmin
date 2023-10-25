@@ -30,9 +30,7 @@
               previousLabel="Atrás"
               nextLabel="Sig."></pagination-controls>
 
-            <table class="
-              table
-              mb-0"
+            <table class="table mb-0"
               style="min-height: 90px;">
               <thead class="thead-light">
                 <tr>
@@ -78,10 +76,16 @@
     </div>
   </div>
 
-  <div class="counters-container col-lg-12 col-xl-4 col-xxl-4">
-    <div class="counter-card"></div>
-    <div class="counter-card"></div>
-    <div class="counter-card"></div>
+  <div class="counters-container col-lg-12 col-xl-4 col-xxl-5">
+    <app-card-number [quantity]="10"
+      [cardText]="'Total'"
+      [style]="'primary'"> </app-card-number>
+    <app-card-number [quantity]="9"
+      [cardText]="'Activas'"
+      [style]="'success'"> </app-card-number>
+    <app-card-number [quantity]="1"
+      [cardText]="'Inactivas'"
+      [style]="'danger'"> </app-card-number>
   </div>
 
 </div>
