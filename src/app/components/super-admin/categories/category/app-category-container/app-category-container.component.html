@@ -45,7 +45,7 @@
               </thead>
               <tbody>
                 <tr
-                  *ngFor="let item of categoryListCopy | paginate: { id: 'category_table', itemsPerPage: 10, currentPage: currentPagePaginator }">
+                  *ngFor="let item of categoryList | paginate: { id: 'category_table', itemsPerPage: 10, currentPage: currentPagePaginator }">
                   <td scope="row">{{item.businessCategoryId}}</td>
                   <td>{{item.description}}</td>
                   <td>{{ dateformat(item.dateRegister)}}</td>

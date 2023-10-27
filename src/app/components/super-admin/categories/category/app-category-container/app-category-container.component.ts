@@ -29,7 +29,7 @@ export class AppCategoryContainerComponent {
   }
 
   public categoryList: CategoryModel[] = [];
-  public categoryListCopy: CategoryModel[] = [];
+  private categoryListCopy: CategoryModel[] = [];
 
   constructor(private _formbuilder: FormBuilder, private _categoryService: CategoryService) { }
 
@@ -77,7 +77,6 @@ export class AppCategoryContainerComponent {
         setTimeout(() => {
           this.categoryList = data;
           this.categoryListCopy = data;
-          // console.log(this.categoryList);
 
           this.cardNumbers.totales = this.categoryList.length;
           this.cardNumbers.activos = this.categoryList.filter((current: CategoryModel) => {
@@ -142,12 +141,12 @@ export class AppCategoryContainerComponent {
     console.log(trimedValue);
 
     if (trimedValue !== '') {
-      this.categoryListCopy = this.categoryList.filter(item =>
+      this.categoryList = this.categoryListCopy.filter(item =>
         item.description.toUpperCase().includes(trimedValue.toUpperCase())
       );
     }
     else {
-      this.categoryListCopy = this.categoryList;
+      this.categoryList = this.categoryListCopy;
     }
 
   }
