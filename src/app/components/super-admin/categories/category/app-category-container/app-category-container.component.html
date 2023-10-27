@@ -15,7 +15,8 @@
               class="form-control"
               placeholder="Buscar categoría..."
               aria-label="Example text with button addon"
-              aria-describedby="button-addon1">
+              aria-describedby="button-addon1"
+              (input)="searchFilter($event)">
             <button (click)="this.isAddFormVisible = true"
               class="btn btn-primary"
               style="margin-left: 5px;"
@@ -44,7 +45,7 @@
               </thead>
               <tbody>
                 <tr
-                  *ngFor="let item of categoryList | paginate: { id: 'category_table', itemsPerPage: 10, currentPage: currentPagePaginator }">
+                  *ngFor="let item of categoryListCopy | paginate: { id: 'category_table', itemsPerPage: 10, currentPage: currentPagePaginator }">
                   <td scope="row">{{item.businessCategoryId}}</td>
                   <td>{{item.description}}</td>
                   <td>{{ dateformat(item.dateRegister)}}</td>
@@ -77,13 +78,13 @@
   </div>
 
   <div class="counters-container col-lg-12 col-xl-4 col-xxl-5">
-    <app-card-number [quantity]="10"
+    <app-card-number [quantity]="cardNumbers.totales"
       [cardText]="'Total'"
       [style]="'primary'"> </app-card-number>
-    <app-card-number [quantity]="9"
+    <app-card-number [quantity]="cardNumbers.activos"
       [cardText]="'Activas'"
       [style]="'success'"> </app-card-number>
-    <app-card-number [quantity]="1"
+    <app-card-number [quantity]="cardNumbers.inactivos"
       [cardText]="'Inactivas'"
       [style]="'danger'"> </app-card-number>
   </div>
@@ -95,34 +96,34 @@
 
 <!-- formulario -->
 <!-- <div class="col-md-12 col-lg-6"
-    *ngIf="isAddFormVisible">
-    <div class="card">
-      <div class="card-header">
-        <h4 class="card-title"> <i class="fas fa-plus
+  *ngIf="isAddFormVisible">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title"> <i class="fas fa-plus
           "></i> Agregar categoría</h4>
-      </div>
-      <div class="card-body">
-
-        <form [formGroup]="reactiveForm">
-          <div class="mb-3">
-            <label>Nombre</label>
-            <input type="text"
-              [class.valid]="this.reactiveForm.get('description')?.valid"
-              [class.fail]="this.reactiveForm.get('description')?.invalid && this.reactiveForm.get('description')?.touched"
-              class="form-control form-input"
-              formControlName="description">
-          </div>
-
-          <div class="row">
-            <app-general-buttons [isVisible_clean]="true"
-              [isVisible_save]="true"
-              [isDisabled_save]="!this.reactiveForm.valid"
-              [isVisible_cancel]="true"
-              (onCancel)="onCancelAddCategory()"
-              (onClean)="resetForm()"
-              (onSave)="onAddCategorySubmit()"></app-general-buttons>
-          </div>
-        </form>
-      </div>
     </div>
-  </div> -->
+    <div class="card-body">
+
+      <form [formGroup]="reactiveForm">
+        <div class="mb-3">
+          <label>Nombre</label>
+          <input type="text"
+            [class.valid]="this.reactiveForm.get('description')?.valid"
+            [class.fail]="this.reactiveForm.get('description')?.invalid && this.reactiveForm.get('description')?.touched"
+            class="form-control form-input"
+            formControlName="description">
+        </div>
+
+        <div class="row">
+          <app-general-buttons [isVisible_clean]="true"
+            [isVisible_save]="true"
+            [isDisabled_save]="!this.reactiveForm.valid"
+            [isVisible_cancel]="true"
+            (onCancel)="onCancelAddCategory()"
+            (onClean)="resetForm()"
+            (onSave)="onAddCategorySubmit()"></app-general-buttons>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->

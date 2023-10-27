@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
 import { CategoryModel } from 'src/app/data/models/category.model';
 
 import { CategoryService } from 'src/app/data/services/categories/category.service';
@@ -23,7 +22,14 @@ export class AppCategoryContainerComponent {
   public currentPagePaginator: number = 1;
   public isPaginatorVisible: boolean = false;
   public isAddFormVisible: boolean = false;
-  public categoryList: any[] = [];
+  public cardNumbers = {
+    totales: 0,
+    activos: 0,
+    inactivos: 0
+  }
+
+  public categoryList: CategoryModel[] = [];
+  public categoryListCopy: CategoryModel[] = [];
 
   constructor(private _formbuilder: FormBuilder, private _categoryService: CategoryService) { }
 
@@ -67,12 +73,24 @@ export class AppCategoryContainerComponent {
 
     this._categoryService.getListCategory().subscribe((data) => {
 
-      setTimeout(() => {
-        this.categoryList = data;
-        this.isLoadingVisible = false;
-        this.isPaginatorVisible = true;
-      }, (1 * 1000));
+      if (data) {
+        setTimeout(() => {
+          this.categoryList = data;
+          this.categoryListCopy = data;
+          // console.log(this.categoryList);
 
+          this.cardNumbers.totales = this.categoryList.length;
+          this.cardNumbers.activos = this.categoryList.filter((current: CategoryModel) => {
+            return current.active
+          }).length;
+
+          this.cardNumbers.inactivos = this.cardNumbers.totales - this.cardNumbers.activos;
+          this.isLoadingVisible = false;
+          this.isPaginatorVisible = true;
+        }, (1 * 1000));
+
+
+      }
     });
   }
 
@@ -118,6 +136,20 @@ export class AppCategoryContainerComponent {
     return DateTimeUtils.convertTo_day_month_year(value);
   }
 
+
+  public searchFilter({ target }: any): void {
+    const trimedValue: string = target.value;
+    console.log(trimedValue);
+
+    if (trimedValue !== '') {
+      this.categoryListCopy = this.categoryList.filter(item =>
+        item.description.toUpperCase().includes(trimedValue.toUpperCase())
+      );
+    }
+    else {
+      this.categoryListCopy = this.categoryList;
+    }
+
+  }
+
 }
-
-
