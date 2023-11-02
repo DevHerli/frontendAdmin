@@ -9,6 +9,10 @@ export class AppSwitchToggleComponent {
 
   @Output() onChange = new EventEmitter<boolean>();
 
+  @Input() isDisabled: boolean = false;
+  @Input() falseText: string = "";
+  @Input() trueText: string = "";
+
   @Input() public set value(v: boolean) {
     this._value = v;
     this.onEmit();
@@ -18,7 +22,7 @@ export class AppSwitchToggleComponent {
     return this._value
   }
 
-  private _value: boolean = true;
+  private _value: boolean = false;
 
   public onEmit(): void {
     this.onChange.emit(this._value);

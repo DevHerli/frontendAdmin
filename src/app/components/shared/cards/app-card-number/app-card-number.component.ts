@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { BootstrapColorStyles } from 'src/app/data/types/BootstrapColorStyles.type';
 
 @Component({
   selector: 'app-card-number',
@@ -8,12 +9,9 @@ import { Component, Input } from '@angular/core';
 export class AppCardNumberComponent {
 
   @Input() quantity: number = NaN;
-  @Input() cardText: string = "<empty>";
-  @Input() set style(value: string) {
-    if (value && this.validStyles.includes(value)) {
-      this._style = value;
-      console.log('estilo válido')
-    }
+  @Input() cardText: string = "";
+  @Input() set style(value: BootstrapColorStyles) {
+    this._style = value;
   }
 
   public get style(): string {
@@ -21,8 +19,6 @@ export class AppCardNumberComponent {
   }
 
   private _style: string = '';
-  private validStyles: string[] = ['primary', 'success', 'warning', 'danger'];
-
 
 
   constructor() {

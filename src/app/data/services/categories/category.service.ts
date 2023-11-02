@@ -7,25 +7,26 @@ import { CategoryModel } from '../../models/category.model';
   providedIn: 'root'
 })
 export class CategoryService {
-  private myAppUrl = 'http://www.apicomerciolocal.somee.com/';
-  private myApiUrl = 'api/categoriasComercios/';
+  private readonly URL: string = 'http://www.apicomerciolocal.somee.com/';
+  private readonly API_URL: string = 'api/categoriasComercios/';
+
 
   constructor(private http: HttpClient) { }
 
   public getListCategory(): Observable<CategoryModel[]> {
-    return this.http.get<CategoryModel[]>(this.myAppUrl + this.myApiUrl);
+    return this.http.get<CategoryModel[]>(this.URL + this.API_URL);
   }
 
   public deleteCategory(businessCategoryId: number): Observable<any> {
-    return this.http.delete(this.myAppUrl + this.myApiUrl + businessCategoryId)
+    return this.http.delete(this.URL + this.API_URL + businessCategoryId)
   }
 
   public saveCategory(category: Pick<CategoryModel, 'active' | 'description' | 'user' | 'dateRegister'>): Observable<any> {
-    return this.http.post(this.myAppUrl + this.myApiUrl, category);
+    return this.http.post(this.URL + this.API_URL, category);
   }
 
   public updateCategory(businessCategoryId: number, description: string): Observable<any> {
-    return this.http.put(this.myAppUrl + this.myApiUrl + businessCategoryId, description);
+    return this.http.put(this.URL + this.API_URL + businessCategoryId, description);
   }
 }
 
