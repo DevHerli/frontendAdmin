@@ -20,7 +20,7 @@ export class CategoryService {
     return this.http.delete(this.myAppUrl + this.myApiUrl + businessCategoryId)
   }
 
-  public saveCategory(category: CategoryModel): Observable<any> {
+  public saveCategory(category: Pick<CategoryModel, 'active' | 'description' | 'user' | 'dateRegister'>): Observable<any> {
     return this.http.post(this.myAppUrl + this.myApiUrl, category);
   }
 

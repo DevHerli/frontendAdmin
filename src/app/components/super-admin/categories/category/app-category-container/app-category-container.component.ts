@@ -60,7 +60,7 @@ export class AppCategoryContainerComponent implements OnInit {
           this.cardNumbers.inactivos = this.cardNumbers.totales - this.cardNumbers.activos;
           this.isLoadingVisible = false;
           this.isPaginatorVisible = true;
-        }, (1 * 1000));
+        }, (3 * 1000));
 
 
       }

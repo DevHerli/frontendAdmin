@@ -1,7 +1,7 @@
 export class CategoryModel {
   public businessCategoryId!: number;
   public description!: string;
-  public dateRegister!: string;
+  public dateRegister!: Date;
   public user!: string;
   public active!: boolean;
 
@@ -9,7 +9,7 @@ export class CategoryModel {
   constructor(params?: {
     businessCategoryId: number;
     description: string;
-    dateRegister: string;
+    dateRegister: Date;
     user: string;
     active: boolean;
   }) {
