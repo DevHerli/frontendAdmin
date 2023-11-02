@@ -1,1 +1,25 @@
-<p>app-category-add-form works!</p>
+<!-- formulario -->
+<div class="col-md-12 col-lg-12">
+  <form [formGroup]="reactiveForm">
+    <div class="mb-3">
+      <label>Nombre</label>
+      <input type="text"
+        [class.valid]="this.reactiveForm.get('description')?.valid"
+        [class.fail]="this.reactiveForm.get('description')?.invalid && this.reactiveForm.get('description')?.touched"
+        class="form-control form-input"
+        formControlName="description">
+    </div>
+    <div>
+      <app-switch-toggle>
+      </app-switch-toggle>
+    </div>
+
+    <div class="row">
+      <app-general-buttons [isVisible_clean]="true"
+        [isVisible_save]="true"
+        [isDisabled_save]="!this.reactiveForm.valid"
+        (onClean)="resetForm()"
+        (onSave)="onAddCategorySubmit()"></app-general-buttons>
+    </div>
+  </form>
+</div>

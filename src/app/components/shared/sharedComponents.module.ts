@@ -13,6 +13,9 @@ import { AppCategoryDropdownComponent } from './dropdowns/app-category-dropdown/
 import { AppCleanButtonComponent } from './buttons/app-clean-button/app-clean-button.component';
 import { AppGeneralButtonsComponent } from './buttons/app-general-buttons/app-general-buttons.component';
 import { AppCardNumberComponent } from './cards/app-card-number/app-card-number.component';
+import { AppModalContainerComponent } from './modal/app-modal-container/app-modal-container.component';
+import { AppModalActionButtonComponent } from './modal/app-modal-action-button/app-modal-action-button.component';
+import { AppSwitchToggleComponent } from './app-switch-toggle/app-switch-toggle.component';
 
 const components = [
   LangsComponent,
@@ -25,11 +28,14 @@ const components = [
   AppCategoryDropdownComponent,
   AppCleanButtonComponent,
   AppGeneralButtonsComponent,
-  AppCardNumberComponent
+  AppCardNumberComponent,
+  AppModalContainerComponent,
+  AppModalActionButtonComponent,
+  AppSwitchToggleComponent
 ];
 
 @NgModule({
-  declarations: [components,],
+  declarations: [components],
   exports: [components],
   imports: [CommonModule, TranslateModule, ReactiveFormsModule, FormsModule],
 })

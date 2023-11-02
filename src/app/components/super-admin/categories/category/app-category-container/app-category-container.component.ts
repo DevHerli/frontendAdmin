@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AppModalContainerComponent } from 'src/app/components/shared/modal/app-modal-container/app-modal-container.component';
 import { CategoryModel } from 'src/app/data/models/category.model';
 
 import { CategoryService } from 'src/app/data/services/categories/category.service';
@@ -11,8 +12,7 @@ import swal from 'sweetalert2';
   templateUrl: './app-category-container.component.html',
   styleUrls: ['./app-category-container.component.scss'],
 })
-export class AppCategoryContainerComponent {
-  public reactiveForm!: FormGroup;
+export class AppCategoryContainerComponent implements OnInit {
 
   alertaEliminada: string = 'Categoría elminada';
   accion = 'Agregar';
@@ -31,41 +31,15 @@ export class AppCategoryContainerComponent {
   public categoryList: CategoryModel[] = [];
   private categoryListCopy: CategoryModel[] = [];
 
-  constructor(private _formbuilder: FormBuilder, private _categoryService: CategoryService) { }
+  constructor(private _categoryService: CategoryService) {
 
-
-  private setReactiveForm(): void {
-    this.reactiveForm = this._formbuilder.group({
-      description: new FormControl('', [Validators.required, Validators.maxLength(50), Validators.minLength(3),])
-    })
   }
 
   public ngOnInit(): void {
-    this.setReactiveForm();
     this.loadCategories();
+    // this.addCategoryFormModal.setModal("prueba de modal desde template", "success")
   }
 
-
-  public onAddCategorySubmit(): void {
-    this._categoryService.saveCategory(this.reactiveForm.value).subscribe({
-      next: () => {
-        swal.fire('Gracias...', '¡Categoría agregada con éxito!', 'success');
-        this.loadCategories();
-        this.reactiveForm.reset();
-        this.isAddFormVisible = false;
-      },
-      error: () => {
-        swal.fire('Opss... ocurrio un error', 'Error', 'error');
-      }
-    });
-
-
-  }
-
-  public resetForm(): void {
-    this.reactiveForm.reset();
-    this.reactiveForm.updateValueAndValidity();
-  }
 
   public loadCategories(): void {
     this.isLoadingVisible = true;
@@ -95,7 +69,7 @@ export class AppCategoryContainerComponent {
 
   public onCancelAddCategory(): void {
     this.isAddFormVisible = false;
-    this.reactiveForm.reset();
+    // this.reactiveForm.reset();
   }
 
   public deleteCategory(businessCategoryId: number): void {
@@ -121,9 +95,9 @@ export class AppCategoryContainerComponent {
     this.accion = 'Editar';
     this.id = category.businessCategoryId;
 
-    this.reactiveForm.patchValue({
-      description: category.description,
-    });
+    // this.reactiveForm.patchValue({
+    //   description: category.description,
+    // });
 
     const response = this._categoryService.updateCategory(category.businessCategoryId, category.description)
     console.log('respuesta:' + response)
@@ -138,7 +112,6 @@ export class AppCategoryContainerComponent {
 
   public searchFilter({ target }: any): void {
     const trimedValue: string = target.value;
-    console.log(trimedValue);
 
     if (trimedValue !== '') {
       this.categoryList = this.categoryListCopy.filter(item =>

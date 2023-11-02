@@ -41,4 +41,4 @@ const components = [
   ],
   providers: [CategoryFormsService],
 })
-export class SuperAdminComponentsModule {}
+export class SuperAdminComponentsModule { }
