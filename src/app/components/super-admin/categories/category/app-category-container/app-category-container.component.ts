@@ -43,28 +43,28 @@ export class AppCategoryContainerComponent implements OnInit {
 
   public loadCategories(): void {
     this.isLoadingVisible = true;
-    this.isPaginatorVisible = false;
+    // this.isPaginatorVisible = false;
 
-    this._categoryService.getListCategory().subscribe((data) => {
+    // this._categoryService.getListCategory().subscribe((data) => {
 
-      if (data) {
-        setTimeout(() => {
-          this.categoryList = data;
-          this.categoryListCopy = data;
+    //   if (data) {
+    //     setTimeout(() => {
+    //       this.categoryList = data;
+    //       this.categoryListCopy = data;
 
-          this.cardNumbers.totales = this.categoryList.length;
-          this.cardNumbers.activos = this.categoryList.filter((current: CategoryModel) => {
-            return current.active
-          }).length;
+    //       this.cardNumbers.totales = this.categoryList.length;
+    //       this.cardNumbers.activos = this.categoryList.filter((current: CategoryModel) => {
+    //         return current.active
+    //       }).length;
 
-          this.cardNumbers.inactivos = this.cardNumbers.totales - this.cardNumbers.activos;
-          this.isLoadingVisible = false;
-          this.isPaginatorVisible = true;
-        }, (3 * 1000));
+    //       this.cardNumbers.inactivos = this.cardNumbers.totales - this.cardNumbers.activos;
+    //       this.isLoadingVisible = false;
+    //       this.isPaginatorVisible = true;
+    //     }, (3 * 1000));
 
 
-      }
-    });
+    //   }
+    // });
   }
 
   public onCancelAddCategory(): void {
