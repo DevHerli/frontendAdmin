@@ -1,11 +1,11 @@
-<div class="row">
-  <div class="col-md-12 col-lg-6">
+<div class="row main-container">
+  <div class="table-container col-lg-12 col-xl-6 col-xxl-6">
     <div class="card">
       <div class="card-header">
         <h4 class="card-title">{{ 'categories.title1' | translate }}</h4>
       </div>
-
       <div class="card-body">
+
         <div class="table-responsive">
           <div class="input-group mb-3">
             <button class="btn btn-dark"
@@ -15,83 +15,97 @@
               class="form-control"
               placeholder="Buscar categoría..."
               aria-label="Example text with button addon"
-              aria-describedby="button-addon1">
-            <button (click)="this.isAddFormVisible = true"
+              aria-describedby="button-addon1"
+              (input)="searchFilter($event)">
+
+            <app-modal-action-button [modalId]="'pruebaModal'"
+              [buttonStyle]="'primary'"
+              [text]="'Agregar categoría'"
+              [icon]="'fas fa-plus'"
+              style="margin-left: 5px;">
+            </app-modal-action-button>
+
+
+            <!-- <button (click)="this.isAddFormVisible = true"
               class="btn btn-primary"
               style="margin-left: 5px;"
-              type="button"><i class="fas fa-plus
-              "></i> Nueva categoría</button>
+              type="button"> Nueva categoría</button> -->
+
           </div>
 
-          <table class="table mb-0"
-            style="min-height: 90px;">
-            <thead class="thead-light">
-              <tr>
-                <th># Tipo Categoría</th>
-                <th>Nombre</th>
-                <th class="text-end">Acción</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of categoryList | paginate: { itemsPerPage: 10, currentPage: currentPagePaginator }">
-                <td scope="row">{{item.businessCategoryId}}</td>
-                <td>{{item.description}}</td>
-                <td class="text-end">
-                  <i (click)="editCategory(item)"
-                    class="las la-pen text-secondary font-16"></i>
-                  <i (click)="deleteCategory(item.businessCategoryId)"
-                    class="las la-trash-alt text-secondary font-16"></i>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <pagination-controls *ngIf="isPaginatorVisible"
-            (pageChange)="currentPagePaginator = $event"></pagination-controls>
+          <div class="table-paginators-margin">
+            <pagination-controls id="category_table"
+              *ngIf="isPaginatorVisible"
+              (pageChange)="currentPagePaginator = $event"
+              previousLabel="Atrás"
+              nextLabel="Sig."></pagination-controls>
+
+            <table class="table mb-0"
+              style="min-height: 90px;">
+              <thead class="thead-light">
+                <tr>
+                  <th style="max-width: 80px;"># Tipo Categoría</th>
+                  <th>Nombre</th>
+                  <th>Fecha registro</th>
+                  <th>Creado por:</th>
+                  <th>Estado</th>
+                  <th class="text-end">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let item of categoryList | paginate: { id: 'category_table', itemsPerPage: 10, currentPage: currentPagePaginator }">
+                  <td scope="row">{{item.businessCategoryId}}</td>
+                  <td>{{item.description}}</td>
+                  <td>{{ dateformat(item.dateRegister)}}</td>
+                  <td>{{item.user | uppercase}}</td>
+                  <td>
+                    <span [ngClass]="{'bg-success': item.active, 'bg-danger': !item.active}"
+                      class="badge rounded-pill">
+                      {{item.active ? 'Activo' : 'Inactivo'}}
+                    </span>
+                  </td>
+                  <td class="text-end">
+                    <i (click)="editCategory(item)"
+                      class="las la-pen text-secondary font-16"></i>
+                    <i (click)="deleteCategory(item.businessCategoryId)"
+                      class="las la-trash-alt text-secondary font-16"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls id="category_table"
+              *ngIf="isPaginatorVisible"
+              (pageChange)="currentPagePaginator = $event"
+              previousLabel="Atrás"
+              nextLabel="Sig."></pagination-controls>
+          </div>
           <app-loading-spinner *ngIf="isLoadingVisible"></app-loading-spinner>
         </div>
       </div>
-
-
-
-
-
-
-
-    </div>
-  </div>
-  <div class="col-md-12 col-lg-6"
-    *ngIf="isAddFormVisible">
-    <div class="card">
-      <div class="card-header">
-        <h4 class="card-title"> <i class="fas fa-plus
-          "></i> Agregar categoría</h4>
-      </div>
-      <div class="card-body">
-
-        <form [formGroup]="reactiveForm">
-          <div class="mb-3">
-            <label>Nombre</label>
-            <input type="text"
-              [class.valid]="this.reactiveForm.get('description')?.valid"
-              [class.fail]="this.reactiveForm.get('description')?.invalid && this.reactiveForm.get('description')?.touched"
-              class="form-control form-input"
-              formControlName="description">
-          </div>
-
-          <div class="row">
-            <app-general-buttons [isVisible_clean]="true"
-              [isVisible_save]="true"
-              [isDisabled_save]="!this.reactiveForm.valid"
-              [isVisible_cancel]="true"
-              (onCancel)="onCancelAddCategory()"
-              (onClean)="resetForm()"
-              (onSave)="onAddCategorySubmit()"></app-general-buttons>
-          </div>
-        </form>
-      </div>
     </div>
   </div>
 
+  <div class="counters-container col-lg-12 col-xl-4 col-xxl-5">
+    <app-card-number [quantity]="cardNumbers.totales"
+      [cardText]="'Total'"
+      [style]="'primary'"> </app-card-number>
+    <app-card-number [quantity]="cardNumbers.activos"
+      [cardText]="'Activas'"
+      [style]="'success'"> </app-card-number>
+    <app-card-number [quantity]="cardNumbers.inactivos"
+      [cardText]="'Inactivas'"
+      [style]="'danger'"> </app-card-number>
+  </div>
+
+
+  <app-modal-container [modalId]="'pruebaModal'"
+    [headerText]="'Agregar categoría'"
+    [headerStyle]="'dark'">
+    <ng-template>
+      <app-category-add-form (onFinishForm)="loadCategories()"></app-category-add-form>
+    </ng-template>
+  </app-modal-container>
 
 
 </div>

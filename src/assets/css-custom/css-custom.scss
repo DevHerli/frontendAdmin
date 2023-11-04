@@ -5,3 +5,9 @@
 .card-body {
   position: relative !important;
 }
+
+@media (max-width: 1024px) {
+  .enlarge-menu .page-content-tab {
+    width: calc(100% - 60px) !important;
+  }
+}

@@ -1,0 +1,8 @@
+<button type="button"
+  class="btn-md"
+  [class]="'btn btn-' + buttonStyle"
+  data-bs-toggle="modal"
+  [attr.data-bs-target]="modalId ? modalId : ''">
+  <i [class]="icon"></i>
+  {{text}}
+</button>

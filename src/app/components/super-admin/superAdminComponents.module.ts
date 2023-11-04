@@ -15,6 +15,7 @@ import { AppSpecialityFormComponent } from './categories/speciality/app-speciali
 import { AppSpecialityListComponent } from './categories/speciality/app-speciality-list/app-speciality-list.component';
 import { AppCategoryContainerComponent } from './categories/category/app-category-container/app-category-container.component';
 import { AppSubcategoryContainerComponent } from './categories/subcategory/app-subcategory-container/app-subcategory-container.component';
+import { AppCategoryAddFormComponent } from './categories/category/app-category-add-form/app-category-add-form.component';
 
 const components = [
   AppCategoryFormComponent,
@@ -28,7 +29,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, AppCategoryAddFormComponent],
   exports: [components],
   imports: [
     CommonModule,
@@ -40,4 +41,4 @@ const components = [
   ],
   providers: [CategoryFormsService],
 })
-export class SuperAdminComponentsModule {}
+export class SuperAdminComponentsModule { }
