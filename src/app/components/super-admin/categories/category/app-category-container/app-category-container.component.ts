@@ -13,10 +13,7 @@ import swal from 'sweetalert2';
   styleUrls: ['./app-category-container.component.scss'],
 })
 export class AppCategoryContainerComponent implements OnInit {
-
-  alertaEliminada: string = 'Categoría elminada';
-  accion = 'Agregar';
-  id: number | undefined;
+  public editingCategory!: CategoryModel | null;
 
   public isLoadingVisible: boolean = false;
   public currentPagePaginator: number = 1;
@@ -60,7 +57,7 @@ export class AppCategoryContainerComponent implements OnInit {
           this.cardNumbers.inactivos = this.cardNumbers.totales - this.cardNumbers.activos;
           this.isLoadingVisible = false;
           this.isPaginatorVisible = true;
-        }, (4 * 1000));
+        }, (2 * 1000));
 
 
       }
@@ -92,15 +89,10 @@ export class AppCategoryContainerComponent implements OnInit {
 
   editCategory(category: CategoryModel) {
 
-    this.accion = 'Editar';
-    this.id = category.businessCategoryId;
+    this.editingCategory = category;
 
-    // this.reactiveForm.patchValue({
-    //   description: category.description,
-    // });
 
-    const response = this._categoryService.updateCategory(category.businessCategoryId, category.description)
-    console.log('respuesta:' + response)
+    // const response = this._categoryService.updateCategory(category.businessCategoryId, category.description)
 
   }
 

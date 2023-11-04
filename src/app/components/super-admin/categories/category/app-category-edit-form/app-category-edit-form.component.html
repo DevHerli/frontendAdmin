@@ -1,0 +1,48 @@
+<!-- formulario -->
+<div class="col-md-12 col-lg-12">
+  <form [formGroup]="reactiveForm">
+    <div class="mb-3">
+      <label># Categoría</label>
+      <input type="text"
+        class="form-control form-input"
+        [disabled]="true"
+        [value]="selectedCategory.businessCategoryId">
+    </div>
+    <div class="mb-3">
+      <label>Usuario (modificando)</label>
+      <input type="text"
+        class="form-control form-input"
+        [disabled]="true"
+        [value]="'[PENDIENTE]'">
+    </div>
+    <div class="mb-3">
+      <label>Fecha de registro</label>
+      <input type="text"
+        class="form-control form-input"
+        [disabled]="true"
+        [value]="selectedCategory.dateRegister">
+    </div>
+    <div class="mb-3">
+      <label>Nombre</label>
+      <input type="text"
+        class="form-control form-input"
+        formControlName="description"
+        [value]="selectedCategory.description">
+    </div>
+    <div>
+      <app-switch-toggle [trueText]="'Activo'"
+        formControlName="active"
+        [value]="selectedCategory.active">
+      </app-switch-toggle>
+    </div>
+
+  </form>
+
+  <div class="row">
+    <app-general-buttons [isVisible_clean]="true"
+      [isVisible_save]="true"
+      [isDisabled_save]="!this.reactiveForm.valid"
+      (onClean)="resetForm()"
+      (onSave)="onAddCategorySubmit()"></app-general-buttons>
+  </div>
+</div>

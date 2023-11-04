@@ -10,16 +10,20 @@
         formControlName="description">
     </div>
     <div>
-      <app-switch-toggle [trueText]="'Activo'" [value]="true">
+
+      <app-switch-toggle [trueText]="'Activo'"
+        [isDisabled]="true"
+        [value]="true">
       </app-switch-toggle>
     </div>
 
-    <div class="row">
-      <app-general-buttons [isVisible_clean]="true"
-        [isVisible_save]="true"
-        [isDisabled_save]="!this.reactiveForm.valid"
-        (onClean)="resetForm()"
-        (onSave)="onAddCategorySubmit()"></app-general-buttons>
-    </div>
   </form>
+
+  <div class="row">
+    <app-general-buttons [isVisible_clean]="true"
+      [isVisible_save]="true"
+      [isDisabled_save]="!this.reactiveForm.valid"
+      (onClean)="resetForm()"
+      (onSave)="onAddCategorySubmit()"></app-general-buttons>
+  </div>
 </div>

@@ -7,6 +7,7 @@ import { SuperAdminComponentsModule } from 'src/app/components/super-admin/super
 import { CategoriesComponent } from './categories/categories.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApisComponent } from './apis/apis.component';
+import { CategoriesModule } from 'src/app/components/super-admin/categories/categories.module';
 
 
 
@@ -27,7 +28,8 @@ import { ApisComponent } from './apis/apis.component';
     SuperAdminRoutingModule,
     SharedComponentsModule,
     SuperAdminComponentsModule,
-    TranslateModule
+    TranslateModule,
+    CategoriesModule
   ]
 })
 export class SuperAdminModule { }
