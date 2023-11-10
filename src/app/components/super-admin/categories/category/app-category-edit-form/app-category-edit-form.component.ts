@@ -63,7 +63,7 @@ export class AppCategoryEditFormComponent {
   }
 
 
-  public onAddCategorySubmit(): void {
+  public updateCategorySubmit(): void {
 
     const submitParameters: Pick<CategoryModel, 'description' | 'user' | 'active' | 'dateRegister'> = {
       description: this.descriptionControl.value,
@@ -72,19 +72,22 @@ export class AppCategoryEditFormComponent {
       dateRegister: new Date()
     }
 
-    this._categoryService.saveCategory(submitParameters).subscribe({
-      next: (resp) => {
-        console.log(resp);
-        swal.fire('Gracias...', '¡Categoría agregada con éxito!', 'success');
-        this.reactiveForm.reset();
-        this.onFinishForm.emit(true);
-      },
-      error: (error: HttpErrorResponse) => {
-        swal.fire(`${error.error}`, 'Vuelve a intentarlo', 'error');
-        console.log(error)
-      }
+    // const response = this._categoryService.updateCategory(category.businessCategoryId, category.description)
 
-    });
+
+    // this._categoryService.saveCategory(submitParameters).subscribe({
+    //   next: (resp) => {
+    //     console.log(resp);
+    //     swal.fire('Gracias...', '¡Categoría agregada con éxito!', 'success');
+    //     this.reactiveForm.reset();
+    //     this.onFinishForm.emit(true);
+    //   },
+    //   error: (error: HttpErrorResponse) => {
+    //     swal.fire(`${error.error}`, 'Vuelve a intentarlo', 'error');
+    //     console.log(error)
+    //   }
+
+    // });
   }
 
 

@@ -15,6 +15,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { TranslateModule } from '@ngx-translate/core';
 import { CategoryFormsService } from 'src/app/data/services/category-forms.service';
 import { AppCategoryEditFormComponent } from './category/app-category-edit-form/app-category-edit-form.component';
+import { AppSpecialityContainerComponent } from './speciality/app-speciality-container/app-speciality-container.component';
 
 
 const components = [
@@ -30,7 +31,7 @@ const components = [
 ]
 
 @NgModule({
-  declarations: [components, AppCategoryEditFormComponent],
+  declarations: [components, AppCategoryEditFormComponent, AppSpecialityContainerComponent],
   imports: [
     CommonModule,
     SharedComponentsModule, ReactiveFormsModule,

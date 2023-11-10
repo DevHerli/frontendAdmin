@@ -49,12 +49,12 @@ export class AppCategoryContainerComponent implements OnInit {
           this.categoryList = data;
           this.categoryListCopy = data;
 
-          this.cardNumbers.totales = this.categoryList.length;
-          this.cardNumbers.activos = this.categoryList.filter((current: CategoryModel) => {
-            return current.active
-          }).length;
+          // this.cardNumbers.totales = this.categoryList.length;
+          // this.cardNumbers.activos = this.categoryList.filter((current: CategoryModel) => {
+          //   return current.active
+          // }).length;
 
-          this.cardNumbers.inactivos = this.cardNumbers.totales - this.cardNumbers.activos;
+          // this.cardNumbers.inactivos = this.cardNumbers.totales - this.cardNumbers.activos;
           this.isLoadingVisible = false;
           this.isPaginatorVisible = true;
         }, (2 * 1000));
