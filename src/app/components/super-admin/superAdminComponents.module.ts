@@ -16,6 +16,9 @@ import { AppSpecialityListComponent } from './categories/speciality/app-speciali
 import { AppCategoryContainerComponent } from './categories/category/app-category-container/app-category-container.component';
 import { AppSubcategoryContainerComponent } from './categories/subcategory/app-subcategory-container/app-subcategory-container.component';
 import { AppCategoryAddFormComponent } from './categories/category/app-category-add-form/app-category-add-form.component';
+import { CountCategoriesComponent } from './dashboard/categoriesBusiness/count-categories/count-categories.component';
+import { CountSubcategoriesComponent } from './dashboard/categoriesBusiness/count-subcategories/count-subcategories.component';
+import { CountSpecialityComponent } from './dashboard/categoriesBusiness/count-speciality/count-speciality.component';
 
 const components = [
   AppCategoryFormComponent,
@@ -25,11 +28,15 @@ const components = [
   AppSpecialityFormComponent,
   AppSpecialityListComponent,
   AppCategoryContainerComponent,
-  AppSubcategoryContainerComponent
+  AppSubcategoryContainerComponent,
+  AppCategoryAddFormComponent,
+  CountCategoriesComponent,
+  CountSubcategoriesComponent,
+  CountSpecialityComponent
 ];
 
 @NgModule({
-  declarations: [components, AppCategoryAddFormComponent],
+  declarations: [components],
   exports: [components],
   imports: [
     CommonModule,

@@ -6,7 +6,52 @@
         <a class="nav-link" [routerLink] = "['/superDashboard']" routerLinkActive="activo">{{ 'menu.dash' | translate }}</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" [routerLink] = "['/categorias']" routerLinkActive="activo">{{ 'menuSuper.categories' | translate }}</a>
+        <a class="nav-link" href="#sidebarGeneral" data-bs-toggle="collapse" role="button"
+            aria-expanded="false" aria-controls="sidebarGeneral">
+            {{ 'menu.general' | translate }}
+        </a>
+        <div class="collapse " id="sidebarGeneral">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" routerLinkActive="activo">{{ 'menuSuper.city' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" routerLinkActive="activo">{{ 'menuSuper.country' | translate }}</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#sidebarBusiness" data-bs-toggle="collapse" role="button"
+            aria-expanded="false" aria-controls="sidebarBusiness">
+            {{ 'menu.business' | translate }}
+        </a>
+        <div class="collapse " id="sidebarBusiness">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink] = "['/categorias']" routerLinkActive="activo">{{ 'menuSuper.categories' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link margen2" href="#" routerLinkActive="activo">{{ 'menuSuper.forms' | translate }}</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#sidebarSubscriber" data-bs-toggle="collapse" role="button"
+            aria-expanded="false" aria-controls="sidebarSubscriber">
+            {{ 'menu.subscriber' | translate }}
+        </a>
+        <div class="collapse " id="sidebarSubscriber">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link margen2" href="#" routerLinkActive="activo">{{ 'menuSuper.subscriber' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link margen2" href="#" routerLinkActive="activo">{{ 'menu.option' | translate }}</a>
+                </li>
+            </ul>
+        </div>
     </li>
     <!-- <li class="nav-item">
         <a class="nav-link" href="#sidebarCate" data-bs-toggle="collapse" role="button"
@@ -33,7 +78,7 @@
     <li class="nav-item">
         <a class="nav-link" href="#">{{ 'menu.option' | translate }}</a>
     </li>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" href="#">{{ 'menu.option' | translate }}</a>
     </li>
     <li class="nav-item">
@@ -44,12 +89,12 @@
         <div class="collapse " id="sidebarEjemplo">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link margen2" href="#">{{ 'menu.option' | translate }}</a>
+                    <a class="nav-link margen2" href="#" routerLinkActive="activo">{{ 'menu.option' | translate }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link margen2" href="#">{{ 'menu.option' | translate }}</a>
+                    <a class="nav-link margen2" href="#" routerLinkActive="activo">{{ 'menu.option' | translate }}</a>
                 </li>
             </ul>
         </div>
-    </li>
+    </li> -->
   </ul>

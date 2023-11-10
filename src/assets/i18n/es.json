@@ -14,6 +14,9 @@
     "menu": {
         "home": "Inicio",
         "dash": "Dashboard",
+        "general": "Generales",
+        "business": "Negocios",
+        "subscriber": "Suscriptores",
         "profile": "Perfil",
         "setting": "Configuración",
         "option": "Opción",
@@ -24,7 +27,11 @@
         "categories": "Categorías",
         "subcategories": "Subcategorías",
         "specialties": "Especialidades",
-        "apis": "API"
+        "apis": "API",
+        "city": "Ciudades",
+        "country": "Paises",
+        "subscriber": "Suscriptor",
+        "forms": "Formularios"
     },
     "categories": {
         "title": "Categorías de negocios",
