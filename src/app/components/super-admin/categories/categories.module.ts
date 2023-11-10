@@ -17,7 +17,6 @@ import { CategoryFormsService } from 'src/app/data/services/category-forms.servi
 import { AppCategoryEditFormComponent } from './category/app-category-edit-form/app-category-edit-form.component';
 import { AppSpecialityContainerComponent } from './speciality/app-speciality-container/app-speciality-container.component';
 
-
 const components = [
   AppCategoryFormComponent,
   AppCategoryListComponent,
@@ -27,11 +26,14 @@ const components = [
   AppSpecialityListComponent,
   AppCategoryContainerComponent,
   AppSubcategoryContainerComponent,
-  AppCategoryAddFormComponent
+  AppCategoryAddFormComponent,
+  AppCategoryEditFormComponent,
+  AppSpecialityContainerComponent,
+
 ]
 
 @NgModule({
-  declarations: [components, AppCategoryEditFormComponent, AppSpecialityContainerComponent],
+  declarations: [components],
   imports: [
     CommonModule,
     SharedComponentsModule, ReactiveFormsModule,

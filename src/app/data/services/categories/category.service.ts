@@ -17,16 +17,16 @@ export class CategoryService {
     return this.http.get<CategoryModel[]>(this.URL + this.API_URL);
   }
 
-  public deleteCategory(businessCategoryId: number): Observable<any> {
-    return this.http.delete(this.URL + this.API_URL + businessCategoryId)
+  public deleteCategory(id: number): Observable<any> {
+    return this.http.delete(this.URL + this.API_URL + id)
   }
 
   public saveCategory(category: Pick<CategoryModel, 'active' | 'description' | 'user' | 'dateRegister'>): Observable<any> {
     return this.http.post(this.URL + this.API_URL, category);
   }
 
-  public updateCategory(businessCategoryId: number, description: string): Observable<any> {
-    return this.http.put(this.URL + this.API_URL + businessCategoryId, description);
+  public updateCategory(id: number, description: string): Observable<any> {
+    return this.http.put(this.URL + this.API_URL + id, description);
   }
 }
 

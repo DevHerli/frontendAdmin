@@ -8,6 +8,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApisComponent } from './apis/apis.component';
 import { CategoriesModule } from 'src/app/components/super-admin/categories/categories.module';
+import { DashboardModule } from 'src/app/components/super-admin/dashboard/dashboard.module';
 
 
 
@@ -29,7 +30,8 @@ import { CategoriesModule } from 'src/app/components/super-admin/categories/cate
     SharedComponentsModule,
     SuperAdminComponentsModule,
     TranslateModule,
-    CategoriesModule
+    CategoriesModule,
+    DashboardModule
   ]
 })
 export class SuperAdminModule { }

@@ -49,7 +49,7 @@
               <tbody>
                 <tr
                   *ngFor="let item of categoryList | paginate: { id: 'category_table', itemsPerPage: 10, currentPage: currentPagePaginator }">
-                  <td scope="row">{{item.businessCategoryId}}</td>
+                  <td scope="row">{{item.id}}</td>
                   <td>{{item.description}}</td>
                   <td>{{ dateformat(item.dateRegister)}}</td>
                   <td>{{item.user | uppercase}}</td>
@@ -65,7 +65,7 @@
                       data-bs-target="#editCategory_modal"
                       class="las la-pen text-secondary font-16"></i>
 
-                    <i (click)="deleteCategory(item.businessCategoryId)"
+                    <i (click)="deleteCategory(item.id)"
                       class="las la-trash-alt text-secondary font-16"></i>
                   </td>
                 </tr>

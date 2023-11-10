@@ -32,7 +32,7 @@ export class AppCategoryEditFormComponent {
   public activeControl!: AbstractControl;
   private _defaultCategoryValue: CategoryModel = {
     active: false,
-    businessCategoryId: 0,
+    id: 0,
     dateRegister: new Date(0),
     description: "",
     user: "NULL"
