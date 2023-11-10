@@ -12,6 +12,10 @@
     },
     "menu": {
         "home": "Home",
+        "dash": "Dashboard",
+        "general": "Generals",
+        "business": "Business",
+        "subscriber": "Subscribers",
         "profile": "Profile",
         "setting": "Setting",
         "option": "Option",
@@ -23,7 +27,11 @@
         "categories": "Categories",
         "subcategories": "Subcategories",
         "specialties": "Specialties",
-        "apis": "API"
+        "apis": "API",
+        "city": "Cities",
+        "country": "Countries",
+        "subscriber": "Subscriber",
+        "forms": "Forms"
     },
     "categories": {
         "title": "Business categories",
