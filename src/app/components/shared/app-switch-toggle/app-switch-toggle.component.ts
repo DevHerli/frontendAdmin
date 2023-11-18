@@ -42,6 +42,7 @@ export class AppSwitchToggleComponent implements ControlValueAccessor {
 
   //#region
   private onChange = (_: any) => {
+
   };
   private onTouched = () => { };
 
@@ -50,6 +51,7 @@ export class AppSwitchToggleComponent implements ControlValueAccessor {
   }
 
   registerOnChange(fn: any): void {
+    console.log(fn);
     this.onChange = fn;
   }
 

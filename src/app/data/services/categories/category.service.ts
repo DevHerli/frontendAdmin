@@ -25,8 +25,8 @@ export class CategoryService {
     return this.http.post(this.URL + this.API_URL, category);
   }
 
-  public updateCategory(id: number, description: string): Observable<any> {
-    return this.http.put(this.URL + this.API_URL + id, description);
+  public updateCategory(updateCategoryParameters: CategoryModel): Observable<any> {
+    return this.http.put(this.URL + this.API_URL + updateCategoryParameters.id, updateCategoryParameters);
   }
 }
 

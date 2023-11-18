@@ -58,6 +58,7 @@ export class AppCategoryContainerComponent implements OnInit {
           // this.cardNumbers.inactivos = this.cardNumbers.totales - this.cardNumbers.activos;
           this.isLoadingVisible = false;
           this.isPaginatorVisible = true;
+
         }, (2 * 1000));
 
 
@@ -89,12 +90,8 @@ export class AppCategoryContainerComponent implements OnInit {
 
 
   editCategory(category: CategoryModel) {
-
     this.editingCategory = category;
-
-
     // const response = this._categoryService.updateCategory(category.businessCategoryId, category.description)
-
   }
 
 

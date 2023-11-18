@@ -16,6 +16,7 @@ export class AppCategoryEditFormComponent {
 
     if (categoryToEdit) {
       this._selectedCategory = categoryToEdit;
+      this.reactiveForm.patchValue(this._selectedCategory);
       this.reactiveForm.enable()
     }
   }
@@ -37,6 +38,7 @@ export class AppCategoryEditFormComponent {
     description: "",
     user: "NULL"
   }
+  public switchValue: boolean = false;
 
   constructor(private _formbuilder: FormBuilder, private _categoryService: CategoryService) {
     this._selectedCategory = this._defaultCategoryValue;
@@ -55,6 +57,9 @@ export class AppCategoryEditFormComponent {
 
     this.descriptionControl = this.reactiveForm.controls['description'];
     this.activeControl = this.reactiveForm.controls['active'];
+
+    this.reactiveForm.valueChanges.subscribe(data => console.log(data))
+
   }
 
   public resetForm(): void {
@@ -62,33 +67,43 @@ export class AppCategoryEditFormComponent {
     this.reactiveForm.updateValueAndValidity();
   }
 
+  public clearForm(): void {
+    this._selectedCategory = this._defaultCategoryValue;
+    this.resetForm();
+  }
+
+  public onSwitchValueChange(ev: any) {
+
+    this.activeControl.setValue(ev)
+    this.reactiveForm.updateValueAndValidity();
+  }
 
   public updateCategorySubmit(): void {
 
-    const submitParameters: Pick<CategoryModel, 'description' | 'user' | 'active' | 'dateRegister'> = {
+    const submitParameters: CategoryModel = {
+      id: this._selectedCategory.id,
       description: this.descriptionControl.value,
-      user: "CFCLOPEZL",
-      active: true,
-      dateRegister: new Date()
+      user: this._selectedCategory.user,
+      active: this.activeControl.value,
+      dateRegister: this._selectedCategory.dateRegister,
+
     }
 
-    // const response = this._categoryService.updateCategory(category.businessCategoryId, category.description)
+    this._categoryService.updateCategory(submitParameters).subscribe({
+      next: (resp) => {
+        swal.fire('Realizado!', '¡Categoría actualizada con éxito!', 'success');
+        this.clearForm();
+        this.onFinishForm.emit(true);
+      },
 
+      error: (error: HttpErrorResponse) => {
+        // swal.fire(`${error.error}`, 'Vuelve a intentarlo', 'error');
+        // console.log(error.error)
+      }
+    })
 
-    // this._categoryService.saveCategory(submitParameters).subscribe({
-    //   next: (resp) => {
-    //     console.log(resp);
-    //     swal.fire('Gracias...', '¡Categoría agregada con éxito!', 'success');
-    //     this.reactiveForm.reset();
-    //     this.onFinishForm.emit(true);
-    //   },
-    //   error: (error: HttpErrorResponse) => {
-    //     swal.fire(`${error.error}`, 'Vuelve a intentarlo', 'error');
-    //     console.log(error)
-    //   }
-
-    // });
   }
+
 
 
 

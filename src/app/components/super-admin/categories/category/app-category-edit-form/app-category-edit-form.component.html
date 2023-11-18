@@ -13,7 +13,7 @@
       <input type="text"
         class="form-control form-input"
         [disabled]="true"
-        [value]="'[PENDIENTE]'">
+        [value]="selectedCategory.user | uppercase">
     </div>
     <div class="mb-3">
       <label>Fecha de registro</label>
@@ -32,7 +32,8 @@
     <div>
       <app-switch-toggle [trueText]="'Activo'"
         formControlName="active"
-        [value]="selectedCategory.active">
+        [value]="selectedCategory.active"
+        (onChangeValue)="onSwitchValueChange($event)">
       </app-switch-toggle>
     </div>
 
