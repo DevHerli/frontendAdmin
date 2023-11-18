@@ -72,19 +72,40 @@ export class AppCategoryContainerComponent implements OnInit {
   }
 
   public deleteCategory(businessCategoryId: number): void {
-    this._categoryService.deleteCategory(businessCategoryId).subscribe({
-      next: () => {
-        swal.fire(
-          'El registro ha sido eliminado exitosamente',
-          'Categoría eliminada',
-          'error'
-        );
-        this.loadCategories();
-      },
-      error: (error) => {
-        console.log(error);
+
+
+    swal.fire({
+      title: "¿Borrar categoría?",
+      text: "Esta acción no puede ser revertida",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      confirmButtonText: "Borrar categoría",
+      cancelButtonColor: "#3085d6",
+      cancelButtonText: "Mantener categoría"
+
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._categoryService.deleteCategory(businessCategoryId).subscribe({
+          next: () => {
+            swal.fire(
+              'Categoría eliminada',
+              'El registro ha sido eliminado exitosamente',
+              "success"
+            );
+            this.loadCategories();
+          },
+          error: (error) => {
+            console.log(error);
+          }
+        });
       }
     });
+
+
+
+
+
   }
 
 

@@ -97,8 +97,8 @@ export class AppCategoryEditFormComponent {
       },
 
       error: (error: HttpErrorResponse) => {
-        // swal.fire(`${error.error}`, 'Vuelve a intentarlo', 'error');
-        // console.log(error.error)
+        swal.fire(`${error.error}`, 'Vuelve a intentarlo', 'error');
+        console.log(error.error)
       }
     })
 
