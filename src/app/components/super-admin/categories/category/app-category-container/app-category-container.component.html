@@ -1,5 +1,5 @@
 <div class="row main-container">
-  <div class="table-container col-lg-12 col-xl-6 col-xxl-6">
+  <div class="table-container col-lg-12 col-xl-8 col-xxl-8">
     <div class="card">
       <div class="card-header">
         <h4 class="card-title">{{ 'categories.title1' | translate }}</h4>
@@ -18,18 +18,12 @@
               aria-describedby="button-addon1"
               (input)="searchFilter($event)">
 
-            <app-modal-action-button [modalId]="'pruebaModal'"
+            <app-modal-action-button [modalId]="'addCategory_modal'"
               [buttonStyle]="'primary'"
               [text]="'Agregar categoría'"
               [icon]="'fas fa-plus'"
               style="margin-left: 5px;">
             </app-modal-action-button>
-
-
-            <!-- <button (click)="this.isAddFormVisible = true"
-              class="btn btn-primary"
-              style="margin-left: 5px;"
-              type="button"> Nueva categoría</button> -->
 
           </div>
 
@@ -40,7 +34,7 @@
               previousLabel="Atrás"
               nextLabel="Sig."></pagination-controls>
 
-            <table class="table mb-0"
+            <table class="table mb-0 table-hover"
               style="min-height: 90px;">
               <thead class="thead-light">
                 <tr>
@@ -55,7 +49,7 @@
               <tbody>
                 <tr
                   *ngFor="let item of categoryList | paginate: { id: 'category_table', itemsPerPage: 10, currentPage: currentPagePaginator }">
-                  <td scope="row">{{item.businessCategoryId}}</td>
+                  <td scope="row">{{item.id}}</td>
                   <td>{{item.description}}</td>
                   <td>{{ dateformat(item.dateRegister)}}</td>
                   <td>{{item.user | uppercase}}</td>
@@ -67,8 +61,11 @@
                   </td>
                   <td class="text-end">
                     <i (click)="editCategory(item)"
+                      data-bs-toggle="modal"
+                      data-bs-target="#editCategory_modal"
                       class="las la-pen text-secondary font-16"></i>
-                    <i (click)="deleteCategory(item.businessCategoryId)"
+
+                    <i (click)="deleteCategory(item.id)"
                       class="las la-trash-alt text-secondary font-16"></i>
                   </td>
                 </tr>
@@ -86,7 +83,7 @@
     </div>
   </div>
 
-  <div class="counters-container col-lg-12 col-xl-4 col-xxl-5">
+  <!-- <div class="counters-container col-lg-12 col-xl-4 col-xxl-5">
     <app-card-number [quantity]="cardNumbers.totales"
       [cardText]="'Total'"
       [style]="'primary'"> </app-card-number>
@@ -96,14 +93,23 @@
     <app-card-number [quantity]="cardNumbers.inactivos"
       [cardText]="'Inactivas'"
       [style]="'danger'"> </app-card-number>
-  </div>
+  </div> -->
 
 
-  <app-modal-container [modalId]="'pruebaModal'"
+  <app-modal-container [modalId]="'addCategory_modal'"
     [headerText]="'Agregar categoría'"
     [headerStyle]="'dark'">
     <ng-template>
       <app-category-add-form (onFinishForm)="loadCategories()"></app-category-add-form>
+    </ng-template>
+  </app-modal-container>
+
+  <app-modal-container [modalId]="'editCategory_modal'"
+    [headerText]="'Editar categoría'"
+    [headerStyle]="'dark'">
+    <ng-template>
+      <app-category-edit-form [selectedCategory]="editingCategory"
+        (onFinishForm)="loadCategories()"></app-category-edit-form>
     </ng-template>
   </app-modal-container>
 

@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoryModel } from 'src/app/data/models/category.model';
@@ -17,12 +18,15 @@ export class AppCategoryAddFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.setReactiveForm();
+    this.reactiveForm.valueChanges.subscribe(data => {
+      console.log(data);
+    })
   }
 
 
   private setReactiveForm(): void {
     this.reactiveForm = this._formbuilder.group({
-      description: new FormControl(null, [Validators.required, Validators.maxLength(50), Validators.minLength(3),]),
+      description: new FormControl(null, [Validators.required, Validators.maxLength(50), Validators.minLength(3)]),
     })
 
     this.descriptionControl = this.reactiveForm.controls['description'];
@@ -35,6 +39,7 @@ export class AppCategoryAddFormComponent implements OnInit {
 
 
   public onAddCategorySubmit(): void {
+
     const submitParameters: Pick<CategoryModel, 'description' | 'user' | 'active' | 'dateRegister'> = {
       description: this.descriptionControl.value,
       user: "CFCLOPEZL",
@@ -42,16 +47,18 @@ export class AppCategoryAddFormComponent implements OnInit {
       dateRegister: new Date()
     }
 
-
+    console.log(submitParameters);
 
     this._categoryService.saveCategory(submitParameters).subscribe({
-      next: () => {
+      next: (resp) => {
+        console.log(resp);
         swal.fire('Gracias...', '¡Categoría agregada con éxito!', 'success');
         this.reactiveForm.reset();
         this.onFinishForm.emit(true);
       },
-      error: () => {
-        swal.fire('Opss... ocurrio un error', 'Error', 'error');
+      error: (error: HttpErrorResponse) => {
+        swal.fire(`${error.error}`, 'Vuelve a intentarlo', 'error');
+        console.log(error)
       }
 
     });

@@ -13,10 +13,7 @@ import swal from 'sweetalert2';
   styleUrls: ['./app-category-container.component.scss'],
 })
 export class AppCategoryContainerComponent implements OnInit {
-
-  alertaEliminada: string = 'Categoría elminada';
-  accion = 'Agregar';
-  id: number | undefined;
+  public editingCategory!: CategoryModel | null;
 
   public isLoadingVisible: boolean = false;
   public currentPagePaginator: number = 1;
@@ -49,18 +46,20 @@ export class AppCategoryContainerComponent implements OnInit {
 
       if (data) {
         setTimeout(() => {
+          console.log(data);
           this.categoryList = data;
           this.categoryListCopy = data;
 
-          this.cardNumbers.totales = this.categoryList.length;
-          this.cardNumbers.activos = this.categoryList.filter((current: CategoryModel) => {
-            return current.active
-          }).length;
+          // this.cardNumbers.totales = this.categoryList.length;
+          // this.cardNumbers.activos = this.categoryList.filter((current: CategoryModel) => {
+          //   return current.active
+          // }).length;
 
-          this.cardNumbers.inactivos = this.cardNumbers.totales - this.cardNumbers.activos;
+          // this.cardNumbers.inactivos = this.cardNumbers.totales - this.cardNumbers.activos;
           this.isLoadingVisible = false;
           this.isPaginatorVisible = true;
-        }, (4 * 1000));
+
+        }, (2 * 1000));
 
 
       }
@@ -73,35 +72,47 @@ export class AppCategoryContainerComponent implements OnInit {
   }
 
   public deleteCategory(businessCategoryId: number): void {
-    this._categoryService.deleteCategory(businessCategoryId).subscribe({
-      next: () => {
-        swal.fire(
-          'El registro ha sido eliminado exitosamente',
-          'Categoría eliminada',
-          'error'
-        );
-        this.loadCategories();
-      },
-      error: (error) => {
-        console.log(error);
+
+
+    swal.fire({
+      title: "¿Borrar categoría?",
+      text: "Esta acción no puede ser revertida",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      confirmButtonText: "Borrar categoría",
+      cancelButtonColor: "#3085d6",
+      cancelButtonText: "Mantener categoría"
+
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._categoryService.deleteCategory(businessCategoryId).subscribe({
+          next: () => {
+            swal.fire(
+              'Categoría eliminada',
+              'El registro ha sido eliminado exitosamente',
+              "success"
+            );
+            this.loadCategories();
+          },
+          error: (error) => {
+            console.log(error);
+          }
+        });
       }
     });
+
+
+
+
+
   }
 
 
 
   editCategory(category: CategoryModel) {
-
-    this.accion = 'Editar';
-    this.id = category.businessCategoryId;
-
-    // this.reactiveForm.patchValue({
-    //   description: category.description,
-    // });
-
-    const response = this._categoryService.updateCategory(category.businessCategoryId, category.description)
-    console.log('respuesta:' + response)
-
+    this.editingCategory = category;
+    // const response = this._categoryService.updateCategory(category.businessCategoryId, category.description)
   }
 
 

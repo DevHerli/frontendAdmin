@@ -6,6 +6,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { SharedComponentsModule } from 'src/app/components/shared/sharedComponents.module';
 import { AdminComponentsModule } from 'src/app/components/admin/adminComponents.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { DashboardModule } from 'src/app/components/super-admin/dashboard/dashboard.module';
 
 
 
