@@ -17,6 +17,7 @@
         "general": "Generales",
         "business": "Negocios",
         "subscriber": "Suscriptores",
+        "users": "Usuarios",
         "profile": "Perfil",
         "setting": "Configuración",
         "option": "Opción",
@@ -31,6 +32,7 @@
         "city": "Ciudades",
         "country": "Paises",
         "subscriber": "Suscriptor",
+        "user": "Usuario",
         "forms": "Formularios"
     },
     "categories": {

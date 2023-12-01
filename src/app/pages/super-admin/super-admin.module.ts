@@ -9,6 +9,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ApisComponent } from './apis/apis.component';
 import { CategoriesModule } from 'src/app/components/super-admin/categories/categories.module';
 import { DashboardModule } from 'src/app/components/super-admin/dashboard/dashboard.module';
+import { CitiesComponent } from './general/cities/cities.component';
+import { CountriesComponent } from './general/countries/countries.component';
+import { UserComponent } from './users/user/user.component';
+import { SubscriberComponent } from './subscribers/subscriber/subscriber.component';
 
 
 
@@ -18,11 +22,19 @@ import { DashboardModule } from 'src/app/components/super-admin/dashboard/dashbo
     SuperDashboardComponent,
     CategoriesComponent,
     ApisComponent,
+    CitiesComponent,
+    CountriesComponent,
+    UserComponent,
+    SubscriberComponent,
 
   ],
   exports: [
     CategoriesComponent,
-    SuperDashboardComponent
+    SuperDashboardComponent,
+    CitiesComponent,
+    CountriesComponent,
+    UserComponent,
+    SubscriberComponent
   ],
   imports: [
     CommonModule,

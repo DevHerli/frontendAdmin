@@ -3,7 +3,7 @@
   </div>
   <ul class="navbar-nav nav flex-column">
     <li class="nav-item">
-        <a class="nav-link" [routerLink] = "['/superDashboard']" routerLinkActive="activo">{{ 'menu.dash' | translate }}</a>
+        <a class="nav-link" [routerLink] = "['/superDashboard']" routerLinkActive="activo"> {{ 'menu.dash' | translate }}</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="#sidebarGeneral" data-bs-toggle="collapse" role="button"
@@ -13,10 +13,10 @@
         <div class="collapse " id="sidebarGeneral">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" routerLinkActive="activo">{{ 'menuSuper.city' | translate }}</a>
+                    <a class="nav-link" [routerLink] = "['/ciudades']" routerLinkActive="activo">{{ 'menuSuper.city' | translate }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" routerLinkActive="activo">{{ 'menuSuper.country' | translate }}</a>
+                    <a class="nav-link" [routerLink] = "['/paises']" routerLinkActive="activo">{{ 'menuSuper.country' | translate }}</a>
                 </li>
             </ul>
         </div>
@@ -45,7 +45,23 @@
         <div class="collapse " id="sidebarSubscriber">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link margen2" href="#" routerLinkActive="activo">{{ 'menuSuper.subscriber' | translate }}</a>
+                    <a class="nav-link margen2" [routerLink] = "['/suscriptor']" routerLinkActive="activo">{{ 'menuSuper.subscriber' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link margen2" href="#" routerLinkActive="activo">{{ 'menu.option' | translate }}</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#sidebarUsers" data-bs-toggle="collapse" role="button"
+            aria-expanded="false" aria-controls="sidebarUsers">
+            {{ 'menu.users' | translate }}
+        </a>
+        <div class="collapse " id="sidebarUsers">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link margen2" [routerLink] = "['/usuario']" routerLinkActive="activo">{{ 'menuSuper.user' | translate }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link margen2" href="#" routerLinkActive="activo">{{ 'menu.option' | translate }}</a>

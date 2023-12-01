@@ -16,6 +16,7 @@
         "general": "Generals",
         "business": "Business",
         "subscriber": "Subscribers",
+        "users": "Users",
         "profile": "Profile",
         "setting": "Setting",
         "option": "Option",
@@ -31,6 +32,7 @@
         "city": "Cities",
         "country": "Countries",
         "subscriber": "Subscriber",
+        "user": "User",
         "forms": "Forms"
     },
     "categories": {
