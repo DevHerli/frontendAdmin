@@ -1,49 +1,50 @@
 {
-    "titles": {
-        "title": "Comercio Local",
-        "admin": "Administrador",
-        "rh": "Recursos Humanos",
-        "interface": "Interfaces",
-        "ticket": "Tickets",
-        "apis": "API"
-    },
-    "roles": {
-        "user": "Usuario",
-        "admin": "Administrador"
-    },
-    "menu": {
-        "home": "Inicio",
-        "dash": "Dashboard",
-        "general": "Generales",
-        "business": "Negocios",
-        "subscriber": "Suscriptores",
-        "profile": "Perfil",
-        "setting": "Configuración",
-        "option": "Opción",
-        "logout": "Cerrar Sesión"
-    },
-    "menuSuper": {
-        "title": "Super Administrador",
-        "categories": "Categorías",
-        "subcategories": "Subcategorías",
-        "specialties": "Especialidades",
-        "apis": "API",
-        "city": "Ciudades",
-        "country": "Paises",
-        "subscriber": "Suscriptor",
-        "forms": "Formularios"
-    },
-    "categories": {
-        "title": "Categorías de negocios",
-        "title1": "Listado de categorías",
-        "title2": "Agregar categoría",
-        "title3": "Agregar categoría",
-        "text1": "Listado de todas las categorías de los servicios de negocios",
-        "text2": "Agregar nueva categoría de negocio",
-        "textSubcategories": "Listado de todas las subcategorías de los servicios de negocios",
-        "textSubcategoriesAdd": "Agregar nueva subcategoría de negocio",
-        "textSpecialties": "Listado de todas las especialidades de los servicios de negocios",
-        "textSpecialtiesAdd": "Agregar nueva especialidad de negocio"
-    }
-
+  "titles": {
+    "title": "Comercio Local",
+    "admin": "Administrador",
+    "rh": "Recursos Humanos",
+    "interface": "Interfaces",
+    "ticket": "Tickets",
+    "apis": "API"
+  },
+  "roles": {
+    "user": "Usuario",
+    "admin": "Administrador"
+  },
+  "menu": {
+    "home": "Inicio",
+    "dash": "Dashboard",
+    "general": "Generales",
+    "business": "Negocios",
+    "subscriber": "Suscriptores",
+    "profile": "Perfil",
+    "setting": "Configuración",
+    "option": "Opción",
+    "logout": "Cerrar Sesión"
+  },
+  "menuSuper": {
+    "title": "Super Administrador",
+    "categories": "Categorías",
+    "subcategories": "Subcategorías",
+    "specialties": "Especialidades",
+    "apis": "API",
+    "city": "Ciudades",
+    "country": "Paises",
+    "subscriber": "Suscriptor",
+    "forms": "Formularios"
+  },
+  "categories": {
+    "title": "Categorías de negocios",
+    "title1": "Listado de categorías",
+    "title2": "Agregar categoría",
+    "title3": "Agregar categoría",
+    "text1": "Listado de todas las categorías de los servicios de negocios",
+    "text2": "Agregar nueva categoría de negocio",
+    "textSubcategories": "Listado de todas las subcategorías de los servicios de negocios",
+    "textSubcategoriesAdd": "Agregar nueva subcategoría de negocio",
+    "textSpecialties": "Listado de todas las especialidades de los servicios de negocios",
+    "textSpecialtiesAdd": "Agregar nueva especialidad de negocio",
+    "subcategoryTableTitle": "Listado de subcategorías",
+    "specialityTableTitle": "Listado de especialidades"
+  }
 }

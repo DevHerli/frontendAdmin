@@ -1,47 +1,49 @@
 {
-    "titles": {
-        "title": "Comercio Local",
-        "admin": "Admin",
-        "rh": "Human Resources",
-        "interface": "Interfaces",
-        "ticket": "Tickets"
-    },
-    "roles": {
-        "user": "User",
-        "admin": "Admin"
-    },
-    "menu": {
-        "home": "Home",
-        "dash": "Dashboard",
-        "general": "Generals",
-        "business": "Business",
-        "subscriber": "Subscribers",
-        "profile": "Profile",
-        "setting": "Setting",
-        "option": "Option",
-        "logout": "Logout"
-    },
-    "menuSuper": {
-        "title": "Super Admin",
-        "dash": "Dashboard",
-        "categories": "Categories",
-        "subcategories": "Subcategories",
-        "specialties": "Specialties",
-        "apis": "API",
-        "city": "Cities",
-        "country": "Countries",
-        "subscriber": "Subscriber",
-        "forms": "Forms"
-    },
-    "categories": {
-        "title": "Business categories",
-        "title1": "List of categories",
-        "title2": "Add category",
-        "text1": "List of all categories of business services",
-        "text2": "Add new business category",
-        "textSubcategories": "List of all subcategories of business services",
-        "textSubcategoriesAdd": "Add new business subcategory",
-        "textSpecialties": "List of all specialties of business services",
-        "textSpecialtiesAdd": "Add new business specialties"
-    }
+  "titles": {
+    "title": "Comercio Local",
+    "admin": "Admin",
+    "rh": "Human Resources",
+    "interface": "Interfaces",
+    "ticket": "Tickets"
+  },
+  "roles": {
+    "user": "User",
+    "admin": "Admin"
+  },
+  "menu": {
+    "home": "Home",
+    "dash": "Dashboard",
+    "general": "Generals",
+    "business": "Business",
+    "subscriber": "Subscribers",
+    "profile": "Profile",
+    "setting": "Setting",
+    "option": "Option",
+    "logout": "Logout"
+  },
+  "menuSuper": {
+    "title": "Super Admin",
+    "dash": "Dashboard",
+    "categories": "Categories",
+    "subcategories": "Subcategories",
+    "specialties": "Specialties",
+    "apis": "API",
+    "city": "Cities",
+    "country": "Countries",
+    "subscriber": "Subscriber",
+    "forms": "Forms"
+  },
+  "categories": {
+    "title": "Business categories",
+    "title1": "List of categories",
+    "title2": "Add category",
+    "text1": "List of all categories of business services",
+    "text2": "Add new business category",
+    "textSubcategories": "List of all subcategories of business services",
+    "textSubcategoriesAdd": "Add new business subcategory",
+    "textSpecialties": "List of all specialties of business services",
+    "textSpecialtiesAdd": "Add new business specialties",
+    "subcategoryTableTitle": "List of subcategories",
+    "specialityTableTitle": "Listado de specialities"
+  }
 }

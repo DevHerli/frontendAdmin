@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CategoryModel } from 'src/app/data/models/category.model';
+import { SubcategoryModel } from 'src/app/data/models/subcategory.model';
 
 @Component({
   selector: 'app-categories',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent {
+
+  public selectedCategory!: CategoryModel;
+  public selectedSubcategory!: SubcategoryModel;
 
 }

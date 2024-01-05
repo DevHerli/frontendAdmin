@@ -35,6 +35,15 @@
   }
 }
 
+.fas.fa-check-circle {
+  color: green !important;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background-color: rgb(201, 201, 201);
+  }
+}
+
 .table-paginators-margin {
   margin: 20px 0;
 }

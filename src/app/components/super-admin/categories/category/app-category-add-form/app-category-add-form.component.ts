@@ -49,7 +49,7 @@ export class AppCategoryAddFormComponent implements OnInit {
 
     console.log(submitParameters);
 
-    this._categoryService.saveCategory(submitParameters).subscribe({
+    this._categoryService.createNewCategory(submitParameters).subscribe({
       next: (resp) => {
         console.log(resp);
         swal.fire('Gracias...', '¡Categoría agregada con éxito!', 'success');

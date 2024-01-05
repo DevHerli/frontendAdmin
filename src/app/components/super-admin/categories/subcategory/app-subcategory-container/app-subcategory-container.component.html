@@ -1,12 +1,12 @@
-<div class="row">
-  <div class="col-md-12 col-lg-6">
+<div class="row main-container">
+  <!-- <div class="table-container col-lg-12 col-xl-8 col-xxl-8"> -->
+  <div class="table-container col-12">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title">{{ 'categories.title1' | translate }}</h4>
-
-        <!-- <p class="text-muted mb-0">{{ 'categories.text1' | translate }}</p> -->
+        <h4 class="card-title">{{ 'categories.subcategoryTableTitle' | translate }}</h4>
       </div>
       <div class="card-body">
+
         <div class="table-responsive">
           <div class="input-group mb-3">
             <button class="btn btn-dark"
@@ -14,97 +14,93 @@
               id="button-addon1"><i class="fas fa-search"></i></button>
             <input type="text"
               class="form-control"
-              placeholder="Buscar categoría..."
+              placeholder="Buscar subcategoría..."
               aria-label="Example text with button addon"
-              aria-describedby="button-addon1">
-          </div>
-          <table class="table mb-0">
-            <thead class="thead-light">
-              <tr>
-                <th># Tipo Categoría</th>
-                <th>Nombre</th>
-                <th class="text-end">Acción</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let categories of categoryList">
-                <td scope="row">{{categories.businessCategoryId}}</td>
-                <td>{{categories.description}}</td>
-                <!-- <td class="text-end">
-                                <i (click)="edit(categories)" class="las la-pen text-secondary font-16"></i>
-                                <i (click)="delete(categories.businessCategoryId)" class="las la-trash-alt text-secondary font-16"></i>
-                            </td> -->
-              </tr>
-            </tbody>
-          </table>
-          <app-paginator>
+              aria-describedby="button-addon1"
+              (input)="searchFilter($event)">
 
-          </app-paginator>
+            <app-modal-action-button [modalId]="'addSubcategory_modal'"
+              [buttonStyle]="'primary'"
+              [text]="'Agregar categoría'"
+              [icon]="'fas fa-plus'"
+              style="margin-left: 5px;">
+            </app-modal-action-button>
+
+          </div>
+
+          <div class="table-paginators-margin">
+            <div>
+              <app-switch-toggle [trueText]="'Más detalles'"
+                [value]="viewTableDetails"
+                (onChangeValue)="viewTableDetails = $event">
+              </app-switch-toggle>
+            </div>
+            <table class="table mb-0 table-hover"
+              style="min-height: 90px;">
+              <thead class="thead-light">
+                <tr>
+                  <th style="max-width: 80px;">#</th>
+                  <th>Nombre</th>
+                  <th>Estado</th>
+                  <th *ngIf="viewTableDetails">Fecha registro</th>
+                  <th *ngIf="viewTableDetails">Creado por:</th>
+                  <th class="text-end">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let item of subcategoryList | paginate: { id: 'subcategory_table', itemsPerPage: 10, currentPage: currentPagePaginator }">
+                  <td scope="row">{{item.id}}</td>
+                  <td>{{item.description}}</td>
+                  <td>
+                    <span [ngClass]="{'bg-success': item.active, 'bg-danger': !item.active}"
+                      class="badge rounded-pill">
+                      {{item.active ? 'Activo' : 'Inactivo'}}
+                    </span>
+                  </td>
+                  <td *ngIf="viewTableDetails">{{ dateformat(item.dateRegister)}}</td>
+                  <td *ngIf="viewTableDetails">{{item.user | uppercase}}</td>
+                  <td class="text-end">
+                    <i (click)="selectSubcategory(item)"
+                      class="fas fa-check-circle font-16"></i>
+                    <i (click)="editCategory(item)"
+                      data-bs-toggle="modal"
+                      data-bs-target="#editSubcategory_modal"
+                      class="las la-pen text-secondary font-16"></i>
+
+                    <i (click)="deleteSubcategory(item.id)"
+                      class="las la-trash-alt text-secondary font-16"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls id="subcategory_table"
+              *ngIf="isPaginatorVisible"
+              (pageChange)="currentPagePaginator = $event"
+              previousLabel="Atrás"
+              nextLabel="Sig."></pagination-controls>
+          </div>
+          <app-loading-spinner *ngIf="isLoadingVisible"></app-loading-spinner>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="col-md-12 col-lg-6">
-    <div class="card">
-      <div class="card-header">
-        <h4 class="card-title">{{ accion }} Subcategoría</h4>
-        <!-- <p class="text-muted mb-0">{{ 'categories.text2' | translate }}</p> -->
-      </div><!--end card-header-->
-
-
-
-      <div class="card-body">
-        <form [formGroup]="reactiveForm">
-          <div class="mb-3">
-            <app-category-dropdown formControlName="businessCategoryId"></app-category-dropdown>
-          </div>
-          <div class="mb-3">
-            <label>Nombre</label>
-            <input type="text"
-              class="form-control form-input"
-              [class.valid]="this.reactiveForm.get('description')?.valid"
-              [class.fail]="this.reactiveForm.get('description')?.invalid"
-              formControlName="description">
-          </div>
-
-
-          <app-general-buttons [isVisible_save]="true"
-            [isDisabled_save]="!this.reactiveForm.valid"
-            [isVisible_clean]="true"
-            (onClean)="this.reactiveForm.reset();"
-            (onSave)="onSubmit()"></app-general-buttons>
-        </form>
-      </div>
-
-
-
     </div>
   </div>
 </div>
 
+<app-modal-container [modalId]="'addSubcategory_modal'"
+  [headerText]="'Agregar categoría'"
+  [headerStyle]="'dark'">
+  <ng-template>
+    <app-subcategory-add-form [originalCategory]="selectedCategory"
+      (onFinishForm)="loadSubcategories()"></app-subcategory-add-form>
+  </ng-template>
+</app-modal-container>
 
-
-<!-- <div class="row">
-        <div class="col-md-12 col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">{{ 'menuSuper.subcategories' | translate }}</h4>
-                    <p class="text-muted mb-0">{{ 'categories.textSubcategories' | translate }}</p>
-                </div>
-                <div class="card-body">
-                    <app-subcategory-list></app-subcategory-list>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">{{ 'categories.title2' | translate }}</h4>
-                    <p class="text-muted mb-0">{{ 'categories.textSubcategoriesAdd' | translate }}</p>
-                </div>
-                <div class="card-body">
-                  <app-subcategory-form></app-subcategory-form>
-                </div>
-            </div>
-        </div>
-    </div> -->
+<app-modal-container [modalId]="'editCategory_modal'"
+  [headerText]="'Editar categoría'"
+  [headerStyle]="'dark'">
+  <ng-template>
+    <app-category-edit-form [selectedCategory]="editingSubcategory"
+      (onFinishForm)="loadSubcategories()"></app-category-edit-form>
+  </ng-template>
+</app-modal-container>

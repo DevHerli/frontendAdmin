@@ -16,6 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CategoryFormsService } from 'src/app/data/services/category-forms.service';
 import { AppCategoryEditFormComponent } from './category/app-category-edit-form/app-category-edit-form.component';
 import { AppSpecialityContainerComponent } from './speciality/app-speciality-container/app-speciality-container.component';
+import { AppSubcategoryAddFormComponent } from './subcategory/app-subcategory-add-form/app-subcategory-add-form.component';
 
 const components = [
   AppCategoryFormComponent,
@@ -33,7 +34,7 @@ const components = [
 ]
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, AppSubcategoryAddFormComponent],
   imports: [
     CommonModule,
     SharedComponentsModule, ReactiveFormsModule,

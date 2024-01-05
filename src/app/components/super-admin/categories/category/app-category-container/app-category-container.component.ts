@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppModalContainerComponent } from 'src/app/components/shared/modal/app-modal-container/app-modal-container.component';
 import { CategoryModel } from 'src/app/data/models/category.model';
@@ -13,12 +13,15 @@ import swal from 'sweetalert2';
   styleUrls: ['./app-category-container.component.scss'],
 })
 export class AppCategoryContainerComponent implements OnInit {
+  @Output() onSelectedCategory = new EventEmitter<CategoryModel>();
+
   public editingCategory!: CategoryModel | null;
 
   public isLoadingVisible: boolean = false;
   public currentPagePaginator: number = 1;
   public isPaginatorVisible: boolean = false;
   public isAddFormVisible: boolean = false;
+  public viewTableDetails: boolean = false;
   public cardNumbers = {
     totales: 0,
     activos: 0,
@@ -133,6 +136,11 @@ export class AppCategoryContainerComponent implements OnInit {
       this.categoryList = this.categoryListCopy;
     }
 
+  }
+
+
+  public selectCategory(category: CategoryModel): void {
+    this.onSelectedCategory.emit(category);
   }
 
 }

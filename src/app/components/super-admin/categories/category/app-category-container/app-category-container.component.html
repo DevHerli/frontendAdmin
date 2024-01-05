@@ -1,5 +1,6 @@
 <div class="row main-container">
-  <div class="table-container col-lg-12 col-xl-8 col-xxl-8">
+  <!-- <div class="table-container col-lg-12 col-xl-8 col-xxl-8"> -->
+  <div class="table-container col-12">
     <div class="card">
       <div class="card-header">
         <h4 class="card-title">{{ 'categories.title1' | translate }}</h4>
@@ -28,21 +29,24 @@
           </div>
 
           <div class="table-paginators-margin">
-            <pagination-controls id="category_table"
-              *ngIf="isPaginatorVisible"
-              (pageChange)="currentPagePaginator = $event"
-              previousLabel="Atrás"
-              nextLabel="Sig."></pagination-controls>
+            <div>
+              <app-switch-toggle [trueText]="'Más detalles'"
+                [value]="viewTableDetails"
+                (onChangeValue)="viewTableDetails = $event">
 
+              </app-switch-toggle>
+            </div>
             <table class="table mb-0 table-hover"
               style="min-height: 90px;">
               <thead class="thead-light">
                 <tr>
                   <th style="max-width: 80px;"># Tipo Categoría</th>
                   <th>Nombre</th>
-                  <th>Fecha registro</th>
-                  <th>Creado por:</th>
                   <th>Estado</th>
+                  <!-- Your component template -->
+
+                  <th *ngIf="viewTableDetails">Fecha registro</th>
+                  <th *ngIf="viewTableDetails">Creado por:</th>
                   <th class="text-end">Acción</th>
                 </tr>
               </thead>
@@ -51,15 +55,17 @@
                   *ngFor="let item of categoryList | paginate: { id: 'category_table', itemsPerPage: 10, currentPage: currentPagePaginator }">
                   <td scope="row">{{item.id}}</td>
                   <td>{{item.description}}</td>
-                  <td>{{ dateformat(item.dateRegister)}}</td>
-                  <td>{{item.user | uppercase}}</td>
                   <td>
                     <span [ngClass]="{'bg-success': item.active, 'bg-danger': !item.active}"
                       class="badge rounded-pill">
                       {{item.active ? 'Activo' : 'Inactivo'}}
                     </span>
                   </td>
+                  <td *ngIf="viewTableDetails">{{ dateformat(item.dateRegister)}}</td>
+                  <td *ngIf="viewTableDetails">{{item.user | uppercase}}</td>
                   <td class="text-end">
+                    <i (click)="selectCategory(item)"
+                      class="fas fa-check-circle font-16"></i>
                     <i (click)="editCategory(item)"
                       data-bs-toggle="modal"
                       data-bs-target="#editCategory_modal"

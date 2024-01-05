@@ -1,0 +1,27 @@
+<!-- formulario -->
+<div class="col-md-12 col-lg-12">
+  <form [formGroup]="reactiveForm">
+    <div class="mb-3">
+      <label>Nombre</label>
+      <input type="text"
+        class="form-control form-input"
+        formControlName="description">
+    </div>
+    <div>
+
+      <app-switch-toggle [trueText]="'Activo'"
+        [isDisabled]="true"
+        [value]="true">
+      </app-switch-toggle>
+    </div>
+
+  </form>
+
+  <div class="row">
+    <app-general-buttons [isVisible_clean]="true"
+      [isVisible_save]="true"
+      [isDisabled_save]="!this.reactiveForm.valid"
+      (onClean)="resetForm()"
+      (onSave)="onSubmitAddSubcategory()"></app-general-buttons>
+  </div>
+</div>
