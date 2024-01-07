@@ -1,0 +1,132 @@
+<div class="row main-container">
+  <div class="table-container col-lg-12 col-xl-12 col-xxl-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">{{ "branch.title" | translate }}</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <div class="input-group mb-3">
+            <button class="btn btnDark" type="button" id="button-addon1">
+              <i class="fas fa-search"></i>
+            </button>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="{{ 'branch.search' | translate }}"
+              aria-label="Example text with button addon"
+              aria-describedby="button-addon1"
+              (input)="searchFilter($event)"/>
+
+            <app-modal-action-button
+              [modalId]="'addCity_modal'"
+              [text]="'branch.add' | translate"
+              [icon]="'fas fa-plus'"
+              style="margin-left: 5px"
+              class="hoverDark"
+            >
+            </app-modal-action-button>
+          </div>
+
+          <div class="table-paginators-margin">
+            <!-- <pagination-controls id="category_table"
+                  *ngIf="isPaginatorVisible"
+                  (pageChange)="currentPagePaginator = $event"
+                  previousLabel="Atrás"
+                  nextLabel="Sig."></pagination-controls> -->
+
+            <table class="table mb-0 table-hover" style="min-height: 90px">
+              <thead class="thead-light">
+                <tr>
+                  <th style="max-width: 80px">
+                    {{ "branch.numberBranch" | translate }}
+                  </th>
+                  <th>{{ "branch.nameShort" | translate }}</th>
+                  <th>{{ "branch.nameLarge" | translate }}</th>
+                  <th>{{ "branch.state" | translate }}</th>
+                  <th>{{ "branch.country" | translate }}</th>
+                  <th>{{ "branch.user" | translate }}</th>
+                  <th>{{ "branch.dateRegister" | translate }}</th>
+                  <th>{{ "branch.active" | translate }}</th>
+                  <th class="text-end">{{ "branch.action" | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let item of cityList
+                      | paginate
+                        : {
+                            id: 'city_table',
+                            itemsPerPage: 10,
+                            currentPage: currentPagePaginator
+                          }
+                  "
+                >
+                  <td scope="row">{{ item.branch }}</td>
+                  <td>{{ item.nameShort }}</td>
+                  <td>{{ item.nameLong }}</td>
+                  <td>{{ item.state }}</td>
+                  <td>{{ item.country }}</td>
+                  <td>{{ item.user | uppercase }}</td>
+                  <td>{{ dateformat(item.dateRegister) }}</td>
+                  <td>
+                    <span
+                      [ngClass]="{
+                        'bg-success': item.active,
+                        'bg-danger': !item.active
+                      }"
+                      class="badge rounded-pill"
+                    >
+                      {{ item.active ? "Activo" : "Inactivo" }}
+                    </span>
+                  </td>
+                  <td class="text-end">
+                    <i
+                      (click)="editCity(item)"
+                      data-bs-toggle="modal"
+                      data-bs-target="#editCity_modal"
+                      class="las la-pen text-secondary font-16"
+                      type="button"
+                    ></i>
+
+                    <i
+                      (click)="deleteCategory(item.id)"
+                      class="las la-trash-alt text-secondary font-16"
+                      type="button"
+                    ></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls
+              id="city_table"
+              *ngIf="isPaginatorVisible"
+              (pageChange)="currentPagePaginator = $event"
+              previousLabel="Atrás"
+              nextLabel="Sig."
+            ></pagination-controls>
+          </div>
+          <app-loading-spinner *ngIf="isLoadingVisible"></app-loading-spinner>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-modal-container [modalId]="'addCity_modal'"
+[headerText]="'Agregar Sucursal'">
+<ng-template>
+  <app-city-add-form (onFinishForm)="loadCities()"></app-city-add-form>
+</ng-template>
+</app-modal-container>
+
+
+
+<app-modal-container [modalId]="'editCity_modal'"
+[headerText]="'Editar categoría'">
+<ng-template>
+  <app-city-edit-form [selectedCity]="editingCity"
+    (onFinishForm)="loadCities()"></app-city-edit-form>
+</ng-template>
+</app-modal-container>

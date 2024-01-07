@@ -33,7 +33,10 @@
         "country": "Paises",
         "subscriber": "Suscriptor",
         "user": "Usuario",
-        "forms": "Formularios"
+        "forms": "Formularios",
+        "branches": "Sucursales",
+        "branch": "Sucursal",
+        "typeUser": "Tipo de usuario"
     },
     "categories": {
         "title": "Categorías de negocios",
@@ -46,6 +49,23 @@
         "textSubcategoriesAdd": "Agregar nueva subcategoría de negocio",
         "textSpecialties": "Listado de todas las especialidades de los servicios de negocios",
         "textSpecialtiesAdd": "Agregar nueva especialidad de negocio"
+    },
+    "branch": {
+        "title": "Listado de Sucursales",
+        "search": "Buscar Sucursal",
+        "add": "Agregar Sucursal",
+        "numberBranch": "# Sucursal",
+        "nameShort": "Nombre Corto",
+        "nameLarge": "Nombre Largo",
+        "state": "Entidad",
+        "country": "País",
+        "user": "Creado por:",
+        "dateRegister": "Fecha Registro",
+        "active": "Estado",
+        "action": "Acción"
+    },
+    "countries": {
+        "title": "Listado de Paises"
     }
 
 }

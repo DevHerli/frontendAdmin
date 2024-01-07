@@ -13,11 +13,11 @@
         <div class="collapse " id="sidebarGeneral">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink] = "['/ciudades']" routerLinkActive="activo">{{ 'menuSuper.city' | translate }}</a>
+                    <a class="nav-link" [routerLink] = "['/ciudades']" routerLinkActive="activo">{{ 'menuSuper.branches' | translate }}</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" [routerLink] = "['/paises']" routerLinkActive="activo">{{ 'menuSuper.country' | translate }}</a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </li>
@@ -64,7 +64,7 @@
                     <a class="nav-link margen2" [routerLink] = "['/usuario']" routerLinkActive="activo">{{ 'menuSuper.user' | translate }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link margen2" href="#" routerLinkActive="activo">{{ 'menu.option' | translate }}</a>
+                    <a class="nav-link margen2" [routerLink] = "['/tipo-usuario']" routerLinkActive="activo">{{ 'menuSuper.typeUser' | translate }}</a>
                 </li>
             </ul>
         </div>

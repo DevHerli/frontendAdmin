@@ -1,20 +1,18 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppModalContainerComponent } from 'src/app/components/shared/modal/app-modal-container/app-modal-container.component';
-import { CategoryModel } from 'src/app/data/models/category.model';
-
-import { CategoryService } from 'src/app/data/services/categories/category.service';
 import DateTimeUtils from 'src/app/data/utils/DateTimeFormat';
 import swal from 'sweetalert2';
+import { CitiesModel } from 'src/app/data/models/sucursales/cities.model'
+import { BranchService } from 'src/app/data/services/branches/branch.service';
 
 @Component({
-  selector: 'app-category-container',
-  templateUrl: './app-category-container.component.html',
-  styleUrls: ['./app-category-container.component.scss'],
+  selector: 'app-city-container',
+  templateUrl: './app-city-container.component.html',
+  styleUrls: ['./app-city-container.component.scss']
 })
-export class AppCategoryContainerComponent implements OnInit {
-  public editingCategory!: CategoryModel | null;
-
+export class AppCityContainerComponent implements OnInit{
+  public editingCity!: CitiesModel | null;
   public isLoadingVisible: boolean = false;
   public currentPagePaginator: number = 1;
   public isPaginatorVisible: boolean = false;
@@ -25,37 +23,28 @@ export class AppCategoryContainerComponent implements OnInit {
     inactivos: 0
   }
 
-  public categoryList: CategoryModel[] = [];
-  private categoryListCopy: CategoryModel[] = [];
-
-  constructor(private _categoryService: CategoryService) {
+  public cityList: CitiesModel[] = [];
+  private cityListCopy: CitiesModel[] = [];
+  constructor(private _cityService: BranchService) {
 
   }
-
   public ngOnInit(): void {
-    this.loadCategories();
+    this.loadCities();
     // this.addCategoryFormModal.setModal("prueba de modal desde template", "success")
   }
 
-
-  public loadCategories(): void {
+  public loadCities(): void {
     this.isLoadingVisible = true;
     this.isPaginatorVisible = false;
 
-    this._categoryService.getListCategory().subscribe((data) => {
+    this._cityService.getListCity().subscribe((data) => {
 
       if (data) {
         setTimeout(() => {
           console.log(data);
-          this.categoryList = data;
-          this.categoryListCopy = data;
+          this.cityList = data;
+          this.cityListCopy = data;
 
-          // this.cardNumbers.totales = this.categoryList.length;
-          // this.cardNumbers.activos = this.categoryList.filter((current: CategoryModel) => {
-          //   return current.active
-          // }).length;
-
-          // this.cardNumbers.inactivos = this.cardNumbers.totales - this.cardNumbers.activos;
           this.isLoadingVisible = false;
           this.isPaginatorVisible = true;
 
@@ -66,7 +55,7 @@ export class AppCategoryContainerComponent implements OnInit {
     });
   }
 
-  public onCancelAddCategory(): void {
+  public onCancelAddCity(): void {
     this.isAddFormVisible = false;
     // this.reactiveForm.reset();
   }
@@ -75,7 +64,7 @@ export class AppCategoryContainerComponent implements OnInit {
 
 
     swal.fire({
-      title: "¿Borrar categoría?",
+      title: "¿Borrar sucursal?",
       text: "Esta acción no puede ser revertida",
       icon: "warning",
       showCancelButton: true,
@@ -86,14 +75,14 @@ export class AppCategoryContainerComponent implements OnInit {
 
     }).then((result) => {
       if (result.isConfirmed) {
-        this._categoryService.deleteCategory(businessCategoryId).subscribe({
+        this._cityService.deleteCity(businessCategoryId).subscribe({
           next: () => {
             swal.fire(
-              'Categoría eliminada',
+              'Sucursal eliminada',
               'El registro ha sido eliminado exitosamente',
               "success"
             );
-            this.loadCategories();
+            this.loadCities();
           },
           error: (error) => {
             console.log(error);
@@ -103,29 +92,24 @@ export class AppCategoryContainerComponent implements OnInit {
     });
   }
 
-
-
-  editCategory(category: CategoryModel) {
-    this.editingCategory = category;
-    // const response = this._categoryService.updateCategory(category.businessCategoryId, category.description)
+  editCity(city: CitiesModel) {
+    this.editingCity = city;
   }
-
 
   dateformat(value: Date | string): string {
     return DateTimeUtils.convertTo_day_month_year(value);
   }
 
-
   public searchFilter({ target }: any): void {
     const trimedValue: string = target.value;
 
     if (trimedValue !== '') {
-      this.categoryList = this.categoryListCopy.filter(item =>
-        item.description.toUpperCase().includes(trimedValue.toUpperCase())
+      this.cityList = this.cityListCopy.filter(item =>
+        item.nameLong.toUpperCase().includes(trimedValue.toUpperCase())
       );
     }
     else {
-      this.categoryList = this.categoryListCopy;
+      this.cityList = this.cityListCopy;
     }
   }
 

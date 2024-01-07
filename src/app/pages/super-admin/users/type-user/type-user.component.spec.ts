@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CountriesComponent } from './countries.component';
+import { TypeUserComponent } from './type-user.component';
 
-describe('CountriesComponent', () => {
-  let component: CountriesComponent;
-  let fixture: ComponentFixture<CountriesComponent>;
+describe('TypeUserComponent', () => {
+  let component: TypeUserComponent;
+  let fixture: ComponentFixture<TypeUserComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CountriesComponent]
+      declarations: [TypeUserComponent]
     });
-    fixture = TestBed.createComponent(CountriesComponent);
+    fixture = TestBed.createComponent(TypeUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -6,13 +6,21 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 import { SharedComponentsModule } from '../shared/sharedComponents.module';
 import { CategoriesModule } from './categories/categories.module';
+import { CitiesModule } from './general/cities/cities.module';
 
 
+const components = [
+
+  ]
 
 
 @NgModule({
-  declarations: [],
-  exports: [],
+  declarations: [
+
+  ],
+  exports: [
+
+  ],
   imports: [
     CommonModule,
     TranslateModule,
@@ -20,7 +28,8 @@ import { CategoriesModule } from './categories/categories.module';
     SharedComponentsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    CategoriesModule
+    CategoriesModule,
+    CitiesModule
   ],
 
 })

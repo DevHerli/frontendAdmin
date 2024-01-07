@@ -36,7 +36,8 @@ const components = [
   declarations: [components],
   imports: [
     CommonModule,
-    SharedComponentsModule, ReactiveFormsModule,
+    SharedComponentsModule, 
+    ReactiveFormsModule,
     FormsModule,
     NgxPaginationModule,
     TranslateModule

@@ -1,0 +1,77 @@
+<!-- formulario -->
+<div class="col-md-12 col-lg-12">
+    <form [formGroup]="reactiveForm">
+      <div class="mb-3">
+        <label>{{ "branch.numberBranch" | translate }}</label>
+        <input type="text"
+          class="form-control form-input"
+          [disabled]="false"
+          [value]="selectedCity.branch"
+          formControlName="branch">
+      </div>
+      <div class="mb-3">
+        <label>{{ "branch.nameShort" | translate }}</label>
+        <input type="text"
+          class="form-control form-input"
+          [disabled]="true"
+          [value]="selectedCity.nameShort"
+          formControlName="nameShort">
+      </div>
+      <div class="mb-3">
+        <label>{{ "branch.nameLarge" | translate }}</label>
+        <input type="text"
+          class="form-control form-input"
+          [disabled]="true"
+          [value]="selectedCity.nameLong"
+          formControlName="nameLong">
+      </div>
+      <div class="mb-3">
+        <label>{{ "branch.state" | translate }}</label>
+        <input type="text"
+          class="form-control form-input"
+          [disabled]="true"
+          [value]="selectedCity.state"
+          formControlName="state">
+      </div>
+      <div class="mb-3">
+        <label>{{ "branch.country" | translate }}</label>
+        <input type="text"
+          class="form-control form-input"
+          [disabled]="true"
+          [value]="selectedCity.country"
+          formControlName="country">
+      </div>
+      <div class="mb-3">
+        <label>Usuario (modificando)</label>
+        <input type="text"
+          class="form-control form-input"
+          [disabled]="true"
+          [value]="selectedCity.user | uppercase">
+      </div>
+      <div class="mb-3">
+        <label>Fecha de registro</label>
+        <input type="text"
+          class="form-control form-input"
+          [disabled]="false"
+          [value]="selectedCity.dateRegister"
+          formControlName="dateRegister">
+      </div>
+      <div>
+        <app-switch-toggle [trueText]="'Activo'"
+          formControlName="active"
+          [value]="selectedCity.active"
+          (onChangeValue)="onSwitchValueChange($event)">
+        </app-switch-toggle>
+      </div>
+  
+    </form>
+  
+    <div class="row">
+      <app-general-buttons [isVisible_clean]="true"
+        [isVisible_save]="true"
+        [isDisabled_save]="!this.reactiveForm.valid"
+        (onClean)="resetForm()"
+        (onSave)="updateCitySubmit()"></app-general-buttons>
+    </div>
+  </div>
+  

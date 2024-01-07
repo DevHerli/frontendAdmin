@@ -10,40 +10,38 @@ import { ApisComponent } from './apis/apis.component';
 import { CategoriesModule } from 'src/app/components/super-admin/categories/categories.module';
 import { DashboardModule } from 'src/app/components/super-admin/dashboard/dashboard.module';
 import { CitiesComponent } from './general/cities/cities.component';
-import { CountriesComponent } from './general/countries/countries.component';
 import { UserComponent } from './users/user/user.component';
 import { SubscriberComponent } from './subscribers/subscriber/subscriber.component';
+import { CitiesModule } from 'src/app/components/super-admin/general/cities/cities.module';
+import { TypeUserComponent } from './users/type-user/type-user.component';
 
-
+const components = [
+  SuperDashboardComponent,
+  CategoriesComponent,
+  ApisComponent,
+  CitiesComponent,
+  UserComponent,
+  SubscriberComponent,
+  TypeUserComponent,
+  ]
 
 
 @NgModule({
   declarations: [
-    SuperDashboardComponent,
-    CategoriesComponent,
-    ApisComponent,
-    CitiesComponent,
-    CountriesComponent,
-    UserComponent,
-    SubscriberComponent,
-
+    components
   ],
   exports: [
-    CategoriesComponent,
-    SuperDashboardComponent,
-    CitiesComponent,
-    CountriesComponent,
-    UserComponent,
-    SubscriberComponent
+    components
   ],
   imports: [
     CommonModule,
     SuperAdminRoutingModule,
     SharedComponentsModule,
-    SuperAdminComponentsModule,
     TranslateModule,
     CategoriesModule,
-    DashboardModule
+    DashboardModule,
+    CitiesModule,
+    SuperAdminComponentsModule
   ]
 })
 export class SuperAdminModule { }

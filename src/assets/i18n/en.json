@@ -33,7 +33,12 @@
         "country": "Countries",
         "subscriber": "Subscriber",
         "user": "User",
-        "forms": "Forms"
+        "forms": "Forms",
+        "branches": "Branches",
+        "branch": "Branch",
+        "typeUser": "Type user"
+ 
+
     },
     "categories": {
         "title": "Business categories",
@@ -45,5 +50,22 @@
         "textSubcategoriesAdd": "Add new business subcategory",
         "textSpecialties": "List of all specialties of business services",
         "textSpecialtiesAdd": "Add new business specialties"
+    },
+    "branch": {
+        "title": "Branch's List",
+        "search": "Search branch",
+        "add": "Add Branch",
+        "numberBranch": "# Branch",
+        "nameShort": "Short Name",
+        "nameLarge": "Large Name",
+        "state": "Entity",
+        "country": "Country",
+        "user": "User",
+        "dateRegister": "Date Register",
+        "active": "State",
+        "action": "Action"
+    },
+    "countries": {
+        "title": "Countries's List"
     }
 }

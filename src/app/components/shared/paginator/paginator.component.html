@@ -9,7 +9,7 @@
   </li> -->
 
   <li (click)="onClick($event)"
-    class="page-item"
+    class="page-item btnDark"
     *ngFor="let item of getPaginatorButtons(); let i = index">
     <button class="page-link pointer"
       (click)="onClick($event)">{{i + 1}}</button>
