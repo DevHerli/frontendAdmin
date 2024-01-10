@@ -25,6 +25,7 @@
     "menuSuper": {
         "title": "Super Admin",
         "dash": "Dashboard",
+        "permits": "Permits",
         "categories": "Categories",
         "subcategories": "Subcategories",
         "specialties": "Specialties",
@@ -36,7 +37,13 @@
         "forms": "Forms",
         "branches": "Branches",
         "branch": "Branch",
-        "typeUser": "Type user"
+        "typeUser": "Type user",
+        "typePermits": "Types of permits",
+        "permitsUsers": "Users Permits",
+        "business": "Business",
+        "businessPermits": "Permits of business",
+        "membershipType": "Membership type"
+
  
 
     },

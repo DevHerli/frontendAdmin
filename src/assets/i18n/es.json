@@ -26,6 +26,7 @@
     "menuSuper": {
         "title": "Super Administrador",
         "categories": "Categorías",
+        "permits": "Permisos",
         "subcategories": "Subcategorías",
         "specialties": "Especialidades",
         "apis": "API",
@@ -36,7 +37,12 @@
         "forms": "Formularios",
         "branches": "Sucursales",
         "branch": "Sucursal",
-        "typeUser": "Tipo de usuario"
+        "typeUser": "Tipo de usuario",
+        "typePermits": "Tipos de permisos",
+        "permitsUsers": "Permisos de usuarios",
+        "business": "Comercios/Negocios",
+        "businessPermits": "Permisos de Negocios",
+        "membershipType": "Tipos de membresia"
     },
     "categories": {
         "title": "Categorías de negocios",

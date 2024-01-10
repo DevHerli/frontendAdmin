@@ -15,9 +15,12 @@
                 <li class="nav-item">
                     <a class="nav-link" [routerLink] = "['/ciudades']" routerLinkActive="activo">{{ 'menuSuper.branches' | translate }}</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" [routerLink] = "['/paises']" routerLinkActive="activo">{{ 'menuSuper.country' | translate }}</a>
-                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink] = "['/tipos-permisos']" routerLinkActive="activo">{{ 'menuSuper.typePermits' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink] = "['/tipo-membresia']" routerLinkActive="activo">{{ 'menuSuper.membershipType' | translate }}</a>
+                </li>
             </ul>
         </div>
     </li>
@@ -32,7 +35,10 @@
                     <a class="nav-link" [routerLink] = "['/categorias']" routerLinkActive="activo">{{ 'menuSuper.categories' | translate }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link margen2" href="#" routerLinkActive="activo">{{ 'menuSuper.forms' | translate }}</a>
+                    <a class="nav-link margen2" [routerLink] = "['/permisos-negocios']" routerLinkActive="activo">{{ 'menuSuper.permits' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link margen2" [routerLink] = "['/catalogo-formularios']" routerLinkActive="activo">{{ 'menuSuper.forms' | translate }}</a>
                 </li>
             </ul>
         </div>
@@ -65,6 +71,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link margen2" [routerLink] = "['/tipo-usuario']" routerLinkActive="activo">{{ 'menuSuper.typeUser' | translate }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link margen2" [routerLink] = "['/permisos-usuarios']" routerLinkActive="activo">{{ 'menuSuper.permits' | translate }}</a>
                 </li>
             </ul>
         </div>
