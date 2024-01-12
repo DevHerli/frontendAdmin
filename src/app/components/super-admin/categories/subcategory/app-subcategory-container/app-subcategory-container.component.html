@@ -63,7 +63,7 @@
                   <td class="text-end">
                     <i (click)="selectSubcategory(item)"
                       class="fas fa-check-circle font-16"></i>
-                    <i (click)="editCategory(item)"
+                    <i (click)="editSubcategory(item)"
                       data-bs-toggle="modal"
                       data-bs-target="#editSubcategory_modal"
                       class="las la-pen text-secondary font-16"></i>
@@ -96,11 +96,11 @@
   </ng-template>
 </app-modal-container>
 
-<app-modal-container [modalId]="'editCategory_modal'"
-  [headerText]="'Editar categoría'"
+<app-modal-container [modalId]="'editSubcategory_modal'"
+  [headerText]="'Editar subcategoría'"
   [headerStyle]="'dark'">
   <ng-template>
-    <app-category-edit-form [selectedCategory]="editingSubcategory"
-      (onFinishForm)="loadSubcategories()"></app-category-edit-form>
+    <app-subcategory-edit-form [selectedSubcategory]="editingSubcategory"
+      (onFinishForm)="loadSubcategories()"></app-subcategory-edit-form>
   </ng-template>
 </app-modal-container>

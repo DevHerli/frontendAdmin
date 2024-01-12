@@ -46,7 +46,7 @@ export class CategoryService {
   }
 
   public createNewSubcategory(newSubcategory: Pick<SubcategoryModel, 'active' | 'description' | 'user' | 'dateRegister' | "businessCategoryId">): Observable<any> {
-    return this.http.post(this.URL + this.API_URL, newSubcategory);
+    return this.http.post(this.URL + "api/subcategoriasComercios", newSubcategory);
   }
 
   public updateSubcategory(updateSubctegoryParameters: SubcategoryModel): Observable<any> {

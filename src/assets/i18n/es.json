@@ -43,6 +43,8 @@
     "textSubcategories": "Listado de todas las subcategorías de los servicios de negocios",
     "textSubcategoriesAdd": "Agregar nueva subcategoría de negocio",
     "textSpecialties": "Listado de todas las especialidades de los servicios de negocios",
-    "textSpecialtiesAdd": "Agregar nueva especialidad de negocio"
+    "textSpecialtiesAdd": "Agregar nueva especialidad de negocio",
+    "subcategoryTableTitle": "Listado de subcategorías",
+    "specialityTableTitle": "Listado de especialidades"
   }
 }

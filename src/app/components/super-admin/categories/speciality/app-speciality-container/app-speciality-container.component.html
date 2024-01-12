@@ -18,6 +18,14 @@
               aria-label="Example text with button addon"
               aria-describedby="button-addon1"
               (input)="searchFilter($event)">
+
+            <app-modal-action-button [modalId]="'addSpeciality_modal'"
+              [buttonStyle]="'primary'"
+              [text]="'Agregar especialidad'"
+              [icon]="'fas fa-plus'"
+              style="margin-left: 5px;">
+            </app-modal-action-button>
+
           </div>
 
           <div class="table-paginators-margin">
@@ -53,11 +61,9 @@
                   <td *ngIf="viewTableDetails">{{ dateformat(item.dateRegister)}}</td>
                   <td *ngIf="viewTableDetails">{{item.user | uppercase}}</td>
                   <td class="text-end">
-                    <i (click)="selectSpeciality(item)"
-                      class="fas fa-check-circle font-16"></i>
                     <i (click)="editSpeciality(item)"
                       data-bs-toggle="modal"
-                      data-bs-target="#editSubcategory_modal"
+                      data-bs-target="#editSpeciality_modal"
                       class="las la-pen text-secondary font-16"></i>
 
                     <i (click)="deleteSpeciality(item.id)"
@@ -78,3 +84,23 @@
     </div>
   </div>
 </div>
+
+<app-modal-container [modalId]="'addSpeciality_modal'"
+  [headerText]="'Agregar especialidad'"
+  [headerStyle]="'dark'">
+  <ng-template>
+    <app-speciality-add-form [originalSubcategory]="selectedSubcategory"
+      (onFinishForm)="loadSpecialities()"></app-speciality-add-form>
+  </ng-template>
+</app-modal-container>
+
+<app-modal-container [modalId]="'editSpeciality_modal'"
+  [headerText]="'Editar especialidad'"
+  [headerStyle]="'dark'">
+  <ng-template>
+
+    <!-- <app-speciality-edit-form [selectedSpeciality]="editingSpeciality"
+      (onFinishForm)="loadSpecialities()"></app-speciality-edit-form> -->
+
+  </ng-template>
+</app-modal-container>

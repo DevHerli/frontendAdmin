@@ -23,6 +23,13 @@
         [value]="selectedSubcategory.dateRegister">
     </div>
     <div class="mb-3">
+      <label>ID de negocio</label>
+      <input type="text"
+        class="form-control form-input"
+        [disabled]="true"
+        [value]="selectedSubcategory.businessCategoryId">
+    </div>
+    <div class="mb-3">
       <label>Nombre</label>
       <input type="text"
         class="form-control form-input"
@@ -44,6 +51,6 @@
       [isVisible_save]="true"
       [isDisabled_save]="!this.reactiveForm.valid"
       (onClean)="resetForm()"
-      (onSave)="updateCategorySubmit()"></app-general-buttons>
+      (onSave)="updateSubcategorySubmit()"></app-general-buttons>
   </div>
 </div>

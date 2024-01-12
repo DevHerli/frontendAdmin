@@ -1,37 +1,34 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoryModel } from 'src/app/data/models/category.model';
+import { SubcategoryModel } from 'src/app/data/models/subcategory.model';
 import { CategoryService } from 'src/app/data/services/categories/category.service';
 import { SweetAlertService } from 'src/app/data/services/categories/sweet-alert.service';
 
 @Component({
-  selector: 'app-subcategory-add-form',
-  templateUrl: './app-subcategory-add-form.component.html',
-  styleUrls: ['./app-subcategory-add-form.component.scss']
+  selector: 'app-speciality-add-form',
+  templateUrl: './app-speciality-add-form.component.html',
+  styleUrls: ['./app-speciality-add-form.component.scss']
 })
-export class AppSubcategoryAddFormComponent implements OnInit {
+export class AppSpecialityAddFormComponent {
 
   @Output() onFinishForm = new EventEmitter<any>();
 
-  @Input() set originalCategory(category: CategoryModel) {
+  @Input() set originalSubcategory(subcategory: SubcategoryModel) {
 
-    if (category) {
-      this._originalCategory = category;
+    if (subcategory) {
+      this._originalSubcategory = subcategory;
     }
-
   }
 
   public reactiveForm!: FormGroup;
   public descriptionControl!: AbstractControl
 
-  private _originalCategory!: CategoryModel;
-
+  private _originalSubcategory!: SubcategoryModel;
 
   constructor(private _categoryService: CategoryService,
     private _formbuilder: FormBuilder,
     private _sweetAlertService: SweetAlertService) {
-
   }
 
   ngOnInit(): void {
@@ -44,7 +41,7 @@ export class AppSubcategoryAddFormComponent implements OnInit {
       description: this.descriptionControl.value,
       user: "CFCLOPEZL",
       dateRegister: new Date(),
-      businessCategoryId: this._originalCategory.id
+      businessCategoryId: this._originalSubcategory.id
     }
 
     console.log(parameters);
@@ -76,5 +73,4 @@ export class AppSubcategoryAddFormComponent implements OnInit {
     this.reactiveForm.reset();
     this.reactiveForm.updateValueAndValidity();
   }
-
 }

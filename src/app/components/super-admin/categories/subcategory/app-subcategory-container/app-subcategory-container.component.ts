@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import {
   AbstractControl,
@@ -9,6 +10,7 @@ import {
 import { CategoryModel } from 'src/app/data/models/category.model';
 import { SubcategoryModel } from 'src/app/data/models/subcategory.model';
 import { CategoryService } from 'src/app/data/services/categories/category.service';
+import { SweetAlertService } from 'src/app/data/services/categories/sweet-alert.service';
 import DateTimeUtils from 'src/app/data/utils/DateTimeFormat';
 import swal from 'sweetalert2';
 @Component({
@@ -28,6 +30,11 @@ export class AppSubcategoryContainerComponent implements OnInit {
     }
   }
 
+  public get selectedCategory(): CategoryModel {
+    return this._selectedCategory;
+  }
+
+
   public viewTableDetails: boolean = false;
   public isLoadingVisible: boolean = false;
   public currentPagePaginator: number = 1;
@@ -43,7 +50,9 @@ export class AppSubcategoryContainerComponent implements OnInit {
   private _selectedCategory!: CategoryModel;
   public editingSubcategory!: SubcategoryModel;
 
-  constructor(private _formBuilder: FormBuilder, private _categoryService: CategoryService) {
+  constructor(private _formBuilder: FormBuilder,
+    private _categoryService: CategoryService,
+    private _sweetAlertService: SweetAlertService) {
 
   }
 
@@ -62,9 +71,6 @@ export class AppSubcategoryContainerComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    console.log(this.reactiveForm.value);
-    // this._categoryService.saveCategory(this.reactiveForm.value)
-    // console.log('realizado');
   }
 
 
@@ -90,8 +96,8 @@ export class AppSubcategoryContainerComponent implements OnInit {
             );
             this.loadSubcategories();
           },
-          error: (error) => {
-            console.log(error);
+          error: (error: HttpErrorResponse) => {
+            this._sweetAlertService.alertWithIconAndFooter("Oops...", "No se pudo eliminar la subcategoría, inténtalo más tarde", "error", error.message)
           }
         });
       }
@@ -100,7 +106,7 @@ export class AppSubcategoryContainerComponent implements OnInit {
 
 
 
-  editCategory(subcategory: SubcategoryModel) {
+  editSubcategory(subcategory: SubcategoryModel) {
     this.editingSubcategory = subcategory;
     // const response = this._categoryService.updateCategory(category.businessCategoryId, category.description)
   }
@@ -138,7 +144,6 @@ export class AppSubcategoryContainerComponent implements OnInit {
 
       if (data) {
         setTimeout(() => {
-          console.log(data);
           this.subcategoryList = data;
           this.subcategoryListCopy = data;
 

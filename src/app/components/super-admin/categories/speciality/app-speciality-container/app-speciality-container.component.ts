@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { SpecialityCategoryModel } from 'src/app/data/models/speciality-category.model copy';
 import { SubcategoryModel } from 'src/app/data/models/subcategory.model';
 import { CategoryService } from 'src/app/data/services/categories/category.service';
 import DateTimeUtils from 'src/app/data/utils/DateTimeFormat';
-
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-speciality-container',
   templateUrl: './app-speciality-container.component.html',
@@ -17,6 +18,7 @@ export class AppSpecialityContainerComponent implements OnInit {
       this.loadSpecialities();
     }
   }
+
   private _selectedSubcategory!: SubcategoryModel;
 
   public viewTableDetails: boolean = false;
@@ -26,7 +28,7 @@ export class AppSpecialityContainerComponent implements OnInit {
 
   public specialityList!: SpecialityCategoryModel[];
   public specialityListCopy!: SpecialityCategoryModel[];
-
+  public editingSpeciality!: SubcategoryModel;
   constructor(private _categoryService: CategoryService) {
 
   }
@@ -72,8 +74,37 @@ export class AppSpecialityContainerComponent implements OnInit {
     return DateTimeUtils.convertTo_day_month_year(value);
   }
 
+  editSpeciality(speciality: SpecialityCategoryModel) {
+    this.editingSpeciality = speciality;
+  }
 
-  selectSpeciality(a: any) { }
-  editSpeciality(a: any) { }
-  deleteSpeciality(a: any) { }
+  public deleteSpeciality(specialityId: number): void {
+    swal.fire({
+      title: "¿Borrar especialidad?",
+      text: "Esta acción no puede ser revertida",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      confirmButtonText: "Borrar especialidad",
+      cancelButtonColor: "#3085d6",
+      cancelButtonText: "Cancelar"
+
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._categoryService.deleteCategory(specialityId).subscribe({
+          next: () => {
+            swal.fire(
+              'Subcategoría eliminada',
+              'El registro ha sido eliminado exitosamente',
+              "success"
+            );
+            // this.loadSubcategories();
+          },
+          error: (error: HttpErrorResponse) => {
+            // this._sweetAlertService.alertWithIconAndFooter("Oops...", "No se pudo eliminar la subcategoría, inténtalo más tarde", "error", error.message)
+          }
+        });
+      }
+    });
+  }
 }

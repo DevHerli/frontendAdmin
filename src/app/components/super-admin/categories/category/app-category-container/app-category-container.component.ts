@@ -49,7 +49,6 @@ export class AppCategoryContainerComponent implements OnInit {
 
       if (data) {
         setTimeout(() => {
-          console.log(data);
           this.categoryList = data;
           this.categoryListCopy = data;
 
