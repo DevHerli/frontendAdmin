@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoryModel } from 'src/app/data/models/category.model';
@@ -25,25 +26,29 @@ export class AppSubcategoryAddFormComponent {
 
   constructor(private _categoryService: CategoryService,
     private _formbuilder: FormBuilder,
-    private _swttAlertService: SweetAlertService) {
+    private _sweetAlertService: SweetAlertService) {
 
   }
 
   public onSubmitAddSubcategory(): void {
-    //TODO: Terminar formulario
     let parameters = {
-      active:
-        description:
-      user:
-        dateRegister:
-      businessCategoryId:
+      active: true,
+      description: this.descriptionControl.value,
+      user: "CFCLOPEZL",
+      dateRegister: new Date(),
+      businessCategoryId: this._orignalCategory.id
     }
 
-    this._swttAlertService.showLoading();
+    this._sweetAlertService.showLoading();
 
     this._categoryService.createNewSubcategory(parameters).subscribe({
       next: (value) => {
-
+        this._sweetAlertService.hideLoading();
+        this._sweetAlertService.alertWithIcon("Realizado!", "Nueva categoría agregada", "success")
+      },
+      error: (err: HttpErrorResponse) => {
+        this._sweetAlertService.hideLoading();
+        this._sweetAlertService.alertWithIconAndFooter("Oops...", "Hubo un problema al agregar la subcategoría, intenta más tarde", "error", err.message)
       },
     })
   }
