@@ -9,29 +9,49 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ApisComponent } from './apis/apis.component';
 import { CategoriesModule } from 'src/app/components/super-admin/categories/categories.module';
 import { DashboardModule } from 'src/app/components/super-admin/dashboard/dashboard.module';
+import { CitiesComponent } from './general/cities/cities.component';
+import { UserComponent } from './users/user/user.component';
+import { SubscriberComponent } from './subscribers/subscriber/subscriber.component';
+import { CitiesModule } from 'src/app/components/super-admin/general/cities/cities.module';
+import { TypeUserComponent } from './users/type-user/type-user.component';
+import { TypesPermitsComponent } from './general/types-permits/types-permits.component';
+import { PermitsBusinessComponent } from './business/permits-business/permits-business.component';
+import { PermitsUsersComponent } from './users/permits-users/permits-users.component';
+import { FormsComponent } from './business/forms/forms.component';
+import { MembershipTypeComponent } from './general/membership-type/membership-type.component';
 
-
+const components = [
+  SuperDashboardComponent,
+  CategoriesComponent,
+  ApisComponent,
+  CitiesComponent,
+  UserComponent,
+  SubscriberComponent,
+  TypeUserComponent,
+  FormsComponent,
+  TypesPermitsComponent,
+  PermitsBusinessComponent,
+  PermitsUsersComponent,
+  MembershipTypeComponent
+  ]
 
 
 @NgModule({
   declarations: [
-    SuperDashboardComponent,
-    CategoriesComponent,
-    ApisComponent,
-
+    components
   ],
   exports: [
-    CategoriesComponent,
-    SuperDashboardComponent
+    components
   ],
   imports: [
     CommonModule,
     SuperAdminRoutingModule,
     SharedComponentsModule,
-    SuperAdminComponentsModule,
     TranslateModule,
     CategoriesModule,
-    DashboardModule
+    DashboardModule,
+    CitiesModule,
+    SuperAdminComponentsModule
   ]
 })
 export class SuperAdminModule { }

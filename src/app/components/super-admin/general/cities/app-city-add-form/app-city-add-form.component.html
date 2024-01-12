@@ -1,0 +1,82 @@
+<!-- formulario -->
+<div class="col-md-12 col-lg-12">
+    <form [formGroup]="reactiveForm">
+      <div class="mb-3">
+        <label>{{ "branch.numberBranch" | translate }}</label>
+        <input type="text"
+          [class.valid]="this.reactiveForm.get('branch')?.valid"
+          [class.fail]="this.reactiveForm.get('branch')?.invalid && this.reactiveForm.get('branch')?.touched"
+          class="form-control form-input"
+          formControlName="branch">
+      </div>
+      <div class="mb-3">
+        <label>{{ "branch.nameShort" | translate }}</label>
+        <input type="text"
+          [class.valid]="this.reactiveForm.get('nameShort')?.valid"
+          [class.fail]="this.reactiveForm.get('nameShort')?.invalid && this.reactiveForm.get('nameShort')?.touched"
+          class="form-control form-input"
+          formControlName="nameShort">
+      </div>
+      <div class="mb-3">
+        <label>{{ "branch.nameLarge" | translate }}</label>
+        <input type="text"
+          [class.valid]="this.reactiveForm.get('nameLong')?.valid"
+          [class.fail]="this.reactiveForm.get('nameLong')?.invalid && this.reactiveForm.get('nameLong')?.touched"
+          class="form-control form-input"
+          formControlName="nameLong">
+      </div>
+      <div class="mb-3">
+        <label for="FormControlSelectCountry">{{ "branch.country" | translate }}</label>
+        <select class="form-control form-select" id="FormControlSelectCountry" 
+                [(ngModel)]="selectedPais" (change)="getEstados()"
+                [class.valid]="this.reactiveForm.get('country')?.valid" 
+                [class.fail]="this.reactiveForm.get('country')?.invalid && this.reactiveForm.get('country')?.touched"
+                formControlName="country">
+        <option *ngFor="let pais of paises"
+                [value]="pais.codigo">{{ pais.nombre}}</option>
+        </select>
+    </div>
+      <div class="mb-3">
+        <label for="FormControlSelectState">{{ "branch.state" | translate }}</label>
+        <select class="form-control form-select" id="FormControlSelectState" 
+                [class.valid]="this.reactiveForm.get('state')?.valid"
+                [class.fail]="this.reactiveForm.get('state')?.invalid && this.reactiveForm.get('state')?.touched"
+                formControlName="state">
+        <option *ngFor="let estado of estados"
+                [value]="estado.nombre"> {{estado.nombre}}</option>
+        </select>
+    </div>
+      <!-- <div class="mb-3">
+        <label>{{ "branch.user" | translate }}</label>
+        <input type="text"
+          [class.valid]="this.reactiveForm.get('user')?.valid"
+          [class.fail]="this.reactiveForm.get('user')?.invalid && this.reactiveForm.get('user')?.touched"
+          class="form-control form-input"
+          formControlName="user">
+      </div> -->
+      <div>
+  
+        <app-switch-toggle [trueText]="'Activo'"
+          [isDisabled]="true"
+          [value]="true">
+        </app-switch-toggle>
+      </div>
+  
+    </form>
+  
+    <div class="row">
+      <app-general-buttons [isVisible_clean]="true"
+        [isVisible_save]="true"
+        (onClean)="resetForm()"
+        (onSave)="onAddCitySubmit()"></app-general-buttons>
+    </div>
+
+    <!-- <div class="row">
+      <app-general-buttons [isVisible_clean]="true"
+        [isVisible_save]="true"
+        [isDisabled_save]="!this.reactiveForm.valid"
+        (onClean)="resetForm()"
+        (onSave)="onAddCitySubmit()"></app-general-buttons>
+    </div> -->
+  </div>
+  

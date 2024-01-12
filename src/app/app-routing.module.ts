@@ -20,11 +20,7 @@ const routes: Routes = [
     path: 'super',
     loadChildren: () => import('./pages/super-admin/super-admin.module').then(m => m.SuperAdminModule)
   },
-  {
-    path: '',
-    redirectTo: '**',
-    pathMatch: 'full'
-  }
+  { path: '', redirectTo: '/superDashboard', pathMatch: 'full' },
 ];
 
 @NgModule({

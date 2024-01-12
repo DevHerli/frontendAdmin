@@ -104,11 +104,6 @@ export class AppCategoryContainerComponent implements OnInit {
         });
       }
     });
-
-
-
-
-
   }
 
 
@@ -135,7 +130,6 @@ export class AppCategoryContainerComponent implements OnInit {
     else {
       this.categoryList = this.categoryListCopy;
     }
-
   }
 
 

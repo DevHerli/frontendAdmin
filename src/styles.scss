@@ -9,6 +9,35 @@ body {
   $color-main-yellow: #ebc131;
 }
 
+.btnDark{
+  background-color: #0f0f0f !important;
+  color: #fff !important;
+}
+
+.btntText{
+  color: white !important;
+}
+
+.ngx-pagination .current {
+  background: #0c0c0c !important;
+  color: #fefefe;
+}
+
+.hoverDark:hover{
+  background-color: #0f0f0f !important;
+  color: #fff !important;
+}
+
+.modal-header {
+  background-color: #0f0f0f !important;
+  color: #ebc131 !important;
+}
+
+.form-control{
+  border-color: #ebc131 !important;
+  border-radius: 5px;
+}
+
 .form-select {
   border-color: #ebc131 !important;
   border-radius: 5px;
