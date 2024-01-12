@@ -1,0 +1,123 @@
+<div class="card">
+    <div class="card-header">
+      <h4 class="card-title">{{ "menuSuper.typePermits" | translate }}</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <div class="input-group mb-3">
+          <button class="btn btnDark" type="button" id="button-addon1">
+            <i class="fas fa-search"></i>
+          </button>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="{{ 'typePermission.search' | translate }}"
+            aria-label="Example text with button addon"
+            aria-describedby="button-addon1"
+            (input)="searchFilter($event)"/>
+
+          <app-modal-action-button
+            [modalId]="'addTypePermission_modal'"
+            [text]="'typePermission.add' | translate"
+            [icon]="'fas fa-plus'"
+            style="margin-left: 5px"
+            class="hoverDark"
+          >
+          </app-modal-action-button>
+        </div>
+
+        <div class="table-paginators-margin">
+          <!-- <pagination-controls id="category_table"
+                *ngIf="isPaginatorVisible"
+                (pageChange)="currentPagePaginator = $event"
+                previousLabel="Atrás"
+                nextLabel="Sig."></pagination-controls> -->
+
+          <table class="table mb-0 table-hover" style="min-height: 90px">
+            <thead class="thead-light">
+              <tr>
+                <th style="max-width: 80px">
+                  {{ "typePermission.typePermit" | translate }}
+                </th>
+                <th>{{ "typePermission.description" | translate }}</th>
+                <th>{{ "typePermission.user" | translate }}</th>
+                <th>{{ "typePermission.dateCreate" | translate }}</th>
+                <th>{{ "typePermission.active" | translate }}</th>
+                <th class="text-end">{{ "typePermission.action" | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let item of typePermissionList
+                    | paginate
+                      : {
+                          id: 'typePermissions_table',
+                          itemsPerPage: 10,
+                          currentPage: currentPagePaginator
+                        }
+                "
+              >
+                <td scope="row">{{ item.typePermit }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.user | uppercase }}</td>
+                <td>{{ dateformat(item.dateCreate) }}</td>
+                <td>
+                  <span
+                    [ngClass]="{
+                      'bg-success': item.active,
+                      'bg-danger': !item.active
+                    }"
+                    class="badge rounded-pill"
+                  >
+                    {{ item.active ? "Activo" : "Inactivo" }}
+                  </span>
+                </td>
+                <td class="text-end">
+                  <i
+                    (click)="editTypePermission(item)"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editTypePermission_modal"
+                    class="las la-pen text-secondary font-16"
+                    type="button"
+                  ></i>
+
+                  <i
+                    (click)="deleteTypePermission(item.id)"
+                    class="las la-trash-alt text-secondary font-16"
+                    type="button"
+                  ></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls
+            id="typePermissions_table"
+            *ngIf="isPaginatorVisible"
+            (pageChange)="currentPagePaginator = $event"
+            previousLabel="Atrás"
+            nextLabel="Sig."
+          ></pagination-controls>
+        </div>
+        <app-loading-spinner *ngIf="isLoadingVisible"></app-loading-spinner>
+      </div>
+    </div>
+  </div>
+
+
+  <app-modal-container [modalId]="'addTypePermission_modal'"
+[headerText]="'Agregar tipo permiso'">
+<ng-template>
+  <app-type-permission-add-form (onFinishForm)="loadTypePermissions()"></app-type-permission-add-form>
+</ng-template>
+</app-modal-container>
+
+
+
+<!-- <app-modal-container [modalId]="'editTypePermission_modal'"
+[headerText]="'Editar tipo permiso'">
+<ng-template>
+  <app-type-permission-edit-form [selectedTypePermission]="editingTypePermission"
+    (onFinishForm)="loadTypePermissions()"></app-type-permission-edit-form>
+</ng-template>
+</app-modal-container> -->

@@ -74,5 +74,16 @@
     },
     "countries": {
         "title": "Countries's List"
+    },
+    "typePermission": {
+        "title": "List type permissions",
+        "search": "Search",
+        "add": "Add Permissions",
+        "typePermit": "Type Permissions",
+        "description": "Description",
+        "dateCreate": "Date Create",
+        "user": "User",
+        "active": "Status",
+        "action": "Actions"
     }
 }

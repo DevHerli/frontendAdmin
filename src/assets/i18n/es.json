@@ -72,6 +72,20 @@
     },
     "countries": {
         "title": "Listado de Paises"
+    },
+    "typePermission": {
+        "title": "Listado de tipos de permisos",
+        "search": "Buscar tipo de permiso",
+        "add": "Agregar Permiso",
+        "typePermit": "Tipos Permisos",
+        "description": "Descripción",
+        "dateCreate": "Fecha Creación",
+        "user": "Usuario",
+        "active": "Estado",
+        "action": "Acciones"
+    },
+    "formsBusiness": {
+        "title": "Formularios de Negocios"
     }
 
 }

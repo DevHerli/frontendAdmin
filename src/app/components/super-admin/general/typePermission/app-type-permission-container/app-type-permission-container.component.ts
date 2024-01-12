@@ -1,18 +1,16 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AppModalContainerComponent } from 'src/app/components/shared/modal/app-modal-container/app-modal-container.component';
+import { Component, OnInit } from '@angular/core';
 import DateTimeUtils from 'src/app/data/utils/DateTimeFormat';
 import swal from 'sweetalert2';
-import { CitiesModel } from 'src/app/data/models/sucursales/cities.model'
-import { BranchService } from 'src/app/data/services/branches/branch.service';
+import { TypePermissionsModel } from 'src/app/data/models/typePermissions/typePermissions.model';
+import { TypePermissionsService } from 'src/app/data/services/typePermissions/typePermissions.service';
 
 @Component({
-  selector: 'app-city-container',
-  templateUrl: './app-city-container.component.html',
-  styleUrls: ['./app-city-container.component.scss']
+  selector: 'app-type-permission-container',
+  templateUrl: './app-type-permission-container.component.html',
+  styleUrls: ['./app-type-permission-container.component.scss']
 })
-export class AppCityContainerComponent implements OnInit{
-  public editingCity!: CitiesModel | null;
+export class AppTypePermissionContainerComponent implements OnInit {
+  public editingTypePermission!: TypePermissionsModel | null;
   public isLoadingVisible: boolean = false;
   public currentPagePaginator: number = 1;
   public isPaginatorVisible: boolean = false;
@@ -23,25 +21,28 @@ export class AppCityContainerComponent implements OnInit{
     inactivos: 0
   }
 
-  public cityList: CitiesModel[] = [];
-  private cityListCopy: CitiesModel[] = [];
-  constructor(private _cityService: BranchService) {  }
+  public typePermissionList: TypePermissionsModel[] = [];
+  private typePermissionListCopy: TypePermissionsModel[] = [];
+  constructor(private _typePermissionsService: TypePermissionsService) {  }
+
   public ngOnInit(): void {
-    this.loadCities();
+    this.loadTypePermissions();
     // this.addCategoryFormModal.setModal("prueba de modal desde template", "success")
   }
 
-  public loadCities(): void {
+
+  
+  public loadTypePermissions(): void {
     this.isLoadingVisible = true;
     this.isPaginatorVisible = false;
 
-    this._cityService.getListCity().subscribe((data) => {
+    this._typePermissionsService.getListTypePermission().subscribe((data) => {
 
       if (data) {
         setTimeout(() => {
           console.log(data);
-          this.cityList = data;
-          this.cityListCopy = data;
+          this.typePermissionList = data;
+          this.typePermissionListCopy = data;
 
           this.isLoadingVisible = false;
           this.isPaginatorVisible = true;
@@ -53,12 +54,13 @@ export class AppCityContainerComponent implements OnInit{
     });
   }
 
-  public onCancelAddCity(): void {
+
+  public onCancelAddTypePermissions(): void {
     this.isAddFormVisible = false;
     // this.reactiveForm.reset();
   }
 
-  public deleteCategory(businessCategoryId: number): void {
+  public deleteTypePermission(typeComissionId: number): void {
     swal.fire({
       title: "¿Borrar sucursal?",
       text: "Esta acción no puede ser revertida",
@@ -71,14 +73,14 @@ export class AppCityContainerComponent implements OnInit{
 
     }).then((result) => {
       if (result.isConfirmed) {
-        this._cityService.deleteCity(businessCategoryId).subscribe({
+        this._typePermissionsService.deleteTypePermission(typeComissionId).subscribe({
           next: () => {
             swal.fire(
-              'Sucursal eliminada',
+              'Tipo permiso eliminado',
               'El registro ha sido eliminado exitosamente',
               "success"
             );
-            this.loadCities();
+            this.loadTypePermissions();
           },
           error: (error) => {
             console.log(error);
@@ -88,8 +90,8 @@ export class AppCityContainerComponent implements OnInit{
     });
   }
 
-  editCity(city: CitiesModel) {
-    this.editingCity = city;
+  editTypePermission(typePermission: TypePermissionsModel) {
+    this.editingTypePermission = typePermission;
   }
 
   dateformat(value: Date | string): string {
@@ -100,13 +102,14 @@ export class AppCityContainerComponent implements OnInit{
     const trimedValue: string = target.value;
 
     if (trimedValue !== '') {
-      this.cityList = this.cityListCopy.filter(item =>
-        item.nameLong.toUpperCase().includes(trimedValue.toUpperCase())
+      this.typePermissionList = this.typePermissionListCopy.filter(item =>
+        item.description.toUpperCase().includes(trimedValue.toUpperCase())
       );
     }
     else {
-      this.cityList = this.cityListCopy;
+      this.typePermissionList = this.typePermissionListCopy;
     }
   }
+
 
 }

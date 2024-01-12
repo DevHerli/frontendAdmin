@@ -17,8 +17,10 @@ import { TypeUserComponent } from './users/type-user/type-user.component';
 import { TypesPermitsComponent } from './general/types-permits/types-permits.component';
 import { PermitsBusinessComponent } from './business/permits-business/permits-business.component';
 import { PermitsUsersComponent } from './users/permits-users/permits-users.component';
-import { FormsComponent } from './business/forms/forms.component';
 import { MembershipTypeComponent } from './general/membership-type/membership-type.component';
+import { TypePermissionModule } from 'src/app/components/super-admin/general/typePermission/typePermission.module';
+import { FormsBusinessComponent } from './business/forms-business/forms-business.component';
+import { BusinessModule } from 'src/app/components/super-admin/business/business.module';
 
 const components = [
   SuperDashboardComponent,
@@ -28,11 +30,11 @@ const components = [
   UserComponent,
   SubscriberComponent,
   TypeUserComponent,
-  FormsComponent,
   TypesPermitsComponent,
   PermitsBusinessComponent,
   PermitsUsersComponent,
-  MembershipTypeComponent
+  MembershipTypeComponent,
+  FormsBusinessComponent
   ]
 
 
@@ -51,7 +53,9 @@ const components = [
     CategoriesModule,
     DashboardModule,
     CitiesModule,
-    SuperAdminComponentsModule
+    SuperAdminComponentsModule,
+    TypePermissionModule,
+    BusinessModule
   ]
 })
 export class SuperAdminModule { }
