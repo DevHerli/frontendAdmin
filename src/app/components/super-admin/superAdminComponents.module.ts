@@ -7,6 +7,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedComponentsModule } from '../shared/sharedComponents.module';
 import { CategoriesModule } from './categories/categories.module';
 import { CitiesModule } from './general/cities/cities.module';
+import { TypePermissionModule } from './general/typePermission/typePermission.module';
 
 
 const components = [
@@ -29,7 +30,8 @@ const components = [
     ReactiveFormsModule,
     NgxPaginationModule,
     CategoriesModule,
-    CitiesModule
+    CitiesModule,
+    TypePermissionModule
   ],
 
 })
