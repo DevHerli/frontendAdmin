@@ -78,3 +78,27 @@ body {
 .btnCancel {
   border-color: #c04327 !important;
 }
+
+
+.nav-tabs-custom .nav.nav-tabs .nav-link i {
+  font-size: 24px;
+  vertical-align: middle;
+  color: #141414;
+}
+
+.nav-tabs-custom .nav.nav-tabs .nav-link.active {
+  background-color: #fafbfb;
+  border-color: transparent;
+  color: #ebc131;
+}
+
+.nav-tabs-custom .nav.nav-tabs .nav-link.active i {
+  color: #ebc131;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #ebc131;
+  background-color: #f8f3e2 !important;
+  -webkit-box-shadow: #f8f3e2 !important;
+  box-shadow: #f8f3e2 !important;
+}
