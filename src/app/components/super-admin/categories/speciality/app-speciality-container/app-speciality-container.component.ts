@@ -15,6 +15,7 @@ export class AppSpecialityContainerComponent implements OnInit {
   @Input() set selectedSubcategory(subcategory: SubcategoryModel) {
     if (subcategory) {
       this._selectedSubcategory = subcategory;
+      this.selectedSubcategoryName = "de " + subcategory.description
       this.loadSpecialities();
     }
   }
@@ -25,6 +26,7 @@ export class AppSpecialityContainerComponent implements OnInit {
   public isLoadingVisible: boolean = false;
   public currentPagePaginator: number = 1;
   public isPaginatorVisible: boolean = false;
+  public selectedSubcategoryName: string = ""
 
   public specialityList!: SpecialityCategoryModel[];
   public specialityListCopy!: SpecialityCategoryModel[];

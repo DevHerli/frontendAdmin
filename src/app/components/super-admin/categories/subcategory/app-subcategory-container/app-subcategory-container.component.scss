@@ -1,3 +1,9 @@
+.main-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap-reverse;
+}
+
 .las.la-pen {
   color: rgb(36, 138, 221) !important;
   cursor: pointer;

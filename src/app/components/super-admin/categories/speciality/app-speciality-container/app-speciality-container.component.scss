@@ -1,0 +1,36 @@
+.main-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap-reverse;
+}
+
+.las.la-pen {
+  color: rgb(36, 138, 221) !important;
+  cursor: pointer;
+  transition: 0.2s;
+  &:hover {
+    background-color: rgb(201, 201, 201);
+  }
+}
+
+.las.la-trash-alt {
+  color: red !important;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background-color: rgb(201, 201, 201);
+  }
+}
+
+.fas.fa-check-circle {
+  color: green !important;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background-color: rgb(201, 201, 201);
+  }
+}
+
+.table-paginators-margin {
+  margin: 20px 0;
+}

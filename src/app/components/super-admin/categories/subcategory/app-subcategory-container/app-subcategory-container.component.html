@@ -1,9 +1,10 @@
 <div class="row main-container">
   <!-- <div class="table-container col-lg-12 col-xl-8 col-xxl-8"> -->
-  <div class="table-container col-12">
+  <div class="table-container col-11">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title">{{ 'categories.subcategoryTableTitle' | translate }}</h4>
+        <!-- <h4 class="card-title">{{ 'categories.subcategoryTableTitle' | translate }}</h4> -->
+        <h4 class="card-title">{{ "Listado de subcategorías " +selectedCategoryName }}</h4>
       </div>
       <div class="card-body">
 
@@ -21,7 +22,6 @@
 
             <app-modal-action-button [modalId]="'addSubcategory_modal'"
               [buttonStyle]="'primary'"
-              [text]="'Agregar subcategoría'"
               [icon]="'fas fa-plus'"
               style="margin-left: 5px;">
             </app-modal-action-button>
@@ -39,12 +39,13 @@
               style="min-height: 90px;">
               <thead class="thead-light">
                 <tr>
-                  <th style="max-width: 80px;">#</th>
+                  <th style="width: 80px;">#</th>
                   <th>Nombre</th>
                   <th>Estado</th>
                   <th *ngIf="viewTableDetails">Fecha registro</th>
                   <th *ngIf="viewTableDetails">Creado por:</th>
-                  <th class="text-end">Acción</th>
+                  <th class="text-end"
+                    style="width: 80px;">Acción</th>
                 </tr>
               </thead>
               <tbody>
@@ -52,7 +53,7 @@
                   *ngFor="let item of subcategoryList | paginate: { id: 'subcategory_table', itemsPerPage: 10, currentPage: currentPagePaginator }">
                   <td scope="row">{{item.id}}</td>
                   <td>{{item.description}}</td>
-                  <td>
+                  <td style="width: 80px;">
                     <span [ngClass]="{'bg-success': item.active, 'bg-danger': !item.active}"
                       class="badge rounded-pill">
                       {{item.active ? 'Activo' : 'Inactivo'}}

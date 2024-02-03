@@ -26,6 +26,7 @@ export class AppSubcategoryContainerComponent implements OnInit {
   @Input() set selectedCategory(category: CategoryModel) {
     if (category) {
       this._selectedCategory = category;
+      this.selectedCategoryName = "de " + category.description
       this.loadSubcategories();
     }
   }
@@ -39,6 +40,7 @@ export class AppSubcategoryContainerComponent implements OnInit {
   public isLoadingVisible: boolean = false;
   public currentPagePaginator: number = 1;
   public isPaginatorVisible: boolean = false;
+  public selectedCategoryName: string = "";
 
   public reactiveForm!: FormGroup;
   public businessCategoryControl!: AbstractControl;
