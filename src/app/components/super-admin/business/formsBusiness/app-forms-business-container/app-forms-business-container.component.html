@@ -10,17 +10,41 @@
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link text-center active" data-bs-toggle="tab" href="#forms-restaurants" role="tab">
-                        <i class="mdi mdi-food-fork-drink d-block"></i>Restaurantes
+                        <i class="la la-hamburger d-block"></i>Restaurantes
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-center" data-bs-toggle="tab" href="#forms-doctors" role="tab">
-                        <i class="la la-hospital-o d-block"></i>Doctores
+                    <a class="nav-link text-center" data-bs-toggle="tab" href="#forms-bars" role="tab">
+                        <i class="la la-cocktail d-block"></i>Bares
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" data-bs-toggle="tab" href="#forms-healt" role="tab">
+                        <!-- <i class="la la-tooth d-block"></i>
+                        <i class="la la-microscope d-block"></i> 
+                        <i class="la la-stethoscope d-block"></i> 
+                        <i class="la la-capsules d-block"></i> -->
+                        <i class="la la-heartbeat d-block"></i>Salud
                     </a>
                 </li>                                                
                 <li class="nav-item">
-                    <a class="nav-link text-center" data-bs-toggle="tab" href="#forms-options" role="tab">
-                        <i class="la la-cog d-block"></i>Opciones
+                    <a class="nav-link text-center" data-bs-toggle="tab" href="#forms-services" role="tab">
+                        <i class="la la-tools d-block"></i>Servicios
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" data-bs-toggle="tab" href="#forms-jobs" role="tab">
+                        <i class="la la-user-tie d-block"></i>Empleos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" data-bs-toggle="tab" href="#forms-events" role="tab">
+                        <i class="la la-microphone-alt d-block"></i>Eventos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" data-bs-toggle="tab" href="#forms-shops" role="tab">
+                        <i class="la la-shopping-basket d-block"></i>Tiendas
                     </a>
                 </li>
             </ul>
@@ -30,20 +54,26 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div class="tab-pane active p-3" id="forms-restaurants" role="tabpanel">
-                <p class="mb-0 text-muted">
-                    Raw denim you probably haven't heard of them jean shorts Austin.
-                </p>
+                    <app-restaurant-container></app-restaurant-container>
             </div>
-            <div class="tab-pane p-3" id="forms-doctors" role="tabpanel">
-                <p class="mb-0 text-muted">
-                    Food truck fixie locavore, accusamus mcsweeney's marfa nulla.
-                </p>
+            <div class="tab-pane p-3" id="forms-bars" role="tabpanel">
+                    <app-pubs-container></app-pubs-container>
+            </div>
+            <div class="tab-pane p-3" id="forms-healt" role="tabpanel">
+                   <app-health-menu></app-health-menu>
             </div>                                                
-            <div class="tab-pane p-3" id="forms-options" role="tabpanel">
-                <p class="text-muted mb-0">
-                    Trust fund seitan letterpress, keytar raw denim keffiyeh etsy.
-                </p>
+            <div class="tab-pane p-3" id="forms-services" role="tabpanel">
+                    <app-services-container></app-services-container>
             </div>
-        </div> <!--end tab-content-->   
-    </div><!--end card-body-->
+            <div class="tab-pane p-3" id="forms-jobs" role="tabpanel">
+                    <app-jobs-container></app-jobs-container>
+            </div>
+            <div class="tab-pane p-3" id="forms-events" role="tabpanel">
+                    <app-events-container></app-events-container>
+            </div>
+            <div class="tab-pane p-3" id="forms-shops" role="tabpanel">
+                    <app-shops-container></app-shops-container>
+            </div>
+        </div>   
+    </div>
 </div>
